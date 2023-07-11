@@ -7,6 +7,13 @@
 
 .storybook
 /.storybook/
+.storybook/
+/storybook
+
+.templates
+/.templates/
+.templates/
+/templates
 
 # testing
 /coverage
