@@ -19,10 +19,10 @@ export const ContactForm = () => {
 	const [cookie, setCookie] = useCookie('contactFormSubmission', '');
 
 	const subjects = [
-		'I need a website / app developed',
-		'Feedback on this website',
+		'I need a website',
+		'I need CI/CD setup for my project',
 		'General Inquiry',
-		'I am a recruiter and want to hire you',
+		'I am a recruiter',
 		'Other',
 	];
 
