@@ -12,6 +12,13 @@ import { educationQuery } from '@queries/education';
 import { jobsQuery } from '@queries/jobs';
 import { podcastsQuery } from '@queries/podcasts';
 
+import LogoAWS from '@root/public/assets/tools-about/aws.svg';
+import LogoAzure from '@root/public/assets/tools-about/azure.svg';
+import LogoJenkins from '@root/public/assets/tools-about/jenkins.svg';
+import LogoTerraform from '@root/public/assets/tools-about/terraform.svg';
+import LogoReact from '@root/public/assets/tools-about/react.svg';
+import LogoPython from '@root/public/assets/tools-about/python.svg';
+
 import type { Education as EducationType, Job, Podcast } from '@types';
 import Link from 'next/link';
 
@@ -69,11 +76,59 @@ const AboutPage = async () => {
 					unique flavor to my life, and I am grateful to have so many things
 					enjoy doing😄.
 				</p>
+
+				{/* My podcasts */}
 				<h2 className="headline mb-4 mt-12 text-4xl">
-					Languages & Tools i have experienced
+					Podcasts i enjoy
 				</h2>
 
 				<PodcastList podcasts={podcasts} />
+
+				{/* This is for devops icons section */}
+
+				<section id="tools" className="my-30">
+				<Container>
+					<h2 className="headline mt-24 text-center text-xl md:text-2xl lg:text-3xl">
+						DevOps Tools I have experienced
+					</h2>
+
+					<div className="mx-auto mt-8 flex max-w-5xl flex-wrap gap-x-10 gap-y-8">
+						<LogoAWS className="w-32 md:w-36" aria-label="GitHub" />
+						<LogoAzure className="w-32 md:w-36" aria-label="Azure" />
+						<LogoJenkins className="w-32 md:w-36" aria-label="Jenkins" />
+						<LogoTerraform className="w-32 md:w-36" aria-label="Terraform" />	
+					</div>
+					
+				</Container>
+				</section>
+				
+				{/* This is for frontend icons section */}
+
+				<section id="tools" className="my-30">
+				<Container>
+					<h2 className="headline mt-24 text-center text-xl md:text-2xl lg:text-3xl">
+						Frontend languages i have experienced
+					</h2>
+
+					<div className="mx-auto mt-8 flex max-w-5xl flex-wrap gap-x-16 gap-y-8">
+						<LogoReact className="w-32 md:w-36" aria-label="React" />
+					</div>
+				</Container>
+				</section>
+				
+				{/* This is for backend icons section */}
+
+				<section id="tools" className="my-30">
+				<Container>
+					<h2 className="headline mt-24 text-center text-xl md:text-2xl lg:text-3xl">
+						Backend languages I have experienced
+					</h2>
+
+					<div className="mx-auto mt-8 flex max-w-5xl flex-wrap gap-x-16 gap-y-8">
+						<LogoPython className="w-32 md:w-36" aria-label="Python" />
+					</div>
+				</Container>
+			</section>
 
 				{/* <h2 className="headline mb-4 mt-12 text-4xl">Experience</h2> */}
 
