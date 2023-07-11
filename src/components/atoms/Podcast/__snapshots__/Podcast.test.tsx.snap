@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Podcast renders correctly 1`] = `
+<div>
+  <li
+    class="h-[128px] w-[128px] shrink-0 snap-center overflow-hidden rounded-lg bg-transparent p-1 transition-all hover:bg-gradient-to-r hover:from-blue-400 hover:to-blue-700"
+  >
+    <a
+      href="https://www.syntax.fm/"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      <img
+        alt="Syntax.fm"
+        class="rounded-md"
+        data-nimg="1"
+        decoding="async"
+        height="128"
+        loading="lazy"
+        src="/_next/image?url=https%3A%2F%2Fjacobherper.com%2F_next%2Fimage%3Furl%3Dhttps%253A%252F%252Fcdn.sanity.io%252Fimages%252Fyq5nnpfd%252Fproduction%252Fd1c84a6a5e997b711068d4f7d602d593f22cff4b-256x256.jpg%26w%3D256%26q%3D75&w=256&q=75"
+        srcset="/_next/image?url=https%3A%2F%2Fjacobherper.com%2F_next%2Fimage%3Furl%3Dhttps%253A%252F%252Fcdn.sanity.io%252Fimages%252Fyq5nnpfd%252Fproduction%252Fd1c84a6a5e997b711068d4f7d602d593f22cff4b-256x256.jpg%26w%3D256%26q%3D75&w=128&q=75 1x, /_next/image?url=https%3A%2F%2Fjacobherper.com%2F_next%2Fimage%3Furl%3Dhttps%253A%252F%252Fcdn.sanity.io%252Fimages%252Fyq5nnpfd%252Fproduction%252Fd1c84a6a5e997b711068d4f7d602d593f22cff4b-256x256.jpg%26w%3D256%26q%3D75&w=256&q=75 2x"
+        style="color: transparent;"
+        width="128"
+      />
+    </a>
+  </li>
+</div>
+`;

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Container renders correctly 1`] = `
+<div>
+  <div
+    class="mx-auto w-full px-4 md:max-w-4xl lg:max-w-7xl"
+  >
+    Content
+  </div>
+</div>
+`;

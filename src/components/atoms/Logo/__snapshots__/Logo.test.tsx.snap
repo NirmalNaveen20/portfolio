@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Logo renders correctly 1`] = `
+<div>
+  <a
+    href="/"
+  >
+    <div
+      class="group relative flex items-center gap-4 whitespace-nowrap text-2xl font-bold transition duration-300 hover:transition"
+      style="opacity: 0; transform: translateY(-10px) translateZ(0);"
+    >
+      <img
+        alt="Vectorised image of Jacob Herper"
+        class="h-12 w-12"
+        data-nimg="1"
+        decoding="async"
+        height="48"
+        loading="lazy"
+        src="/_next/image?url=%2Fimg.jpg&w=96&q=100"
+        srcset="/_next/image?url=%2Fimg.jpg&w=48&q=100 1x, /_next/image?url=%2Fimg.jpg&w=96&q=100 2x"
+        style="color: transparent;"
+        width="48"
+      />
+      <span
+        class="opacity-100 transition duration-300 group-hover:opacity-0"
+      >
+        @jakeherp
+      </span>
+      <span
+        class="absolute left-16 from-blue-400 to-blue-700 opacity-0 transition duration-300 group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:text-transparent group-hover:opacity-100"
+      >
+        Jacob Herper
+      </span>
+    </div>
+  </a>
+</div>
+`;

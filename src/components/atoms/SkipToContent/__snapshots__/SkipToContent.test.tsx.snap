@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SkipToContent renders correctly 1`] = `
+<div>
+  <a
+    class="sr-only left-2 top-2 focus:not-sr-only focus:absolute focus:z-[1000]"
+    href="#content"
+  >
+    Skip to content
+  </a>
+</div>
+`;
