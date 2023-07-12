@@ -15,12 +15,8 @@ export const HeroSection = () => {
 		'JavaScript',
 		'HTML',
 		'CSS',
-		'React.Js',
-		'Next.Js',
-
-
-		'Gatsby',
-		'Svelte',
+		'React.js',
+		'Next.js',
 	];
 
 	return (
