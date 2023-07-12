@@ -41,6 +41,7 @@ export const metadata = {
 		'Nirmal Chandrasiri',
 		'Nirmal sliit',
 		'nirmal software engineer',
+		'nirmal naveen devops engineer'
 	],
 };
 
