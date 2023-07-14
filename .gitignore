@@ -10,6 +10,9 @@
 .storybook/
 /storybook
 
+
+.vscode
+
 .templates
 /.templates/
 .templates/
