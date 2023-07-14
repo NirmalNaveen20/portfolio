@@ -11,7 +11,6 @@ import { servicesQuery } from '@queries/services';
 
 import LogoAWS from '@root/public/assets/tools/aws.svg';
 import LogoGitLab from '@root/public/assets/tools/gitlab.svg';
-import LogoNext from '@root/public/assets/tools/nextjs.svg';
 import LogoSanity from '@root/public/assets/tools/sanity.svg';
 import LogoVercel from '@root/public/assets/tools/vercel.svg';
 import LogoVisual from '@root/public/assets/tools/visual-studio.svg';
@@ -58,7 +57,6 @@ const HomePage = async () => {
 					</h2>
 
 					<div className="mx-auto mt-8 flex max-w-5xl flex-wrap items-center justify-center gap-x-16 gap-y-8">
-						<LogoNext className="w-32" aria-label="Next.js" />
 						<LogoSanity className="w-32 md:w-40" aria-label="Sanity" />
 						<LogoVercel className="w-32 md:w-36" aria-label="Vercel" />
 						<LogoAWS className="w-32 md:w-36" aria-label="GitHub" />
