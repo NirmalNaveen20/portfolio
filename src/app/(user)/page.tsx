@@ -39,8 +39,9 @@ export const metadata = {
 		'ReactJs',
 		'JavaScript',
 		'Nirmal Chandrasiri',
-		'Nirmal Sliit',
-		'Nirmal Software Engineer',
+		'Nirmal sliit',
+		'nirmal software engineer',
+		'nirmal naveen devops engineer'
 	],
 };
 

@@ -19,6 +19,7 @@ export const HeroSection = () => {
 		'Next.js',
 		'Node.js',
 		'Python'
+
 	];
 
 	return (
