@@ -15,12 +15,10 @@ export const HeroSection = () => {
 		'JavaScript',
 		'HTML',
 		'CSS',
-		'React.Js',
-		'Next.Js',
-
-
-		'Gatsby',
-		'Svelte',
+		'React.js',
+		'Next.js',
+		'Node.js',
+		'Python'
 	];
 
 	return (
@@ -37,13 +35,7 @@ export const HeroSection = () => {
 					</h1>
 					<div className="mt-6 max-w-xl lg:mt-0 xl:col-end-1 xl:row-start-1">
 						<p className="text-lg leading-8 text-slate-600 dark:text-off-white">
-							I am a passionate DevOps Engineer and frontend developer with a
-							proven track record of success in delivering high-quality
-							software. I am skilled in all aspects of the software development
-							lifecycle, from conception to deployment. I am particularly
-							interested in the intersection of DevOps and frontend development,
-							and I am always looking for ways to improve the efficiency and
-							reliability of software delivery.
+							I am a passionate web developer who leverages DevOps tools and practices to deliver high-quality software. I have expertise in frontend and backend development, and I use my skills to create engaging user experiences and robust functionality.
 							<br />
 							You can talk to me about <TypeWriter strings={talkAbout} />.
 						</p>

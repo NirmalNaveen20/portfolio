@@ -33,14 +33,14 @@ export const metadata = {
 		'Software Engineer',
 		'Nirmal Naveen',
 		'Nirmal SLIIT',
-		'sliit',
-		'devops engineer sri lanka',
+		'Sliit',
+		'Devops Engineer Sri Lanka',
 		'DevOps Engineering',
 		'ReactJs',
 		'JavaScript',
 		'Nirmal Chandrasiri',
-		'Nirmal sliit',
-		'nirmal software engineer',
+		'Nirmal Sliit',
+		'Nirmal Software Engineer',
 	],
 };
 
