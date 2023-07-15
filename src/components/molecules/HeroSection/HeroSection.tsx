@@ -36,7 +36,7 @@ export const HeroSection = () => {
 					</h1>
 					<div className="mt-6 max-w-xl lg:mt-0 xl:col-end-1 xl:row-start-1">
 						<p className="text-lg leading-8 text-slate-600 dark:text-off-white">
-							I am a passionate web developer who leverages DevOps tools and practices to deliver high-quality software. I have expertise in frontend and backend development, and I use my skills to create engaging user experiences and robust functionality.
+							Pasionate web developer with a strong affinity for DevOps tools and practices, dedicated to enhancing software throughout the software development life cycle. Skilled in implementing CI/CD pipelines and Committed to continuous learning and staying up to date with the latest industry trends.
 							<br />
 							You can talk to me about <TypeWriter strings={talkAbout} />.
 						</p>
@@ -64,7 +64,7 @@ export const HeroSection = () => {
 								href="/about"
 								className="text-sm font-semibold leading-6 text-slate-900 transition-all hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-200"
 							>
-								Read more about me<span aria-hidden="true">→</span>
+								Read More About Me<span aria-hidden="true">→</span>
 							</Link>
 						</div>
 					</div>
