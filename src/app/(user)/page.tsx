@@ -8,7 +8,6 @@ import { sanityClient } from '@lib/sanity';
 
 import { servicesQuery } from '@queries/services';
 
-
 import LogoAWS from '@root/public/assets/tools/aws.svg';
 import LogoGitLab from '@root/public/assets/tools/gitlab.svg';
 import LogoSanity from '@root/public/assets/tools/sanity.svg';
@@ -69,10 +68,9 @@ const HomePage = async () => {
 			<section id="services">
 				<Container>
 					<h2 className="headline mt-20 text-2xl md:text-4xl lg:text-5xl">
-						Services I provide
+						Preferred Development Focus
 						<span className="mt-2 block text-xl font-bold text-off-black dark:text-off-white md:text-2xl">
-							as a frontend and devops architect with a passion for creating
-							applications and websites
+							As a software solutions architect with a passion for creating web applications and apply devops methodologies
 						</span>
 					</h2>
 
