@@ -165,12 +165,12 @@ const AboutPage = async () => {
 					</p>
 					<div className="mt-8 flex justify-start gap-6 items-baseline">
 						<Button
-							href="/cv-2023.pdf"
+							href="/Nirmal-Chandrasiri-2023.pdf"
 							download={true}
 							className="group flex gap-2 whitespace-nowrap"
 						>
 							<IconDownload />
-							Download my CV
+							Download My CV
 						</Button>
 
 						<Link
