@@ -12,6 +12,7 @@ import { educationQuery } from '@queries/education';
 import { jobsQuery } from '@queries/jobs';
 import { podcastsQuery } from '@queries/podcasts';
 
+
 import LogoAWS from '@root/public/assets/tools-about/aws.svg';
 import LogoAzure from '@root/public/assets/tools-about/azure.svg';
 import LogoJenkins from '@root/public/assets/tools-about/jenkins.svg';
@@ -49,11 +50,11 @@ const AboutPage = async () => {
 				<h1 className="headline mt-8 text-3xl md:text-5xl lg:text-6xl">
 					Hey, I&apos;m Nirmal Naveen
 				</h1>
-				<h2 className="mt-2 text-xl font-bold md:text-2xl">
-					DevOps Engineer from Sri Lanka
-				</h2>
+				{/* <h2 className="mt-2 text-xl font-bold md:text-2xl">
+					DevOps Engineer
+				</h2> */}
 				<p className="mt-8">
-					Passionate about frontend development and devops engineering, I am
+					Passionate about web development and devops engineering, I am
 					constantly driven to learn and expand my skillset. advocate for web
 					performance and accessibility as well as web experiences while
 					ensuring efficient and smooth deployment process.
@@ -66,15 +67,15 @@ const AboutPage = async () => {
 					solve everyday problems I come across. */}
 				</p>
 				<p>
-					When I am not writing code I love🥰 to spend time with my family
+					When I am not writing code I love to spend time with my family
 					friends, spending quality time with them fills my heart with warmth
-					and laughter, creating unforgettable memories📝 that I hold dear.
+					and laughter, creating unforgettable memories that I hold dear.
 					Furthermore i play chess♔ and listen to music From relaxing tunes to
-					energizing beats🎶, music enriches my everyday experiences. I believe
+					energizing beats 🎶 music enriches my everyday experiences. I believe
 					that finding a balance between my different interests is important for
-					my personal growth and happiness😊. Each activity brings its own
+					my personal growth and happiness 😊 Each activity brings its own
 					unique flavor to my life, and I am grateful to have so many things
-					enjoy doing😄.
+					enjoy doing 😄
 				</p>
 
 				{/* My podcasts */}
@@ -89,7 +90,7 @@ const AboutPage = async () => {
 				<section id="tools" className="my-30">
 				<Container>
 					<h2 className="headline mt-24 text-center text-xl md:text-2xl lg:text-3xl">
-						DevOps Tools I have experienced
+						DevOps Toolset Expertise
 					</h2>
 
 					<div className="mx-auto mt-8 flex max-w-5xl flex-wrap gap-x-10 gap-y-8">
@@ -107,10 +108,11 @@ const AboutPage = async () => {
 				<section id="tools" className="my-30">
 				<Container>
 					<h2 className="headline mt-24 text-center text-xl md:text-2xl lg:text-3xl">
-						Frontend languages i have experienced
+						Frontend & Backend i familiar with
 					</h2>
 
 					<div className="mx-auto mt-8 flex max-w-5xl flex-wrap gap-x-16 gap-y-8">
+						
 						<LogoReact className="w-32 md:w-36" aria-label="React" />
 					</div>
 				</Container>
@@ -121,7 +123,7 @@ const AboutPage = async () => {
 				<section id="tools" className="my-30">
 				<Container>
 					<h2 className="headline mt-24 text-center text-xl md:text-2xl lg:text-3xl">
-						Backend languages I have experienced
+						Libraries & Frameworks i familiar with
 					</h2>
 
 					<div className="mx-auto mt-8 flex max-w-5xl flex-wrap gap-x-16 gap-y-8">
