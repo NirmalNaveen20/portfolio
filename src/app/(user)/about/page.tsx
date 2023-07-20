@@ -12,13 +12,34 @@ import { educationQuery } from '@queries/education';
 import { jobsQuery } from '@queries/jobs';
 import { podcastsQuery } from '@queries/podcasts';
 
-
+// DevOps Tools Icons
+import LogoKube from '@root/public/assets/tools-about/kubernetes.svg';
+import LogoDocker from '@root/public/assets/tools-about/docker.svg';
 import LogoAWS from '@root/public/assets/tools-about/aws.svg';
 import LogoAzure from '@root/public/assets/tools-about/azure.svg';
+import LogoGCP from '@root/public/assets/tools-about/gcp.svg';
 import LogoJenkins from '@root/public/assets/tools-about/jenkins.svg';
 import LogoTerraform from '@root/public/assets/tools-about/terraform.svg';
-import LogoReact from '@root/public/assets/tools-about/react.svg';
+import LogoGitLab from '@root/public/assets/tools-about/gitlab.svg';
+import LogoAnsible from '@root/public/assets/tools-about/ansible.svg';
+
+// Frontend & Backend Icons
+import LogoHTML from '@root/public/assets/tools-about/html.svg';
+import LogoCSS from '@root/public/assets/tools-about/css.svg';
+import LogoJavaScript from '@root/public/assets/tools-about/javascript.svg';
 import LogoPython from '@root/public/assets/tools-about/python.svg';
+import LogoNodejs from '@root/public/assets/tools-about/nodejs.svg';
+import LogoTypescript from '@root/public/assets/tools-about/typescript.svg';
+import LogoJava from '@root/public/assets/tools-about/java.svg';
+import LogoCPP from '@root/public/assets/tools-about/c++.svg';
+import LogoMySQL from '@root/public/assets/tools-about/mysql.svg';
+
+// Libraries and frameworks
+import LogoReact from '@root/public/assets/tools-about/react.svg';
+import LogoRedux from '@root/public/assets/tools-about/redux.svg';
+import LogoNextJs from '@root/public/assets/tools-about/nextjs.svg';
+import LogoOracle from '@root/public/assets/tools-about/oracle.svg';
+import LogoMongoDB from '@root/public/assets/tools-about/mongodb.svg';
 
 import type { Education as EducationType, Job, Podcast } from '@types';
 import Link from 'next/link';
@@ -93,11 +114,19 @@ const AboutPage = async () => {
 						DevOps Toolset Expertise
 					</h2>
 
-					<div className="mx-auto mt-8 flex max-w-5xl flex-wrap gap-x-10 gap-y-8">
-						<LogoAWS className="w-32 md:w-36" aria-label="GitHub" />
+					<div className="mx-auto mt-8 flex max-w-5xl flex-wrap gap-x-2 gap-y-8">
+						
+						<LogoAWS className="w-32 md:w-36" aria-label="AWS" />
 						<LogoAzure className="w-32 md:w-36" aria-label="Azure" />
+						<LogoGCP className="w-32 md:w-36" aria-label="GCP" />
 						<LogoJenkins className="w-32 md:w-36" aria-label="Jenkins" />
 						<LogoTerraform className="w-32 md:w-36" aria-label="Terraform" />	
+						<LogoDocker className="w-32 md:w-36" aria-label="Docker" />
+						<LogoKube className="w-32 md:w-36" aria-label="Kubernetes" />
+						<LogoAnsible className="w-32 md:w-36" aria-label="Ansible" />
+						<LogoGitLab	className="w-32 md:w-36" aria-label="GitLab" />
+						
+						
 					</div>
 					
 				</Container>
@@ -111,23 +140,37 @@ const AboutPage = async () => {
 						Frontend & Backend i familiar with
 					</h2>
 
-					<div className="mx-auto mt-8 flex max-w-5xl flex-wrap gap-x-16 gap-y-8">
-						
-						<LogoReact className="w-32 md:w-36" aria-label="React" />
+					<div className="mx-auto mt-8 flex max-w-5xl flex-wrap gap-x-2 gap-y-8">
+						<LogoHTML className="w-32 md:w-36" aria-label="HTML" />
+						<LogoCSS className="w-32 md:w-36" aria-label="CSS" />
+						<LogoJavaScript className="w-32 md:w-36" aria-label="JavaScript" />
+						<LogoCPP className="w-32 md:w-36" aria-label="CPP" />
+						<LogoJava className="w-32 md:w-36" aria-label="Java" />
+						<LogoMySQL className="w-32 md:w-36" aria-label="MySQL" />
+						<LogoPython className="w-32 md:w-36" aria-label="Python" />
+						<LogoNodejs className="w-32 md:w-36" aria-label="Nodejs" />
+						<LogoTypescript className="w-32 md:w-36" aria-label="Typescript" />
 					</div>
 				</Container>
 				</section>
 				
-				{/* This is for backend icons section */}
+				{/* This is for libraries and framework icons section */}
 
 				<section id="tools" className="my-30">
 				<Container>
 					<h2 className="headline mt-24 text-center text-xl md:text-2xl lg:text-3xl">
-						Libraries & Frameworks i familiar with
+						Libraries, Frameworks & Databases i familiar with
 					</h2>
 
-					<div className="mx-auto mt-8 flex max-w-5xl flex-wrap gap-x-16 gap-y-8">
-						<LogoPython className="w-32 md:w-36" aria-label="Python" />
+					<div className="mx-auto mt-8 flex max-w-5xl flex-wrap gap-x-2 gap-y-8">
+						
+						<LogoReact className="w-32 md:w-36" aria-label="React" />
+						<LogoRedux className="w-32 md:w-36" aria-label="Redux" />
+						<LogoNextJs className="w-32 md:w-36" aria-label="NextJs" />
+						<LogoOracle className="w-32 md:w-36" aria-label="Oracle" />
+						<LogoMongoDB className="w-32 md:w-36" aria-label="MongoDB" />
+						
+						
 					</div>
 				</Container>
 			</section>
