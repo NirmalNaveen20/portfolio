@@ -19,8 +19,8 @@ export const ContactForm = () => {
 	const [cookie, setCookie] = useCookie('contactFormSubmission', '');
 
 	const subjects = [
-		'I need a website',
-		'I need CI/CD setup for my project',
+		'I need a website/web application',
+		'I need CI/CD pipeline for my project',
 		'General Inquiry',
 		'I am a recruiter',
 		'Other',
@@ -127,12 +127,12 @@ export const ContactForm = () => {
 								</p>
 							) : (
 								<>
-									<Input label="First Name" placeholder="John" id="firstName" />
-									<Input label="Last Name" placeholder="Doe" id="lastName" />
+									<Input label="First Name" placeholder="" id="firstName" />
+									<Input label="Last Name" placeholder="" id="lastName" />
 									<Input label="Company" id="company" />
 									<Input
 										label="Email Address"
-										placeholder="johndoe@gmail.com"
+										placeholder="example@gmail.com"
 										id="email"
 										type="email"
 									/>
