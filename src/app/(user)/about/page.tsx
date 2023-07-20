@@ -33,6 +33,7 @@ import LogoTypescript from '@root/public/assets/tools-about/typescript.svg';
 import LogoJava from '@root/public/assets/tools-about/java.svg';
 import LogoCPP from '@root/public/assets/tools-about/c++.svg';
 import LogoMySQL from '@root/public/assets/tools-about/mysql.svg';
+import LogoDjango from '@root/public/assets/tools-about/django.svg';
 
 // Libraries and frameworks
 import LogoReact from '@root/public/assets/tools-about/react.svg';
@@ -114,7 +115,7 @@ const AboutPage = async () => {
 						DevOps Toolset Expertise
 					</h2>
 
-					<div className="mx-auto mt-8 flex max-w-5xl flex-wrap gap-x-2 gap-y-8">
+					<div className="mx-auto mt-8 flex max-w-5xl  flex-wrap gap-x-2 gap-y-8">
 						
 						<LogoAWS className="w-32 md:w-36" aria-label="AWS" />
 						<LogoAzure className="w-32 md:w-36" aria-label="Azure" />
@@ -125,8 +126,6 @@ const AboutPage = async () => {
 						<LogoKube className="w-32 md:w-36" aria-label="Kubernetes" />
 						<LogoAnsible className="w-32 md:w-36" aria-label="Ansible" />
 						<LogoGitLab	className="w-32 md:w-36" aria-label="GitLab" />
-						
-						
 					</div>
 					
 				</Container>
@@ -167,6 +166,7 @@ const AboutPage = async () => {
 						<LogoReact className="w-32 md:w-36" aria-label="React" />
 						<LogoRedux className="w-32 md:w-36" aria-label="Redux" />
 						<LogoNextJs className="w-32 md:w-36" aria-label="NextJs" />
+						<LogoDjango className="w-32 md:w-36" aria-label="Django" />
 						<LogoOracle className="w-32 md:w-36" aria-label="Oracle" />
 						<LogoMongoDB className="w-32 md:w-36" aria-label="MongoDB" />
 						
