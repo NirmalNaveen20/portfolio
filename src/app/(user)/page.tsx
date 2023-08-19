@@ -60,7 +60,7 @@ const HomePage = async () => {
 						<LogoVercel className="w-32 md:w-36" aria-label="Vercel" />
 						<LogoAWS className="w-32 md:w-36" aria-label="GitHub" />
 						<LogoVisual className="w-32 md:w-36" aria-label="Visual-Studio" />
-						<LogoDocker className="w-32 md:w-36" aria-label="Visual-Studio" />
+						{/* <LogoDocker className="w-32 md:w-36" aria-label="Visual-Studio" /> */}
 						<LogoGitLab className="w-32 md:w-36" aria-label="GitLab" />
 					</div>
 				</Container>
