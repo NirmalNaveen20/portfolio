@@ -23,7 +23,7 @@ const CaseStudy = ({
 
 	return (
 		<article className="mt-24 transition first-of-type:mt-0 md:hover:scale-[1.01] lg:w-4/5">
-			<Link href={`/case-studies/${slug}`} className="group">
+			<Link href={`/projects/${slug}`} className="group">
 				<Box>
 					<div
 						className={classNames('flex flex-col gap-4', {
