@@ -15,6 +15,7 @@ export const HeroSection = () => {
 		'JavaScript',
 		'HTML',
 		'CSS',
+		'Node.js',
 		'React.js',
 		'Next.js',
 	];
