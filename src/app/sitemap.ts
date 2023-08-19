@@ -23,7 +23,7 @@ export default async function sitemap() {
 		'',
 		'/about',
 		'/blog',
-		'/projects',
+		'/case-studies',
 		'/contact',
 		'/recruiters',
 		'/uses',
