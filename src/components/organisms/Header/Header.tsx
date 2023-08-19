@@ -23,7 +23,7 @@ export const navItems = [
 	// 	title: 'Uses',
 	// },
 	{
-		href: '/projects',
+		href: '/case-studies',
 		title: 'Projects',
 	},
 	{
