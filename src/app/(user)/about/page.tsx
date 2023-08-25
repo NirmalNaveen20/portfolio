@@ -206,7 +206,7 @@ const AboutPage = async () => {
 						</Link>
 						{/* . I do not appreciate cold calls and will not answer calls from
 						numbers I do not recognise. */}
-						I will get back to you as soon as possible.
+						 I will get back to you as soon as possible.
 					</p>
 					<div className="mt-8 flex justify-start gap-6 items-baseline">
 						<Button
