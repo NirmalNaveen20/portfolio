@@ -35,7 +35,7 @@ const School = ({ institution, course, date, courseContents }: SchoolProps) => {
 								href={institution.url}
 								target="_blank"
 								rel="noopener noreferrer"
-								className="underlined relative"
+								className="underlined relative border-b-2 border-grey-300 font-bold hover:border-b-0 dark:border-grey-700"
 							>
 								{institution.name}
 							</a>
