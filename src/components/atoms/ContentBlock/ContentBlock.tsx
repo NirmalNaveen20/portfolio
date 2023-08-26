@@ -92,7 +92,7 @@ const components: Partial<PortableTextReactComponents> = {
 				<a
 					href={value.href}
 					rel={rel}
-					className="underlined relative font-bold"
+					className="underlined relative border-b-2 border-grey-300 font-bold hover:border-b-0 dark:border-grey-700"
 				>
 					{children}
 				</a>
