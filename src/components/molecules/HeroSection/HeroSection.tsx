@@ -37,9 +37,9 @@ export const HeroSection = () => {
 					</h1>
 					<div className="mt-6 max-w-xl lg:mt-0 xl:col-end-1 xl:row-start-1">
 						<p className="text-lg leading-8 text-slate-600 dark:text-off-white">
-							Pasionate web developer with a strong affinity for DevOps tools and practices, dedicated to enhancing software throughout the software development life cycle. Skilled in implementing CI/CD pipelines and Committed to continuous learning and staying up to date with the latest industry trends.
+						I'm passionate about DevOps, cloud computing, and frontend development. I specialize in building robust CI/CD pipelines to improve software at every stage. Plus, I'm really into building cool apps with iOS and React Native applications.
 							<br />
-							You can talk to me about <TypeWriter strings={talkAbout} />.
+							I'm excited about making things work in with <TypeWriter strings={talkAbout} />.
 						</p>
 						{/* <p className="text-lg leading-8 text-slate-600 dark:text-off-white">
 							P.S. this website is open-source and available on{' '}
