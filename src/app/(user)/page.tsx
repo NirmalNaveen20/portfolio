@@ -11,9 +11,9 @@ import { servicesQuery } from '@queries/services';
 import LogoAWS from '@root/public/assets/tools/aws.svg';
 import LogoGitLab from '@root/public/assets/tools/gitlab.svg';
 import LogoSanity from '@root/public/assets/tools/sanity.svg';
-import LogoVercel from '@root/public/assets/tools/vercel.svg';
+import LogoAzure from '@root/public/assets/tools/azure.svg';
 import LogoVisual from '@root/public/assets/tools/visual-studio.svg';
-import LogoDocker from '@root/public/assets/tools/docker.svg';
+
 
 import type { Service as ServiceType } from '@types';
 
@@ -57,7 +57,7 @@ const HomePage = async () => {
 
 					<div className="mx-auto mt-8 flex max-w-5xl flex-wrap items-center justify-center gap-x-16 gap-y-8">
 						<LogoSanity className="w-32 md:w-40" aria-label="Sanity" />
-						<LogoVercel className="w-32 md:w-36" aria-label="Vercel" />
+						<LogoAzure className="w-32 md:w-36" aria-label="Vercel" />
 						<LogoAWS className="w-32 md:w-36" aria-label="GitHub" />
 						<LogoVisual className="w-32 md:w-36" aria-label="Visual-Studio" />
 						{/* <LogoDocker className="w-32 md:w-36" aria-label="Visual-Studio" /> */}
