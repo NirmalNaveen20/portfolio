@@ -19,7 +19,9 @@ export const HeroSection = () => {
 		'React.js',
 		'Next.js',
 		'Node.js',
-		'Python'
+		'Python',
+		'React Native',
+		'Swift'
 
 	];
 
