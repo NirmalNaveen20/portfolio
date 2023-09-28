@@ -49,22 +49,22 @@ const HomePage = async () => {
 	return (
 		<AnimatePage>
 			<HeroSection />
-			<section id="tools" className="my-40">
-				<Container>
-					<h2 className="headline mt-24 text-center text-xl md:text-2xl lg:text-3xl">
+			{/* <section id="tools" className="my-40"> */}
+				{/* <Container> */}
+					{/* <h2 className="headline mt-24 text-center text-xl md:text-2xl lg:text-3xl">
 						Some of my favourite tools
-					</h2>
+					</h2> */}
 
-					<div className="mx-auto mt-8 flex max-w-5xl flex-wrap items-center justify-center gap-x-16 gap-y-8">
-						<LogoSanity className="w-32 md:w-40" aria-label="Sanity" />
+					{/* <div className="mx-auto mt-8 flex max-w-5xl flex-wrap items-center justify-center gap-x-16 gap-y-8"> */}
+						{/* <LogoSanity className="w-32 md:w-40" aria-label="Sanity" />
 						<LogoVercel className="w-32 md:w-36" aria-label="Vercel" />
 						<LogoAWS className="w-32 md:w-36" aria-label="GitHub" />
 						<LogoVisual className="w-32 md:w-36" aria-label="Visual-Studio" />
-						{/* <LogoDocker className="w-32 md:w-36" aria-label="Visual-Studio" /> */}
-						<LogoGitLab className="w-32 md:w-36" aria-label="GitLab" />
-					</div>
-				</Container>
-			</section>
+						<LogoDocker className="w-32 md:w-36" aria-label="Visual-Studio" />
+						<LogoGitLab className="w-32 md:w-36" aria-label="GitLab" /> */}
+					{/* </div> */}
+				{/* </Container> */}
+			{/* </section> */}
 			<section id="services">
 				<Container>
 					<h2 className="headline mt-20 text-2xl md:text-4xl lg:text-5xl">
