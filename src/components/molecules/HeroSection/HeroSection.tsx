@@ -19,7 +19,9 @@ export const HeroSection = () => {
 		'React.js',
 		'Next.js',
 		'Node.js',
-		'Python'
+		'Python',
+		'React Native',
+		'Swift'
 
 	];
 
@@ -39,7 +41,7 @@ export const HeroSection = () => {
 						<p className="text-lg leading-8 text-slate-600 dark:text-off-white">
 						I'm passionate about DevOps, cloud computing, and frontend development. I specialize in building robust CI/CD pipelines to improve software at every stage. Plus, I'm really into building cool apps with iOS and React Native applications.
 							<br />
-							I'm excited about making things work in with <TypeWriter strings={talkAbout} />.
+							I'm excited about develop and working with <TypeWriter strings={talkAbout} />.
 						</p>
 						{/* <p className="text-lg leading-8 text-slate-600 dark:text-off-white">
 							P.S. this website is open-source and available on{' '}
