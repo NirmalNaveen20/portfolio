@@ -89,20 +89,12 @@ const AboutPage = async () => {
 					solve everyday problems I come across. */}
 				</p>
 				<p>
-					When I am not writing code I love to spend time with my family
-					friends, spending quality time with them fills my heart with warmth
-					and laughter, creating unforgettable memories that I hold dear.
-					Furthermore i play chess♔ and listen to music From relaxing tunes to
-					energizing beats 🎶 music enriches my everyday experiences. I believe
-					that finding a balance between my different interests is important for
-					my personal growth and happiness 😊 Each activity brings its own
-					unique flavor to my life, and I am grateful to have so many things
-					enjoy doing 😄
+				When I'm not coding, I love spending time with my family and friends, creating special memories with them. Also, I enjoy playing chess ♔ and listening to music I prefer calming tunes and energetic beats 🎶 Music and It's makes my day better. I think it's important to balance my different interests for my personal growth and happiness 😊 Each activity brings something special to my life, and I'm thankful to have lots of things I enjoy doing 😄 
 				</p>
 
-				{/* My podcasts */}
+				{/* My achievements */}
 				<h2 className="headline mb-4 mt-12 text-4xl">
-					Podcasts i enjoy
+					Certification Highlights
 				</h2>
 
 				<PodcastList podcasts={podcasts} />
