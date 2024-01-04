@@ -76,7 +76,7 @@ const AboutPage = async () => {
 					DevOps Engineer
 				</h2> */}
 				<p className="mt-8">
-					Passionate about web development and devops engineering, I am
+					Passionate about Web Development and DevOps Engineering, I am
 					constantly driven to learn and expand my skillset. advocate for web
 					performance and accessibility as well as web experiences while
 					ensuring efficient and smooth deployment process.
@@ -182,7 +182,7 @@ const AboutPage = async () => {
 				<h2 className="headline mb-4 mt-12 text-4xl">Education</h2>
 				<p className="mb-6">
 					I am mostly self-taught, but here are some of the most relevant
-					certifications I have achieved:
+					education I have achieved:
 				</p>
 
 				<Education education={education} />
@@ -193,7 +193,7 @@ const AboutPage = async () => {
 					</h2>
 
 					<p>
-						I am happy to have a chat about software engineering field and
+						I am happy to talk about about Software Engineering and DevOps Engineering fields and
 						working with me.
 					</p>
 					<p>
@@ -202,29 +202,35 @@ const AboutPage = async () => {
 							href="/contact"
 							className="underlined relative border-b-2 border-grey-300 font-bold hover:border-b-0 dark:border-grey-700"
 						>
-							the contact form
+							the contact form {""}
 						</Link>
 						{/* . I do not appreciate cold calls and will not answer calls from
 						numbers I do not recognise. */}
-						 I will get back to you as soon as possible.
+						      I will get back to you as soon as possible.
 					</p>
 					<div className="mt-8 flex justify-start gap-6 items-baseline">
 						<Button
-							href="/Nirmal-Chandrasiri-2023.pdf"
-							download={true}
+							//href="/Nirmal-Chandrasiri-2023.pdf"
+							//download={false}
 							className="group flex gap-2 whitespace-nowrap"
 						>
 							<IconDownload />
 							Download My CV
+							
 						</Button>
-
+						
 						<Link
 							href="/recruiters"
 							className="text-sm font-semibold leading-6 text-slate-900 transition-all hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-200"
 						>
 							{/* Information for recruiters <span aria-hidden="true">→</span> */}
 						</Link>
+						
 					</div>
+					<div className="mb-4 mt-12 text-1xl">
+					<p>The CV is currently unavailable please send me message through contact form to get the updated CV</p>
+					</div>
+					
 				</section>
 			</Container>
 		</AnimatePage>
