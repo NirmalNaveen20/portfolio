@@ -102,7 +102,7 @@ const AboutPage = async () => {
 
 				{/* My podcasts */}
 				<h2 className="headline mb-4 mt-12 text-4xl">
-					Podcasts i enjoy
+					Certification Highlights
 				</h2>
 
 				<PodcastList podcasts={podcasts} />
@@ -175,7 +175,7 @@ const AboutPage = async () => {
 				</Container>
 			</section>
 
-				{/* <h2 className="headline mb-4 mt-12 text-4xl">Experience</h2> */}
+				<h2 className="headline mb-4 mt-12 text-4xl">Experience</h2>
 
 				<WorkExperience jobs={jobs} />
 
