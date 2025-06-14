@@ -70,7 +70,7 @@ const AboutPage = async () => {
 		<AnimatePage>
 			<Container>
 				<h1 className="headline mt-8 text-3xl md:text-5xl lg:text-6xl">
-					Hey, I&apos;m Nirmal Naveen
+					Hey, I&apos;m Nirmal Chandrasiri
 				</h1>
 				{/* <h2 className="mt-2 text-xl font-bold md:text-2xl">
 					DevOps Engineer
