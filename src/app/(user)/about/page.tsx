@@ -46,7 +46,7 @@ import type { Education as EducationType, Job, Podcast } from '@types';
 import Link from 'next/link';
 
 export const metadata = {
-	title: 'About Nirmal Naveen',
+	title: 'About Nirmal',
 	description:
 		'As a passionate front-end and devops engineering field for as long as I can think. The technologies I work with are JavaScript, HTML and CSS with a focus on the frameworks React.js, Gatsby, Next.js, Node and Express. I use code not only to do my day-to-day job, but also to solve everyday problems I come across.',
 };

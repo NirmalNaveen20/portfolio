@@ -24,22 +24,19 @@ const getData = async () => {
 };
 
 export const metadata = {
-	title: 'Nirmal Naveen',
+	title: 'Nirmal Chandrasiri',
 	description:
 		'A Software Engineer with a focus on frontend and DevOps engineering. I have more than 4 years experience working in software engineering and consulting.',
 	keywords: [
 		'Software Engineer',
-		'Nirmal Naveen',
+		'Nirmal Naveen Chandrasiri',
 		'Nirmal SLIIT',
-		'Sliit',
 		'Devops Engineer Sri Lanka',
 		'DevOps Engineering',
-		'ReactJs',
-		'JavaScript',
+		'Nirmal DevOps Engineer',
 		'Nirmal Chandrasiri',
-		'Nirmal sliit',
-		'nirmal software engineer',
-		'nirmal naveen devops engineer'
+		'Nirmal IFS',
+		'Nirmal Sysco LABS'
 	],
 };
 

@@ -31,7 +31,7 @@ interface PageProps {
 export const generateMetadata = async ({ params }: PageProps) => {
 	const caseStudy = await getData(params.slug);
 	return {
-		title: `${caseStudy?.title} - Nirmal Naveen's Projects`,
+		title: `${caseStudy?.title} - Nirmal's Projects`,
 		description: caseStudy?.seoDescription,
 	};
 };
