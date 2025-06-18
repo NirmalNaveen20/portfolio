@@ -27,7 +27,7 @@ const CaseStudiesPage = async () => {
 		<AnimatePage>
 			<Container>
 				<h1 className="headline mt-8 pb-8 text-3xl md:text-5xl lg:text-6xl">
-					Case Studies
+					Case Studies / Projects
 				</h1>
 				{caseStudies.map((caseStudy, i) => (
 					<CaseStudy key={caseStudy.slug} {...caseStudy} index={i} />
