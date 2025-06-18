@@ -1,10 +1,8 @@
 import { Container } from '@components/atoms/Container';
 import {
-	IconBsky,
 	IconGithub,
 	IconInstagram,
 	IconLinkedin,
-	IconThreads,
 	IconX,
 } from '@components/atoms/Icons';
 import { SocialIcons } from '@components/molecules/SocialIcons';
