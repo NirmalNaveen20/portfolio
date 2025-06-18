@@ -9,7 +9,7 @@ import { caseStudiesQuery } from '@queries/caseStudies';
 import type { CaseStudy as CaseStudyType } from '@types';
 
 export const metadata = {
-	title: 'Software Engineering Case Studies – Nirmal',
+	title: 'Case Studies / Projects',
 	description:
 		'Here you can find case studies of projects I have worked on over the last few years. Learn how I have overcome challenges.',
 };

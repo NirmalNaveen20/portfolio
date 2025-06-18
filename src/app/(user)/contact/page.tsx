@@ -4,8 +4,7 @@ import { ContactForm } from '@components/molecules/ContactForm';
 
 export const metadata = {
 	title: 'Contact Nirmal',
-	description:
-		'This is a comprehensive list of tech equipment and software I use for my day-to-day work as a software engineer in the UK.',
+	description: 'Contact Nirmal Chandrasiri',
 };
 
 const ContactPage = () => {

@@ -16,9 +16,9 @@ import type { Education as EducationType, Job, Podcast } from '@types';
 import Link from 'next/link';
 
 export const metadata = {
-	title: 'About Nirmal Chandrasiri',
+	title: 'About Nirmal',
 	description:
-		'As a passionate front-end software developer, I create amazing websites and web apps to make the internet a better place.',
+		'As a passionate DevOps Engineer, I build impactful projects and manage cloud infrastructure to drive operational excellence and support business growth.',
 };
 
 const getData = async () => {
@@ -40,7 +40,7 @@ const AboutPage = async () => {
 		<AnimatePage>
 			<Container>
 				<h1 className="headline mt-8 text-3xl md:text-5xl lg:text-6xl">
-					Hey, I&apos;m Nirmal Chandrasiri
+					Hello, I&apos;m Nirmal Chandrasiri
 				</h1>
 				<h2 className="mt-2 text-xl font-bold md:text-2xl">
 					DevOps / Cloud Engineer from Sri Lanka
