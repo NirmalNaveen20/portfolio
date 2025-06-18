@@ -72,11 +72,11 @@ export const ContactForm = () => {
 	};
 
 	const validationSchema = Yup.object({
-		firstName: Yup.string().required("Don't be a stranger!"),
-		lastName: Yup.string().required("Don't be a stranger!"),
+		firstName: Yup.string().required('First Name is required.'),
+		lastName: Yup.string().required('Last Name is required.'),
 		email: Yup.string()
 			.email("That's not a valid email address")
-			.required('How am I supposed to reply to you?'),
+			.required('Valid Email is required.'),
 		company: Yup.string(),
 		subject: Yup.mixed()
 			.oneOf(subjects, 'Please select an option')
@@ -127,12 +127,12 @@ export const ContactForm = () => {
 								</p>
 							) : (
 								<>
-									<Input label="First Name" placeholder="John" id="firstName" />
-									<Input label="Last Name" placeholder="Doe" id="lastName" />
+									<Input label="First Name" placeholder="" id="firstName" />
+									<Input label="Last Name" placeholder="" id="lastName" />
 									<Input label="Company" id="company" />
 									<Input
 										label="Email Address"
-										placeholder="johndoe@gmail.com"
+										placeholder=""
 										id="email"
 										type="email"
 									/>
