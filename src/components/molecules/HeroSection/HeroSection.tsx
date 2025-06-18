@@ -41,8 +41,9 @@ export const HeroSection = () => {
 							observability, I work at the intersection of DevOps, SRE, and
 							platform engineering. I focus on building scalable systems,
 							improving reliability, and streamlining operations through
-							proactive monitoring and continuous improvement. You&apos;ll find
-							me exploring topics around <TypeWriter strings={talkAbout} />.
+							proactive monitoring and continuous improvement. <br />{' '}
+							You&apos;ll find me exploring topics around{' '}
+							<TypeWriter strings={talkAbout} />.
 						</p>
 						<p className="text-lg leading-8 text-slate-600 dark:text-off-white">
 							this portfolio available on my{' '}
