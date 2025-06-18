@@ -43,7 +43,7 @@ const AboutPage = async () => {
 					Hello, I&apos;m Nirmal Chandrasiri
 				</h1>
 				<h2 className="mt-2 text-xl font-bold md:text-2xl">
-					DevOps / Cloud Engineer from Sri Lanka
+					Cloud & DevOps Engineer
 				</h2>
 				<p className="mt-8">
 					Passionate about DevOps & Cloud Engineering , I am constantly driven
