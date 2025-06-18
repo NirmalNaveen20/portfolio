@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Box renders correctly 1`] = `
+<div>
+  <div
+    class="glass-light dark:glass-dark mb-6 rounded-xl px-8 py-6 drop-shadow-lg"
+  >
+    Hello Box
+  </div>
+</div>
+`;

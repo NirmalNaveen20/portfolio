@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Education renders correctly 1`] = `
+<div>
+  <div
+    class="flex transform transition-all md:hover:scale-[1.01]"
+  >
+    <div
+      class="w-full glass-light dark:glass-dark mb-6 rounded-xl px-8 py-6 drop-shadow-lg"
+    >
+      <div
+        class="flex items-center gap-4"
+      >
+        <img
+          alt="Some Company"
+          class="rounded-md"
+          data-nimg="1"
+          decoding="async"
+          height="64"
+          loading="lazy"
+          src="/assets/companies/dennis.svg"
+          style="color: transparent;"
+          width="64"
+        />
+        <div
+          class="mb-2 w-full"
+        >
+          <div
+            class="flex justify-between"
+          >
+            <h3
+              class="font-bold"
+            >
+              Some course
+            </h3>
+            <span>
+              Jan 2020
+            </span>
+          </div>
+          <h4>
+            <a
+              class="underlined relative"
+              href="https://somecompany.com/"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Some Company
+            </a>
+          </h4>
+          <p
+            class="text-sm"
+          >
+            <strong>
+              Course Contents: 
+            </strong>
+            TypeScript, React
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

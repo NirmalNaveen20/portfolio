@@ -1,0 +1,185 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::selection {
+	background: #945bf170;
+}
+
+html.dark .headroom--pinned header {
+	border-bottom: 1px solid rgba(78, 75, 102, 0.78);
+}
+
+html.light .headroom--pinned header {
+	border-bottom: 1px solid rgba(255, 255, 255, 0.65);
+}
+
+html.dark .logo .jacob_svg__background {
+	fill: url(#a);
+}
+
+html.light .logo .jacob_svg__background {
+	fill: url(#a);
+}
+
+@layer components {
+	.headline {
+		@apply bg-gradient-to-r from-blue-400 to-blue-700 bg-clip-text font-bold text-transparent;
+	}
+
+	.underlined::after {
+		content: '';
+		height: 2px;
+		transform: scaleX(0);
+		transition: transform 0.25s ease;
+		transform-origin: left;
+		left: 0;
+		width: 100%;
+		display: block;
+		position: absolute;
+	}
+
+	.underlined-bg:hover::after,
+	.underlined-bg:focus::after,
+	.active.underlined-bg::after {
+		@apply bg-gradient-to-r from-blue-400 to-blue-700;
+		transform: scaleX(1);
+	}
+
+	.animation-delay {
+		animation-delay: 500ms !important;
+	}
+
+	.animate-hover {
+		animation: 2s ease-in-out 0s infinite alternate none running hover;
+	}
+
+	.glass-light {
+		@apply bg-gradient-to-br from-slate-200/25 to-slate-100/25;
+		mix-blend-mode: normal;
+		backdrop-filter: blur(30px);
+		border: 1px solid rgba(255, 255, 255, 0.65);
+	}
+
+	.glass-dark {
+		@apply bg-gradient-to-br from-slate-900/25 to-slate-800/25;
+		mix-blend-mode: normal;
+		backdrop-filter: blur(30px);
+		border: 1px solid rgba(78, 75, 102, 0.78);
+	}
+
+	.gradient-bg-dark {
+		background: var(--dark-gradient);
+	}
+
+	.gradient-bg-light {
+		background: var(--light-gradient);
+	}
+
+	.gradient-border-dark {
+		border-style: solid;
+		border-width: 2px;
+		border-image: var(--dark-gradient) 1;
+	}
+
+	.gradient-border-light {
+		border-style: solid;
+		border-width: 2px;
+		border-image: var(--light-gradient) 1;
+	}
+
+	.gradient-border {
+		@apply gradient-border-light dark:gradient-border-dark;
+	}
+
+	.gradient-bg {
+		@apply gradient-bg-light dark:gradient-bg-dark;
+	}
+
+	.underlined {
+		@apply underlined-bg;
+	}
+
+	@keyframes hover {
+		0%,
+		100% {
+			transform: translateY(0);
+		}
+		100% {
+			transform: translateY(10px);
+		}
+	}
+
+	.burger-icon {
+		width: 32px;
+		height: 24px;
+		position: relative;
+		-webkit-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		transform: rotate(0deg);
+		-webkit-transition: 0.5s ease-in-out;
+		-moz-transition: 0.5s ease-in-out;
+		-o-transition: 0.5s ease-in-out;
+		transition: 0.5s ease-in-out;
+		cursor: pointer;
+	}
+
+	.burger-icon span {
+		@apply bg-off-black dark:bg-off-white;
+		display: block;
+		position: absolute;
+		height: 3px;
+		width: 100%;
+		border-radius: 3px;
+		opacity: 1;
+		left: 0;
+		-webkit-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		transform: rotate(0deg);
+		-webkit-transition: 0.25s ease-in-out;
+		-moz-transition: 0.25s ease-in-out;
+		-o-transition: 0.25s ease-in-out;
+		transition: 0.25s ease-in-out;
+	}
+
+	.burger-icon span:nth-child(1) {
+		top: 0px;
+	}
+
+	.burger-icon span:nth-child(2),
+	.burger-icon span:nth-child(3) {
+		top: 12px;
+	}
+
+	.burger-icon span:nth-child(4) {
+		top: 24px;
+	}
+
+	.burger-icon.open span:nth-child(1) {
+		top: 18px;
+		width: 0%;
+		left: 50%;
+	}
+
+	.burger-icon.open span:nth-child(2) {
+		-webkit-transform: rotate(45deg);
+		-moz-transform: rotate(45deg);
+		-o-transform: rotate(45deg);
+		transform: rotate(45deg);
+	}
+
+	.burger-icon.open span:nth-child(3) {
+		-webkit-transform: rotate(-45deg);
+		-moz-transform: rotate(-45deg);
+		-o-transform: rotate(-45deg);
+		transform: rotate(-45deg);
+	}
+
+	.burger-icon.open span:nth-child(4) {
+		top: 18px;
+		width: 0%;
+		left: 50%;
+	}
+}

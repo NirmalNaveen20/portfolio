@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FloatingImages renders correctly 1`] = `
+<div>
+  <div
+    class="relative inline-block w-auto"
+  >
+    <img
+      alt="Some image"
+      data-nimg="1"
+      decoding="async"
+      height="275"
+      loading="lazy"
+      src="/_next/image?url=%2Fsome-img.png&w=1080&q=75"
+      srcset="/_next/image?url=%2Fsome-img.png&w=640&q=75 1x, /_next/image?url=%2Fsome-img.png&w=1080&q=75 2x"
+      style="color: transparent;"
+      width="475"
+    />
+    <div
+      class="animate-hover absolute left-12 top-0 z-30 w-1/2 md:left-20"
+    >
+      <img
+        alt="Some image"
+        class="z-30"
+        data-nimg="1"
+        decoding="async"
+        height="210"
+        loading="lazy"
+        src="/_next/image?url=%2Ftop-image.png&w=750&q=75"
+        srcset="/_next/image?url=%2Ftop-image.png&w=384&q=75 1x, /_next/image?url=%2Ftop-image.png&w=750&q=75 2x"
+        style="color: transparent;"
+        width="330"
+      />
+    </div>
+    <div
+      class="animate-hover animation-delay absolute bottom-0 right-12 z-30 w-1/2 md:right-20"
+    >
+      <img
+        alt="Some image"
+        data-nimg="1"
+        decoding="async"
+        height="210"
+        loading="lazy"
+        src="/_next/image?url=%2Fbottom-image.png&w=750&q=75"
+        srcset="/_next/image?url=%2Fbottom-image.png&w=384&q=75 1x, /_next/image?url=%2Fbottom-image.png&w=750&q=75 2x"
+        style="color: transparent;"
+        width="330"
+      />
+    </div>
+  </div>
+</div>
+`;

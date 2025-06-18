@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Job renders correctly 1`] = `
+<div>
+  <div
+    class="mt-12 w-full glass-light dark:glass-dark mb-6 rounded-xl px-8 py-6 drop-shadow-lg"
+  >
+    <div
+      class="-mt-12 mb-4 flex w-full justify-center"
+    >
+      <img
+        alt="Holland & Barrett"
+        class="rounded-md"
+        data-nimg="1"
+        decoding="async"
+        height="64"
+        loading="lazy"
+        src="/_next/image?url=https%3A%2F%2Fjacobherper.com%2F_next%2Fimage%3Furl%3Dhttps%253A%252F%252Fcdn.sanity.io%252Fimages%252Fyq5nnpfd%252Fproduction%252F220cf610ee8a9bc6f821a5a3285ca7c224536cb8-128x128.jpg%26w%3D128%26q%3D75&w=128&q=75"
+        srcset="/_next/image?url=https%3A%2F%2Fjacobherper.com%2F_next%2Fimage%3Furl%3Dhttps%253A%252F%252Fcdn.sanity.io%252Fimages%252Fyq5nnpfd%252Fproduction%252F220cf610ee8a9bc6f821a5a3285ca7c224536cb8-128x128.jpg%26w%3D128%26q%3D75&w=64&q=75 1x, /_next/image?url=https%3A%2F%2Fjacobherper.com%2F_next%2Fimage%3Furl%3Dhttps%253A%252F%252Fcdn.sanity.io%252Fimages%252Fyq5nnpfd%252Fproduction%252F220cf610ee8a9bc6f821a5a3285ca7c224536cb8-128x128.jpg%26w%3D128%26q%3D75&w=128&q=75 2x"
+        style="color: transparent;"
+        width="64"
+      />
+    </div>
+    <div
+      class="flex items-start gap-4 md:items-center"
+    >
+      <div
+        class="mb-2 w-full"
+      >
+        <h3
+          class="text-center font-bold"
+        >
+          Senior Software Engineer
+        </h3>
+        <h4
+          class="text-center"
+        >
+          <a
+            class="underlined relative"
+            href="https://www.hollandandbarrett.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Holland & Barrett
+          </a>
+        </h4>
+        <p
+          class="mb-4 text-center text-sm text-slate-500"
+        >
+          Aug 2020 — present
+        </p>
+        <p
+          class="hidden text-sm md:block md:text-base"
+        >
+          <strong>
+            Technologies: 
+          </strong>
+          TypeScript, React, Next.js, Redux, GraphQL, REST API, Jest, Cypress
+        </p>
+      </div>
+    </div>
+    <p
+      class="text-sm md:hidden"
+    >
+      <strong>
+        Technologies: 
+      </strong>
+      TypeScript, React, Next.js, Redux, GraphQL, REST API, Jest, Cypress
+    </p>
+    Some body
+  </div>
+</div>
+`;

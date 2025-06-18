@@ -1,0 +1,111 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CaseStudy renders correctly 1`] = `
+<div>
+  <article
+    class="mt-24 transition first-of-type:mt-0 md:hover:scale-[1.01] lg:w-4/5"
+  >
+    <a
+      class="group"
+      href="/case-studies/holland-and-barrett-subscriptions-service"
+    >
+      <div
+        class="glass-light dark:glass-dark mb-6 rounded-xl px-8 py-6 drop-shadow-lg"
+      >
+        <div
+          class="flex flex-col gap-4 md:flex-row"
+        >
+          <div
+            class="flex h-full flex-col md:w-1/2"
+          >
+            <h1
+              class="mb-2 text-xl font-bold md:text-3xl"
+            >
+              Subscriptions Service
+            </h1>
+            <div
+              class="mb-4 flex items-center gap-2"
+            >
+              <img
+                alt="Holland & Barrett"
+                class="rounded-md"
+                data-nimg="1"
+                decoding="async"
+                height="32"
+                loading="lazy"
+                src="/_next/image?url=https%3A%2F%2Fmedia.graphcms.com%2FCzdmdudMQ4mUl4OQJQS2&w=64&q=75"
+                srcset="/_next/image?url=https%3A%2F%2Fmedia.graphcms.com%2FCzdmdudMQ4mUl4OQJQS2&w=32&q=75 1x, /_next/image?url=https%3A%2F%2Fmedia.graphcms.com%2FCzdmdudMQ4mUl4OQJQS2&w=64&q=75 2x"
+                style="color: transparent;"
+                width="32"
+              />
+              <h2
+                class="font-bold"
+              >
+                Holland & Barrett
+              </h2>
+            </div>
+            <p
+              class="max-w-xs text-sm"
+            >
+              <strong>
+                Tech used: 
+              </strong>
+              React, Express, Next.js, Rest APIs, TypeScript, Redux, Node.js, Jest, Cypress
+            </p>
+          </div>
+          <div
+            class="-mx-10 -mb-12 md:mx-0 md:-mb-12 md:-mt-8 md:-mr-20"
+          >
+            <div
+              class="relative inline-block w-auto"
+            >
+              <img
+                alt="Subscriptions Service"
+                data-nimg="1"
+                decoding="async"
+                height="275"
+                loading="lazy"
+                src="/_next/image?url=https%3A%2F%2Fmedia.graphcms.com%2F1WO5SPTlRd2KnNrJH0hF&w=1080&q=75"
+                srcset="/_next/image?url=https%3A%2F%2Fmedia.graphcms.com%2F1WO5SPTlRd2KnNrJH0hF&w=640&q=75 1x, /_next/image?url=https%3A%2F%2Fmedia.graphcms.com%2F1WO5SPTlRd2KnNrJH0hF&w=1080&q=75 2x"
+                style="color: transparent;"
+                width="475"
+              />
+              <div
+                class="animate-hover absolute left-12 top-0 z-30 w-1/2 md:left-20"
+              >
+                <img
+                  alt="Subscriptions Service"
+                  class="z-30"
+                  data-nimg="1"
+                  decoding="async"
+                  height="210"
+                  loading="lazy"
+                  src="/_next/image?url=https%3A%2F%2Fmedia.graphcms.com%2FA925zBXITvGXd25ICydM&w=750&q=75"
+                  srcset="/_next/image?url=https%3A%2F%2Fmedia.graphcms.com%2FA925zBXITvGXd25ICydM&w=384&q=75 1x, /_next/image?url=https%3A%2F%2Fmedia.graphcms.com%2FA925zBXITvGXd25ICydM&w=750&q=75 2x"
+                  style="color: transparent;"
+                  width="330"
+                />
+              </div>
+              <div
+                class="animate-hover animation-delay absolute bottom-0 right-12 z-30 w-1/2 md:right-20"
+              >
+                <img
+                  alt="Subscriptions Service"
+                  data-nimg="1"
+                  decoding="async"
+                  height="210"
+                  loading="lazy"
+                  src="/_next/image?url=https%3A%2F%2Fmedia.graphcms.com%2FsVY8ZHnBSHiZeeVjFS3f&w=750&q=75"
+                  srcset="/_next/image?url=https%3A%2F%2Fmedia.graphcms.com%2FsVY8ZHnBSHiZeeVjFS3f&w=384&q=75 1x, /_next/image?url=https%3A%2F%2Fmedia.graphcms.com%2FsVY8ZHnBSHiZeeVjFS3f&w=750&q=75 2x"
+                  style="color: transparent;"
+                  width="330"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+  </article>
+</div>
+`;

@@ -1,0 +1,11 @@
+{
+	"redirects": [
+		{ "source": "/portfolio", "destination": "/case-studies" },
+		{ "source": "/portfolio/:path", "destination": "/case-studies" },
+		{
+			"source": "/",
+			"has": [{ "type": "host", "value": "cv.nirmalnaveen.com" }],
+			"destination": "/cv-2024.pdf"
+		}
+	]
+}
