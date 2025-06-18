@@ -51,12 +51,19 @@ const AboutPage = async () => {
 					accessibility as well as web experiences while ensuring efficient and
 					smooth deployment process.
 				</p>
-				<p className="my-4">
-				</p>
+				<p className="my-4"></p>
 				<p>
-				When I'm not coding, I love spending time with my family and friends, creating special memories with them. Also, I enjoy playing chess ♔ and listening to music I prefer calming tunes and energetic beats 🎶 Music and It's makes my day better. I think it's important to balance my different interests for my personal growth and happiness 😊 Each activity brings something special to my life, and I'm thankful to have lots of things I enjoy doing 😄 
+					When I&apos;m not busy working with projects, I love spending time
+					with my family and friends, creating special memories with them. Also,
+					I enjoy playing chess ♔ and listening to music I prefer calming tunes
+					and energetic beats 🎶 Music and It&apos;s makes my day better. I
+					think it&apos;s important to balance different interests for my
+					personal growth and happiness 😊 activity brings something special to
+					my life, and I&apos;m thankful to lots of things I enjoy doing 😄
 				</p>
-				<h2 className="headline mb-4 mt-12 text-4xl">Certification Highlights</h2>
+				<h2 className="headline mb-4 mt-12 text-4xl">
+					Certification Highlights
+				</h2>
 
 				<PodcastList podcasts={podcasts} />
 
