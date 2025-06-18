@@ -37,7 +37,7 @@ export const Service = ({
 					width={900}
 					height={600}
 					alt={`Illustration for ${title}`}
-					className="mt-8 px-12 lg:mt-0 lg:w-1/4 lg:px-0"
+					className="mt-8 px-10 lg:mt-0 lg:w-1/3 lg:px-0"
 				/>
 				<div>
 					<p className="mt-4 text-xl font-semibold md:text-xl lg:text-2xl">
