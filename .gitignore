@@ -40,6 +40,3 @@ next-env.d.ts
 
 # Sentry
 next.config.original.js
-
-.env
-.env.example
