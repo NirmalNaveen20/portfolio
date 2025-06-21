@@ -70,8 +70,9 @@ const HomePage = async () => {
 					<h2 className="headline mt-20 text-2xl md:text-4xl lg:text-5xl">
 						Preferred Focus
 						<span className="mt-2 block text-xl font-bold text-off-black dark:text-off-white md:text-2xl">
-							Passionate about cloud automation, observability, and streamlining
-							developer workflows using DevOps methodologies.
+							Passionate about cloud automation, observability, and systems
+							engineering with a focus on streamlining developer workflows using
+							DevOps methodologies.
 						</span>
 					</h2>
 
