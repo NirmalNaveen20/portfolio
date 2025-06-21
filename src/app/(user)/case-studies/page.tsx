@@ -15,9 +15,8 @@ export const metadata = {
 };
 
 const getData = async () => {
-	const caseStudies: CaseStudyType[] = await sanityClient.fetch(
-		caseStudiesQuery()
-	);
+	const caseStudies: CaseStudyType[] =
+		await sanityClient.fetch(caseStudiesQuery());
 	return caseStudies;
 };
 
