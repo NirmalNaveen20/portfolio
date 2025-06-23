@@ -1,0 +1,176 @@
+---
+title: "Getting Started with Datadog"
+summary: "A beginner-friendly guide to setting up monitoring with Datadog, creating dashboards, alerts, and integrating with your infrastructure."
+date: "2025-04-01"
+tags:
+  - Monitoring
+  - Observability
+  - DevOps
+  - Datadog
+  - Bash
+---
+
+# Getting Started with Datadog
+
+Datadog is a powerful observability platform that helps monitor your infrastructure, applications, logs, and more—all in one place. Whether you're working with cloud platforms, containers, or microservices, Datadog offers real-time insights to ensure everything runs smoothly.
+
+---
+
+## Why Use Datadog?
+
+- Centralized monitoring for infrastructure, apps, logs, and APM  
+- Over 600+ integrations with tools like AWS, Docker, Kubernetes, Jenkins  
+- Custom dashboards for visualizing metrics  
+- Alerting and incident detection using monitors  
+- Easy-to-install agent for collecting host metrics
+
+---
+
+## Step 1: Install the Datadog Agent
+
+To get started, install the Datadog Agent on your system.
+
+Example for Ubuntu:
+
+```bash
+DD_API_KEY=<your_api_key> bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh)"
+```
+
+Check the agent status:
+
+```bash
+sudo systemctl status datadog-agent
+```
+
+For Windows or macOS, follow the steps from **Integrations > Agent** in your Datadog dashboard.
+
+---
+
+## Step 2: Create Dashboards
+
+Datadog dashboards help visualize your metrics and logs.
+
+1. Go to **Dashboards > New Dashboard**
+2. Add a widget like a **timeseries graph** or **query value**
+3. Select a metric, such as:
+
+```text
+system.cpu.user{env:production}
+```
+
+You can filter dashboards using tags (`env`, `region`, etc.) and share them with your team.
+
+---
+
+## Step 3: Configure Monitors (Alerts)
+
+Monitors are used to notify you when something goes wrong.
+
+1. Navigate to **Monitors > New Monitor**
+2. Select a type, like **Metric Monitor**
+3. Set the condition
+
+Example:
+
+> Alert if CPU usage is above 80% for 5 minutes:
+
+```text
+avg(last_5m):avg:system.cpu.user{env:prod} > 80
+```
+
+Configure the alert message and notification channels (Slack, email, PagerDuty).
+
+---
+
+## Step 4: Send Custom Metrics
+
+Use the Datadog Python client to push custom metrics:
+
+```python
+from datadog import initialize, api
+
+options = {
+    'api_key': 'your_api_key',
+    'app_key': 'your_app_key'
+}
+
+initialize(**options)
+
+api.Metric.send(
+    metric='custom.application.metric',
+    points=42
+)
+```
+
+---
+
+## Step 5: Enable Integrations
+
+Datadog supports integrations with cloud providers and popular tools:
+
+- AWS  
+- GCP  
+- Azure  
+- Docker  
+- Kubernetes  
+- PostgreSQL  
+- Jenkins
+
+To enable:
+
+1. Go to **Integrations > Integrations**
+2. Search for the service (e.g., "AWS")
+3. Follow the steps to connect using IAM or API keys
+
+---
+
+## Step 6: Automate with Terraform
+
+Datadog resources can be managed as code using Terraform.
+
+Example: Creating a monitor with Terraform
+
+```hcl
+resource "datadog_monitor" "cpu_high" {
+  name               = "High CPU Usage"
+  type               = "metric alert"
+  query              = "avg(last_5m):avg:system.cpu.user{env:prod} > 80"
+  message            = "CPU usage is above 80% on production!"
+  escalation_message = "Immediate action needed."
+  tags               = ["env:prod", "team:backend"]
+}
+```
+
+Install the [Datadog Terraform provider](https://registry.terraform.io/providers/DataDog/datadog/latest) and configure your API and APP keys.
+
+---
+
+## Step 7: Compare with Grafana + Prometheus
+
+| Feature              | Datadog                       | Grafana + Prometheus             |
+|----------------------|-------------------------------|----------------------------------|
+| Setup                | Simple SaaS setup             | Requires hosting & configuration |
+| Metrics Collection   | Built-in agent & integrations | Prometheus scrapes metrics       |
+| Dashboarding         | Powerful UI                   | Highly customizable              |
+| Alerting             | Advanced monitors             | Rules via Alertmanager           |
+| Cost                 | Paid (with free trial)        | Free and open source             |
+
+Both are great tools. Datadog is great for quick SaaS-based visibility, while Prometheus + Grafana is ideal for full control in self-hosted environments.
+
+---
+
+## Tips for Beginners
+
+- Start by monitoring one service or host  
+- Use descriptive tags like `env:dev`, `env:prod`, `team:frontend`  
+- Use `Notebooks` to document incidents and monitor reviews  
+- Set up weekly reports or dashboards for stakeholders  
+- Explore log management and APM as your system grows
+
+---
+
+## Conclusion
+
+Datadog helps you monitor everything from infrastructure to applications. With powerful dashboards, easy integrations, and automation support, it's a great choice for any modern DevOps or SRE team.
+
+Happy monitoring! 🐶📈

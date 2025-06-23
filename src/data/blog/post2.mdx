@@ -1,0 +1,144 @@
+---
+title: "Most Important Linux Commands"
+summary: "A practical guide to essential Linux commands every developer, engineer, or system administrator should know."
+date: "2025-06-23"
+tags:
+  - Linux
+  - Command Line
+  - DevOps
+  - System Administration
+---
+
+# Most Important Linux Commands
+
+Linux commands are essential tools for developers, DevOps engineers, and system administrators to interact with the operating system efficiently through the terminal. Here’s a beginner-friendly guide covering the most useful and frequently used commands.
+
+## File & Directory Management
+
+**List directory contents:**
+
+```bash
+ls       # List files in current directory
+ls -l    # Long listing format
+ls -a    # Show hidden files
+```
+
+**Navigate directories:**
+
+```bash
+cd /path/to/directory    # Change directory
+cd ..                    # Move up one level
+pwd                      # Show current directory
+```
+
+**Create or delete files and folders:**
+
+```bash
+touch file.txt       # Create a file
+mkdir new_folder     # Create a directory
+rm file.txt          # Delete a file
+rm -r folder_name    # Delete folder and contents
+```
+
+## File Operations
+
+**Copy, move, rename files:**
+
+```bash
+cp file1.txt file2.txt         # Copy file
+mv oldname.txt newname.txt     # Rename or move file
+```
+
+**View file content:**
+
+```bash
+cat file.txt       # View file
+less file.txt      # Scrollable view
+head file.txt      # First 10 lines
+tail file.txt      # Last 10 lines
+```
+
+## System Info & Monitoring
+
+**Check system info:**
+
+```bash
+uname -a        # Kernel version
+df -h           # Disk space usage
+free -h         # Memory usage
+top             # Real-time process monitoring
+htop            # Enhanced top (if installed)
+```
+
+**Get IP address:**
+
+```bash
+ip a            # Display IP addresses
+```
+
+## User Management
+
+**Working with users:**
+
+```bash
+whoami                # Current user
+sudo su               # Switch to root
+adduser newuser       # Add new user
+passwd newuser        # Set password
+deluser olduser       # Delete user
+```
+
+## Permissions
+
+**Check and modify permissions:**
+
+```bash
+ls -l                # View permissions
+chmod +x script.sh   # Make a file executable
+chown user:group file.txt  # Change file ownership
+```
+
+## Networking
+
+**Network troubleshooting:**
+
+```bash
+ping google.com        # Test connectivity
+traceroute google.com  # Trace network route
+netstat -tuln          # Show active ports
+curl http://example.com  # Fetch web data
+```
+
+## Package Management (Debian-based)
+
+```bash
+sudo apt update          # Update package list
+sudo apt upgrade         # Upgrade packages
+sudo apt install nginx   # Install package
+sudo apt remove nginx    # Remove package
+```
+
+## Process Management
+
+```bash
+ps aux              # List running processes
+kill <PID>          # Kill a process by PID
+killall <name>      # Kill by process name
+```
+
+## Archive & Compression
+
+```bash
+tar -czvf archive.tar.gz folder/   # Compress
+tar -xzvf archive.tar.gz           # Extract
+zip file.zip file1.txt file2.txt   # Create ZIP
+unzip file.zip                     # Extract ZIP
+```
+
+## Useful Resources
+
+- [LinuxCommand.org](http://linuxcommand.org/)
+- [Explainshell](https://explainshell.com/)
+- [The Linux Documentation Project](https://www.tldp.org/)
+
+Whether you're managing servers, coding in a terminal, or automating tasks, mastering these commands will greatly enhance your productivity. 🚀

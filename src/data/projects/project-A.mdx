@@ -1,0 +1,39 @@
+---
+title: "SNMP Integration For Nutanix Infrastructure"
+associated:
+  name: "Sysco LABS"
+  logo: "/icons/sysco.png"
+role: "Nutanix, DataDog, Python, Linux, SNMP, VS Code, YAML"
+description: "Project YouNovate is a cutting-edge platform designed to revolutionize the way teams collaborate on software development projects."
+---
+
+# Introduction
+
+During my internship at Sysco Labs, I was tasked with enhancing observability for the company's Nutanix infrastructure by integrating it into Datadog using SNMP (Simple Network Management Protocol). The objective was to create a scalable monitoring solution that provided visibility into hardware-level metrics and performance indicators of Nutanix nodes. This integration enabled real-time tracking, issue detection, and performance optimization for critical infrastructure components.
+
+## Key Features
+
+- **Custom SNMP Profile Creation**: Developed tailored SNMP profiles to map Nutanix MIBs (Management Information Bases) for accurate metric collection.
+- **Dashboard Development**: Built intuitive, real-time dashboards in Datadog to visualize cluster-level and node-level performance metrics.
+- **Cluster-Level Monitoring**: Enabled monitoring for CPU, memory, disk utilization, network activity, and node availability using SNMP queries.
+- **Alerting and Monitor Configuration**: Configured threshold-based alerts in Datadog for proactive infrastructure issue detection.
+
+## Technical Insights
+
+- Gathered MIB files from Nutanix support and parsed relevant OIDs.
+
+- Designed and tested SNMP profiles locally using snmpwalk and Datadog Agent.
+
+- Configured conf.yaml files for each host and validated them with the Datadog Agent status output.
+
+- Created Python scripts to periodically test ICMP and SNMP availability for each node and report failures.
+
+## Challenges and Solutions
+
+- **Difficulty in mapping relevant MIB OIDs to meaningful metrics**: 	Conducted detailed research and cross-referenced vendor documentation with Datadog's SNMP integration docs.
+- **Repetitive manual testing of SNMP configurations**: Automated the testing and verification process using Python scripts.
+- **Large number of IPs and varied configurations**: Designed modular and scalable profiles to accommodate different Nutanix environments.
+
+## Outcome
+
+This project successfully established comprehensive visibility for Nutanix infrastructure in Datadog. The solution is now being extended for other regions and node types, laying the foundation for more automated observability infrastructure.

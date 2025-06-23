@@ -1,0 +1,58 @@
+const projects = [
+    {
+        slug: 'project-A',
+        title: 'SNMP Integration for Nutanix Infrastructure',
+        image: '/projects/soon.png',
+        description: 'Nutanix monitoring automated via SNMP and Datadog integration',
+        startDate: '2024-01',
+        endDate: '2024-06',
+        techStack: ['Nutanix', 'Datadog', 'YAML', 'SNMP', 'Python', 'Linux'],
+    },
+    {
+        slug: 'project-B',
+        title: 'Final Year Research Project',
+        image: '/projects/soon.png',
+        description: 'AI Mock Interview Platform for IT Graduates',
+        startDate: '2024-01',
+        endDate: '2024-12',
+        techStack: ['Python', 'TensorFlow', 'Flask', 'ReactJS'],
+    },
+    // {
+    //     slug: 'project-C',
+    //     title: 'FinAI',
+    //     image: '/projects/pictureC.jpg',
+    //     description: 'An AI-driven financial analysis tool.',
+    //     startDate: '2021-06',
+    //     endDate: '2021-12',
+    //     techStack: ['Python', 'TensorFlow', 'Flask', 'React Native', 'MongoDB'],
+    // },
+    // {
+    //     slug: 'project-D',
+    //     title: 'AeroDeliver',
+    //     image: '/projects/pictureD.jpg',
+    //     description: 'An urban drone delivery service.',
+    //     startDate: '2020-08',
+    //     endDate: '2021-02',
+    //     techStack: ['C++', 'ROS (Robot Operating System)', 'Python', 'OpenCV', 'AWS IoT'],
+    // },
+    // {
+    //     slug: 'project-E',
+    //     title: 'FitVR',
+    //     image: '/projects/pictureE.jpg',
+    //     description: 'A virtual reality fitness platform.',
+    //     startDate: '2021-11',
+    //     endDate: '2022-05',
+    //     techStack: ['Unity', 'C#', 'Oculus SDK', 'Blender', 'Firebase'],
+    // },
+    // {
+    //     slug: 'project-F',
+    //     title: 'SmartHive',
+    //     image: '/projects/pictureF.jpg',
+    //     description: 'An IoT solution for smart beekeeping.',
+    //     startDate: '2020-02',
+    //     endDate: '2020-08',
+    //     techStack: ['Arduino', 'Raspberry Pi', 'Python', 'MQTT', 'React'],
+    // },
+]
+
+export default projects
