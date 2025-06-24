@@ -14,28 +14,28 @@ export default function Footer() {
         >
             <div className="flex justify-center gap-6 mb-2 text-lg">
                 <Link
-                    href="/"
+                    href="https://github.com/NirmalNaveen20"
                     aria-label="GitHub"
                     className="hover:text-blue-500 transition-transform hover:scale-125 duration-200"
                 >
                     <FaGithub/>
                 </Link>
                 <Link
-                    href="/"
+                    href="https://www.linkedin.com/in/nirmal-naveen/"
                     aria-label="LinkedIn"
                     className="hover:text-blue-500 transition-transform hover:scale-125 duration-200"
                 >
                     <FaLinkedin/>
                 </Link>
                 <Link
-                    href="/"
+                    href="https://x.com/NirmalNaveen20"
                     aria-label="X"
                     className="hover:text-blue-500 transition-transform hover:scale-125 duration-200"
                 >
                     <FaXTwitter/>
                 </Link>
                                 <Link
-                    href="/"
+                    href="https://nirmalnaveen.medium.com/"
                     aria-label="X"
                     className="hover:text-blue-500 transition-transform hover:scale-125 duration-200"
                 >
