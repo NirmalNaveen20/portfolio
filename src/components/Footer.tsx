@@ -15,6 +15,7 @@ export default function Footer() {
             <div className="flex justify-center gap-6 mb-2 text-lg">
                 <Link
                     href="https://github.com/NirmalNaveen20"
+                    target="_blank"
                     aria-label="GitHub"
                     className="hover:text-blue-500 transition-transform hover:scale-125 duration-200"
                 >
@@ -22,6 +23,7 @@ export default function Footer() {
                 </Link>
                 <Link
                     href="https://www.linkedin.com/in/nirmal-naveen/"
+                    target="_blank"
                     aria-label="LinkedIn"
                     className="hover:text-blue-500 transition-transform hover:scale-125 duration-200"
                 >
@@ -29,6 +31,7 @@ export default function Footer() {
                 </Link>
                 <Link
                     href="https://x.com/NirmalNaveen20"
+                    target="_blank"
                     aria-label="X"
                     className="hover:text-blue-500 transition-transform hover:scale-125 duration-200"
                 >
@@ -36,6 +39,7 @@ export default function Footer() {
                 </Link>
                                 <Link
                     href="https://nirmalnaveen.medium.com/"
+                    target="_blank"
                     aria-label="X"
                     className="hover:text-blue-500 transition-transform hover:scale-125 duration-200"
                 >
