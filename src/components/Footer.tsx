@@ -61,7 +61,7 @@ export default function Footer() {
             {/* Display version & Link to GitHub Repo */}
             {/* You can update or remove this for your own template */}
             <p className="text-xs sm:text-sm">
-                <Link href={`https://github.com/nirmalnaveen20/nextjs-portofolio/releases/tag/v${appVersion}`}
+                <Link href={`https://github.com/NirmalNaveen20/portfolio/releases/tag/v${appVersion}`}
                       rel="noopener noreferrer">
                     <span
                         className="font-semibold hover:text-blue-500 transition-colors duration-200"
@@ -70,7 +70,7 @@ export default function Footer() {
                     </span>
                 </Link>
                 &nbsp;built by&nbsp;
-                <Link href="https://github.com/nirmalnaveen20" rel="noopener noreferrer">
+                <Link href="https://github.com/nirmalnaveen20" rel="noopener noreferrer" target="_blank">
                     <span
                         className="font-semibold hover:text-blue-500 transition-colors duration-200"
                     >

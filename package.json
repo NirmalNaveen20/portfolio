@@ -1,6 +1,6 @@
 {
-  "name": "nextjs-portofolio",
-  "version": "0.10.0",
+  "name": "nirmal's-portofolio",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
