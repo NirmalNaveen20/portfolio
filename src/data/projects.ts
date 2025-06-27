@@ -2,7 +2,7 @@ const projects = [
     {
         slug: 'project-A',
         title: 'SNMP Integration for Nutanix Infrastructure',
-        image: '/projects/soon.png',
+        image: '/projects/project-A.png',
         description: 'Nutanix monitoring automated via SNMP and Datadog integration',
         startDate: '2024-01',
         endDate: '2024-06',
