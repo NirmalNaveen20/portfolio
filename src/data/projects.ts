@@ -11,7 +11,7 @@ const projects = [
     {
         slug: 'project-B',
         title: 'Final Year Research Project',
-        image: '/projects/soon.png',
+        image: '/projects/project-B.png',
         description: 'AI Mock Interview Platform for IT Graduates',
         startDate: '2024-01',
         endDate: '2024-12',
