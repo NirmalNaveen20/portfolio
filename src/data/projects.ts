@@ -17,6 +17,15 @@ const projects = [
         endDate: '2024-12',
         techStack: ['Python', 'TensorFlow', 'Flask', 'ReactJS'],
     },
+        {
+        slug: 'project-C',
+        title: 'Mealie App on K8s with Real-Time Monitoring',
+        image: '/projects/project-C.png',
+        description: 'Mealie Deployment with Kubernetes and Full Stack Monitoring using Prometheus & Grafana',
+        startDate: '2025-06',
+        endDate: '2025-06',
+        techStack: ['Prometheus', 'Kubernetes', 'Helm', 'Grafana'],
+    },
     // {
     //     slug: 'project-C',
     //     title: 'FinAI',

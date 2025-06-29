@@ -1,42 +1,132 @@
 ---
-title: "Project FinAI"
-teamSize: 3
-role: "AI Engineer"
-description: "Project FinAI is an AI-powered personal finance assistant that helps users manage their budgets, track expenses, and achieve financial goals."
-duration: "06/2021–12/2021"
-techStack:
-  - Python
-  - TensorFlow
-  - Flask
-  - React Native
-  - MongoDB
-githubUrl: "https://github.com/project-FinAI"
+title: "Mealie on K8s with Real-Time Monitoring"
+associated:
+  name: "Personal"
+  logo: "/icons/personal.png"
+role: "Kubernetes, Prometheus, Grafana, Helm, Terraform"
+description: "Mealie on K8s with Real-Time Monitoring"
+duration: "06/2025–06/2025"
+githubUrl: "https://github.com/NirmalNaveen20/homelab/tree/main/kubernetes/mealie"
 ---
 
-# Introduction
+Mealie is a **recipe manager and meal planner** with a modern and reactive frontend built with Vue and a REST API backend. It allows you to easily store and manage recipes either by providing URLs (which Mealie parses) or by manually adding them through a rich UI.
 
-Project FinAI is a mobile application that uses artificial intelligence to provide personalized financial advice. It helps users make informed decisions about their spending and savings.
+In this mini project, I deployed Mealie on a **Kubernetes cluster** and set up **end-to-end monitoring** using **Prometheus and Grafana** to ensure full observability into the system.
 
-## Key Features
+---
 
-- **Expense Tracking**: Automatically categorizes transactions and provides spending insights.
-- **Budget Planning**: Suggests budgets based on user income and spending patterns.
-- **Goal Setting**: Helps users set and achieve financial goals with actionable recommendations.
-- **AI Chatbot**: Provides real-time financial advice through a conversational interface.
+## Infrastructure Setup
 
-## Technical Insights
+To get started, you need a Kubernetes cluster. You can use **Minikube**, or a managed cloud solution like **Azure Kubernetes Service (AKS)**.
 
-- **AI Models**: Built predictive models using TensorFlow to analyze spending patterns and forecast future expenses.
-- **Backend**: Developed a Flask API to handle user data and integrate AI functionalities.
-- **Mobile App**: Created a cross-platform app using React Native for iOS and Android.
-- **Database**: Used MongoDB for storing user data securely and efficiently.
+<a href="/projects/project-mealie/aks-cluster.png" target="_blank" rel="noopener noreferrer">
+  <img src="/projects/project-mealie/aks-cluster.png" alt="Mealie Homepage" width="512" height="512" style={{ cursor: 'zoom-in' }} />
+</a>
 
-## Challenges and Solutions
+I used **Terraform** to provision an AKS cluster. You can find the Terraform scripts in my repo here:
 
-- **Data Privacy**: Implemented encryption and anonymization techniques to protect user data.
-- **Accuracy**: Trained AI models on diverse datasets to improve prediction accuracy.
-- **Integration**: Ensured seamless integration of AI features with the mobile app.
+👉 <a href="https://github.com/NirmalNaveen20/homelab/tree/main/terraform/azure/aks-cluster" target="_blank" rel="noopener noreferrer">AKS Terraform Repo</a>
 
-## Outcome
+---
 
-Project FinAI was launched on app stores and received positive feedback for its user-friendly interface and accurate financial insights. It helped users save an average of 15% on monthly expenses.
+## 🛠️ Deploying Mealie to Kubernetes
+
+I started by creating a dedicated namespace for the Mealie app:
+
+```bash
+kubectl create ns mealie
+```
+
+Then applied the necessary Kubernetes manifest files:
+
+```bash
+kubectl apply -f storage.yaml
+kubectl apply -f service.yaml
+kubectl apply -f mealie-app-deployment.yaml
+```
+
+### Persistent Volume Setup
+
+To prevent data loss in the case of a pod crash or restart, I configured **PersistentVolumeClaim** (PVC). This ensures Mealie retains its database and uploaded data across pod restarts.
+
+### Exposing Mealie via LoadBalancer
+
+The `service.yaml` exposes the Mealie frontend using a **LoadBalancer**. Once deployed, you can access the Mealie UI from the public IP assigned by AKS.
+
+### Mealie App Homepage
+
+<a href="/projects/project-mealie/mealie-homepage.png" target="_blank" rel="noopener noreferrer">
+  <img src="/projects/project-mealie/mealie-homepage.png" alt="Mealie Homepage" width="512" height="512" style={{ cursor: 'zoom-in' }} />
+</a>
+
+
+
+---
+
+## 📊 Monitoring with Prometheus and Grafana
+
+To monitor the application and underlying cluster, I deployed the **Kube Prometheus Stack** using Helm.
+
+I followed the <a href="https://github.com/prometheus-community/helm-charts" target="_blank" rel="noopener noreferrer">Prometheus Community Helm Chart</a>
+
+
+
+### ✅ Steps
+
+1. Expose a LoadBalancer for Grafana/Prometheus access:
+```bash
+kubectl apply -f loadbalancer.yaml
+```
+
+2. Install the Prometheus Stack:
+```bash
+helm install prometheus-stack prometheus-community/kube-prometheus-stack   --namespace=monitoring --create-namespace
+```
+
+3. Upgrade with custom configuration (like custom Grafana password):
+```bash
+helm upgrade prometheus-stack prometheus-community/kube-prometheus-stack   --namespace=monitoring -f values.yaml
+```
+
+You can find all related manifest files under the `monitoring/` folder in my repository.
+
+---
+
+## What I Learned
+
+- Deploying production-grade apps using Kubernetes manifests
+- Setting up persistent storage using PVCs
+- Exposing applications via LoadBalancer services on AKS
+- Deploying Helm charts for monitoring solutions
+- Customizing Grafana credentials using `values.yaml`
+- Visualizing metrics and logs with Grafana dashboards
+
+---
+
+## 🧩 Challenges Faced
+
+- **Storage Configuration:** Ensuring PVC works correctly and binds to a proper Azure Disk.
+- **Custom Helm Configs:** Took some time to understand the structure of `values.yaml` for overriding default Grafana credentials.
+
+---
+
+## Monitoring Dashboard Sample
+
+
+<a href="/projects/project-mealie/monitoringoverview.png" target="_blank" rel="noopener noreferrer">
+  <img src="/projects/project-mealie/monitoringoverview.png" alt="Mealie Homepage" width="512" height="512" style={{ cursor: 'zoom-in' }} />
+</a>
+
+
+
+---
+
+## References
+
+- <a href="https://github.com/hay-kot/mealie" target="_blank" rel="noopener noreferrer">Mealie GitHub Repo</a>
+
+- <a href="https://github.com/prometheus-community/helm-charts" target="_blank" rel="noopener noreferrer">Prometheus Helm Charts</a>
+
+---
+
+Thanks for checking! This project helped me strengthen my Kubernetes, Helm, and observability skills in a real-world use case.
