@@ -9,41 +9,35 @@ duration: "06/2025–06/2025"
 githubUrl: "https://github.com/NirmalNaveen20/homelab/tree/main/kubernetes/mealie"
 ---
 
+# Introduction
+
 Mealie is a **recipe manager and meal planner** with a modern and reactive frontend built with Vue and a REST API backend. It allows you to easily store and manage recipes either by providing URLs (which Mealie parses) or by manually adding them through a rich UI.
 
 In this mini project, I deployed Mealie on a **Kubernetes cluster** and set up **end-to-end monitoring** using **Prometheus and Grafana** to ensure full observability into the system.
 
----
 
 ## Infrastructure Setup
 
 To get started, you need a Kubernetes cluster. You can use **Minikube**, or a managed cloud solution like **Azure Kubernetes Service (AKS)**.
 
-<a href="/projects/project-mealie/aks-cluster.png" target="_blank" rel="noopener noreferrer">
-  <img src="/projects/project-mealie/aks-cluster.png" alt="Mealie Homepage" width="512" height="512" style={{ cursor: 'zoom-in' }} />
-</a>
+![AKS Cluster](/projects/project-mealie/aks-cluster.png)
 
 I used **Terraform** to provision an AKS cluster. You can find the Terraform scripts in my repo here:
 
 👉 <a href="https://github.com/NirmalNaveen20/homelab/tree/main/terraform/azure/aks-cluster" target="_blank" rel="noopener noreferrer">AKS Terraform Repo</a>
 
----
 
 ## 🛠️ Deploying Mealie to Kubernetes
 
 I started by creating a dedicated namespace for the Mealie app:
 
-```bash
-kubectl create ns mealie
-```
+- Create namespace: `kubectl create ns mealie`
 
 Then applied the necessary Kubernetes manifest files:
 
-```bash
-kubectl apply -f storage.yaml
-kubectl apply -f service.yaml
-kubectl apply -f mealie-app-deployment.yaml
-```
+- Apply storage manifest: `kubectl apply -f storage.yaml`
+- Apply service manifest: `kubectl apply -f service.yaml`
+- Apply deployment manifest: `kubectl apply -f mealie-app-deployment.yaml`
 
 ### Persistent Volume Setup
 
@@ -55,13 +49,9 @@ The `service.yaml` exposes the Mealie frontend using a **LoadBalancer**. Once de
 
 ### Mealie App Homepage
 
-<a href="/projects/project-mealie/mealie-homepage.png" target="_blank" rel="noopener noreferrer">
-  <img src="/projects/project-mealie/mealie-homepage.png" alt="Mealie Homepage" width="512" height="512" style={{ cursor: 'zoom-in' }} />
-</a>
+![Mealie Homepage](/projects/project-mealie/mealie-homepage.png)
 
 
-
----
 
 ## 📊 Monitoring with Prometheus and Grafana
 
@@ -73,24 +63,12 @@ I followed the <a href="https://github.com/prometheus-community/helm-charts" tar
 
 ### ✅ Steps
 
-1. Expose a LoadBalancer for Grafana/Prometheus access:
-```bash
-kubectl apply -f loadbalancer.yaml
-```
-
-2. Install the Prometheus Stack:
-```bash
-helm install prometheus-stack prometheus-community/kube-prometheus-stack   --namespace=monitoring --create-namespace
-```
-
-3. Upgrade with custom configuration (like custom Grafana password):
-```bash
-helm upgrade prometheus-stack prometheus-community/kube-prometheus-stack   --namespace=monitoring -f values.yaml
-```
+1. Expose a LoadBalancer for Grafana/Prometheus access: `kubectl apply -f loadbalancer.yaml`
+2. Install the Prometheus Stack: `helm install prometheus-stack prometheus-community/kube-prometheus-stack --namespace=monitoring --create-namespace`
+3. Upgrade with custom configuration (like custom Grafana password): `helm upgrade prometheus-stack prometheus-community/kube-prometheus-stack --namespace=monitoring -f values.yaml`
 
 You can find all related manifest files under the `monitoring/` folder in my repository.
 
----
 
 ## What I Learned
 
@@ -101,32 +79,24 @@ You can find all related manifest files under the `monitoring/` folder in my rep
 - Customizing Grafana credentials using `values.yaml`
 - Visualizing metrics and logs with Grafana dashboards
 
----
 
 ## 🧩 Challenges Faced
 
 - **Storage Configuration:** Ensuring PVC works correctly and binds to a proper Azure Disk.
 - **Custom Helm Configs:** Took some time to understand the structure of `values.yaml` for overriding default Grafana credentials.
 
----
 
 ## Monitoring Dashboard Sample
 
-
-<a href="/projects/project-mealie/monitoringoverview.png" target="_blank" rel="noopener noreferrer">
-  <img src="/projects/project-mealie/monitoringoverview.png" alt="Mealie Homepage" width="512" height="512" style={{ cursor: 'zoom-in' }} />
-</a>
+![Monitoring Overview](/projects/project-mealie/monitoringoverview.png)
 
 
 
----
 
 ## References
 
 - <a href="https://github.com/hay-kot/mealie" target="_blank" rel="noopener noreferrer">Mealie GitHub Repo</a>
 
 - <a href="https://github.com/prometheus-community/helm-charts" target="_blank" rel="noopener noreferrer">Prometheus Helm Charts</a>
-
----
 
 Thanks for checking! This project helped me strengthen my Kubernetes, Helm, and observability skills in a real-world use case.
