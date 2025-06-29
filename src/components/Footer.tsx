@@ -38,7 +38,7 @@ export default function Footer() {
                     <FaXTwitter/>
                 </Link>
                 <Link
-                    href="https://bsky.app/profile/nirmalchandrasiri.bsky.social"
+                    href="https://bsky.app/profile/nirmalnaveen.com"
                     target="_blank"
                     aria-label="X"
                     className="hover:text-blue-500 transition-transform hover:scale-125 duration-200"
