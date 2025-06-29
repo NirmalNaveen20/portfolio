@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import {FaGithub, FaLinkedin, FaEnvelope} from 'react-icons/fa'
-import {FaXTwitter} from "react-icons/fa6";
+import {FaBluesky, FaXTwitter} from "react-icons/fa6";
 import {appVersion} from "@/lib/constants";
 import { BsMedium } from 'react-icons/bs';
 
@@ -36,6 +36,14 @@ export default function Footer() {
                     className="hover:text-blue-500 transition-transform hover:scale-125 duration-200"
                 >
                     <FaXTwitter/>
+                </Link>
+                <Link
+                    href="https://bsky.app/profile/nirmalchandrasiri.bsky.social"
+                    target="_blank"
+                    aria-label="X"
+                    className="hover:text-blue-500 transition-transform hover:scale-125 duration-200"
+                >
+                    <FaBluesky/>
                 </Link>
                                 <Link
                     href="https://nirmalnaveen.medium.com/"
