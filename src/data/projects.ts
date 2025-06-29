@@ -17,7 +17,7 @@ const projects = [
         endDate: '2024-12',
         techStack: ['Python', 'TensorFlow', 'Flask', 'ReactJS'],
     },
-        {
+    {
         slug: 'project-C',
         title: 'Mealie App on K8s with Real-Time Monitoring',
         image: '/projects/project-C.png',
