@@ -48,12 +48,12 @@ export default function Home() {
                     Hello, I&#39;m Nirmal Chandrasiri 👋
                 </h1>
                 <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-4xl mx-auto text-left mb-6">
-                    Passionate about cloud infrastructure, automation, and observability, I thrive at the intersection of DevOps, SRE, and platform engineering. My focus is on building scalable systems, enhancing reliability, and driving operational excellence through proactive monitoring and continuous improvement.
+                    Passionate about cloud infrastructure, automation, and observability, I enjoy exploring topics in DevOps, Site Reliability Engineering, and Systems Engineering. I focus on building scalable and reliable systems, enhancing service availability, and driving operational excellence. With hands-on experience in Level 2 and Level 3 support, I work closely with cross-functional teams to proactively monitor, troubleshoot, and continuously improve critical infrastructure and applications.
                 </p>
 
                 {/* Current Work Description or other highlights */}
                 <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-4xl mx-auto text-left">
-                    When I&#39;m not busy working with projects, I love spending time with my family and friends, creating special memories with them. Also, I enjoy playing chess ♔ and listening to music I prefer calming tunes and energetic beats 🎶 Music and It&#39;s makes my day better. I think it&#39;s important to balance different interests for my personal growth and happiness 😊 activity brings something special to my life, and I&#39;m thankful to lots of things I enjoy doing 😄
+                    When I&#39;m not busy working with projects, I love spending time with my family and friends, creating special memories with them. Also, I enjoy playing chess ♔ and listening to music 🎶  I think it&#39;s important to balance different interests for my personal growth and happiness activity brings something special to my life, and I&#39;m thankful to lots of things I enjoy doing 😄
                 </p>
 
 
