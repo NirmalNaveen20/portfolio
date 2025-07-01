@@ -15,12 +15,19 @@ const posts: BlogPostProps[] = [
         date: '2025-01-03',
         tags: ['linux', 'devops', 'command line', 'system administration']
     },
-        {
+    {
         slug: 'terraform-concepts',
         title: 'Essential Terraform Commands and Concepts',
         summary: 'Terraform makes infrastructure as code easy, reusable, and consistent.',
         date: '2025-06-15',
         tags: ['aws', 'azure', 'devops', 'terraform', 'iac']
+    },
+    {
+        slug: 'kubernetes-deployment-strategies',
+        title: 'Kubernetes Deployment Types: Blue-Green, Canary...',
+        summary: 'When working with Kubernetes in a production environment, selecting the right deployment strategy is crucial. ',
+        date: '2025-06-20',
+        tags: ['kubernetes', 'cloud', 'devops', 'yaml']
     },
 ]
 
