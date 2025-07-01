@@ -1,0 +1,159 @@
+---
+title: "Essential Terraform Commands and Concepts"
+summary: "Terraform makes infrastructure as code easy, reusable, and consistent. Here’s a practical guide based on my learning and day-to-day use with the most important commands and concepts."
+date: "2025-06-15"
+tags:
+  - Terraform
+  - IaC
+  - DevOps
+  - AWS
+---
+
+## What is Terraform?
+
+Terraform, created by HashiCorp, lets you define infrastructure using code (written in HCL - HashiCorp Configuration Language). Instead of clicking through a cloud provider’s UI, you write code to describe resources like servers or databases, and Terraform handles the rest. It supports providers like AWS, Azure, and Google Cloud, which is why I find it so versatile.
+
+### Key Concepts
+
+Before jumping into commands, here are the core ideas I always keep in mind:
+
+- **Provider**: The platform you’re managing (e.g., AWS, Azure). You define it in your configuration.
+- **Resource**: The building blocks, like an EC2 instance or S3 bucket.
+- **Module**: Reusable code blocks for common setups, like a VPC configuration.
+- **State**: Terraform’s record of your infrastructure, stored in a `terraform.tfstate` file.
+- **Plan**: A preview of changes Terraform will make.
+- **Apply**: The action of creating, updating, or deleting resources.
+
+These concepts are the backbone of everything I do with Terraform.
+
+## Essential Terraform Commands
+
+Here are the commands I use most, with examples from my workflow.
+
+**Initialize a Terraform project:**
+
+```bash
+terraform init
+```
+
+This sets up your project by downloading provider plugins and initializing the backend. I run this first in any new project or cloned repo.
+
+**Validate configuration:**
+
+```bash
+terraform validate
+```
+
+I use this to catch syntax errors in my `.tf` files before proceeding. It’s a lifesaver for spotting issues early.
+
+**Plan changes:**
+
+```bash
+terraform plan
+```
+
+This shows what Terraform will do—create, update, or delete resources. I always check the plan to avoid surprises, especially in production.
+
+**Apply changes:**
+
+
+```bash
+terraform apply
+```
+
+This creates or updates your infrastructure. It prompts for confirmation unless you add `-auto-approve`. I’m extra cautious with this one.
+
+**Destroy resources:**
+
+
+```bash
+terraform destroy
+```
+
+This tears down everything in your configuration. I use it for test environments but double-check the state file first.
+
+**View current state:**
+
+```bash
+terraform state list
+```
+
+This lists all resources Terraform is managing. It’s great for troubleshooting or checking the state file.
+
+**Refresh state:**
+
+```bash
+terraform refresh
+```
+
+This syncs the state file with your actual infrastructure. I run it if I suspect manual changes were made outside Terraform.
+
+**Format code:**
+
+```bash
+terraform fmt
+```
+
+This keeps my `.tf` files clean and consistent. I run it before committing code to git.
+
+Here you can find my repo which I experiment with Terraform codes: [Terraform Experiments](https://github.com/NirmalNaveen20/homelab/tree/main/terraform)
+
+
+
+**Output values:**
+
+```bash
+terraform output
+```
+
+This displays defined outputs, like an EC2 instance’s IP. It’s handy for grabbing values after an apply.
+
+## Writing Terraform Configurations
+
+Here’s a simple AWS EC2 example I might use:
+
+```hcl
+provider "aws" {
+  region = "us-east-1"
+}
+
+resource "aws_instance" "web_server" {
+  ami           = "ami-0c55b159cbfafe1f0" # Example AMI
+  instance_type = "t2.micro"
+  tags = {
+    Name = "WebServer"
+  }
+}
+
+output "instance_ip" {
+  value = aws_instance.web_server.public_ip
+}
+```
+
+This code sets up an EC2 instance and outputs its public IP. I keep my projects modular with separate files for variables and outputs.
+
+## Best Practices I Follow
+
+Here are some habits I’ve picked up:
+
+- **Use Variables**: Define variables in `variables.tf` for reusability and export secret values like subscriptions ID's to the terminal. 
+- **Modularize**: Create modules for common setups to save time.
+- **Remote State**: Store state in S3, Azure Blob storage, Terraform Cloud.
+- **Lock Versions**: Pin provider versions to avoid unexpected updates.
+- **Test First**: Always test in a non-production environment or use workspaces.
+
+## Common Gotchas
+
+A few mistakes I’ve learned to avoid:
+
+- **State File Issues**: Back up your state file and avoid manual infrastructure changes.
+- **Version Drift**: Pin provider versions in your config.
+- **Sensitive Data**: Use `terraform.tfvars` for secrets and keep them out of git.
+
+## Useful Resources
+
+- [Terraform Documentation](https://www.terraform.io/docs)
+- [HashiCorp Learn](https://learn.hashicorp.com/terraform)
+- [Terraform Registry](https://registry.terraform.io/)
+
+Terraform has made my infrastructure work faster and more reliable. These commands and tips are my daily go-to’s, and I hope they help you as much as they’ve helped me. Start small, experiment, and you’ll be automating infrastructure in no time!
