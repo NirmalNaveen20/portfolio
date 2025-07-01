@@ -1,0 +1,554 @@
+---
+title: "Kubernetes Deployment Strategies"
+summary: "When working with Kubernetes in a production environment, selecting the right deployment strategy is crucial."
+date: "2025-06-20"
+tags:
+  - Kubernetes
+  - YAML
+  - DevOps
+  - Cloud
+---
+
+Kubernetes offers a variety of deployment strategies. This guide explores six key strategies—Rolling Updates, Blue-Green, Canary, A/B Testing, Shadow, and Recreate—providing clear explanations and practical examples to help implement them effectively.
+
+## Why Deployment Strategies Matter
+
+Deploying applications in Kubernetes requires balancing reliability, user experience, and rollback capabilities. Each strategy serves specific use cases, such as ensuring zero downtime, testing new features, or evaluating user behavior. Choosing the right strategy depends on the application's requirements and operational goals.
+
+## 1. Rolling Update Deployment
+
+Rolling Update is the default Kubernetes deployment strategy, designed for seamless updates with zero downtime. It gradually replaces old pods with new ones, maintaining application availability.
+
+**How it works**: Kubernetes scales up new pods while scaling down old ones, controlled by `maxSurge` (extra pods allowed) and `maxUnavailable` (pods that can be unavailable).
+
+**When to use it**: Ideal for applications requiring continuous availability, such as web services.
+
+**Example**:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: app
+  template:
+    metadata:
+      labels:
+        app: app
+    spec:
+      containers:
+      - name: app
+        image: app:1.1
+        ports:
+        - containerPort: 80
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+```
+
+This configuration updates the `app` to version 1.1, adding one new pod at a time (`maxSurge: 1`) while ensuring no pods are unavailable (`maxUnavailable: 0`). Apply it with:
+
+```bash
+kubectl apply -f deployment.yaml
+```
+
+## 2. Blue-Green Deployment
+
+Blue-Green deployment enables instant switching to a new version with a straightforward rollback option. It maintains two environments: "Blue" (current version) and "Green" (new version). Traffic switches to Green once it’s ready.
+
+**How it works**: The new version deploys alongside the current one, and a Service update redirects traffic to the new pods.
+
+**When to use it**: Suitable for critical releases needing fast rollback, such as major application updates.
+
+**Example**:
+
+Deploy the Blue environment (version 1.0):
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-blue
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: app
+      version: blue
+  template:
+    metadata:
+      labels:
+        app: app
+        version: blue
+    spec:
+      containers:
+      - name: app
+        image: app:1.0
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-service
+spec:
+  selector:
+    app: app
+    version: blue
+  ports:
+  - port: 80
+    targetPort: 80
+```
+
+Deploy the Green environment (version 1.1):
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-green
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: app
+      version: green
+  template:
+    metadata:
+      labels:
+        app: app
+        version: green
+    spec:
+      containers:
+      - name: app
+        image: app:1.1
+        ports:
+        - containerPort: 80
+```
+
+Switch traffic to Green by updating the Service:
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-service
+spec:
+  selector:
+    app: app
+    version: green
+  ports:
+  - port: 80
+    targetPort: 80
+```
+
+Apply with `kubectl apply -f <file>.yaml`. If issues occur, revert the Service to `version: blue` for rollback.
+
+## 3. Canary Deployment
+
+Canary deployment tests a new version with a small user subset before full rollout, minimizing risk.
+
+**How it works**: A few pods run the new version, and a small percentage of traffic is routed to them, typically via an Ingress controller.
+
+**When to use it**: Useful for validating new features or stability in production.
+
+**Example**:
+
+Deploy the main app (version 1.0) and a canary (version 1.1):
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: app
+  template:
+    metadata:
+      labels:
+        app: app
+    spec:
+      containers:
+      - name: app
+        image: app:1.0
+        ports:
+        - containerPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-canary
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-canary
+  template:
+    metadata:
+      labels:
+        app: app-canary
+    spec:
+      containers:
+      - name: app
+        image: app:1.1
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-service
+spec:
+  selector:
+    app: app
+  ports:
+  - port: 80
+    targetPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-canary-service
+spec:
+  selector:
+    app: app-canary
+  ports:
+  - port: 80
+    targetPort: 80
+```
+
+Route 90% traffic to the main app and 10% to the canary using an NGINX Ingress:
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-ingress
+spec:
+  rules:
+  - host: app.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: app-service
+            port:
+              number: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-canary-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/canary: "true"
+    nginx.ingress.kubernetes.io/canary-weight: "10"
+spec:
+  rules:
+  - host: app.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: app-canary-service
+            port:
+              number: 80
+```
+
+Monitor the canary pods, and if stable, scale up the canary deployment and phase out the old version.
+
+## 4. A/B Testing Deployment
+
+A/B Testing evaluates different versions by routing specific user segments to each, focusing on user behavior (e.g., UI changes) rather than just stability.
+
+**How it works**: Multiple versions run concurrently, with traffic split based on user attributes (e.g., headers, cookies) using an Ingress or service mesh like Istio.
+
+**When to use it**: Best for testing feature variations to optimize metrics like conversion rates.
+
+**Example**:
+
+Deploy two versions (e.g., version A with a blue button, version B with a red button):
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-a
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: app
+      version: a
+  template:
+    metadata:
+      labels:
+        app: app
+        version: a
+    spec:
+      containers:
+      - name: app
+        image: app:blue-button
+        ports:
+        - containerPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-b
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: app
+      version: b
+  template:
+    metadata:
+      labels:
+        app: app
+        version: b
+    spec:
+      containers:
+      - name: app
+        image: app:red-button
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-a-service
+spec:
+  selector:
+    app: app
+    version: a
+  ports:
+  - port: 80
+    targetPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-b-service
+spec:
+  selector:
+    app: app
+    version: b
+  ports:
+  - port: 80
+    targetPort: 80
+```
+
+Route traffic based on a header (e.g., `user-type: premium` to version B):
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-ingress
+spec:
+  rules:
+  - host: app.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: app-a-service
+            port:
+              number: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-b-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/canary: "true"
+    nginx.ingress.kubernetes.io/canary-by-header: "user-type"
+    nginx.ingress.kubernetes.io/canary-by-header-value: "premium"
+spec:
+  rules:
+  - host: app.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: app-b-service
+            port:
+              number: 80
+```
+
+Analyze metrics (e.g., click-through rates) to determine the winning version, then scale it up.
+
+## 5. Shadow Deployment
+
+Shadow deployment tests a new version by mirroring production traffic to it without affecting users, acting as a production dry run.
+
+**How it works**: The new version receives duplicated traffic via a service mesh (e.g., Istio) or proxy, processing requests without serving responses to users.
+
+**When to use it**: Ideal for testing performance or behavior under real traffic conditions.
+
+**Example**:
+
+Deploy the production app (version 1.0) and a shadow version (1.1):
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: app
+  template:
+    metadata:
+      labels:
+        app: app
+    spec:
+      containers:
+      - name: app
+        image: app:1.0
+        ports:
+        - containerPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-shadow
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: app-shadow
+  template:
+    metadata:
+      labels:
+        app: app-shadow
+    spec:
+      containers:
+      - name: app
+        image: app:1.1
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  clothed: app-service
+spec:
+  selector:
+    app: app
+  ports:
+  - port: 80
+    targetPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-shadow-service
+spec:
+  selector:
+    app: app-shadow
+  ports:
+  - port: 80
+    targetPort: 80
+```
+
+Mirror traffic to the shadow deployment using Istio:
+
+```yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: app-vs
+spec:
+  hosts:
+  - app.example.com
+  http:
+  - route:
+    - destination:
+        host: app-service
+      weight: 100
+    mirror:
+      host: app-shadow-service
+```
+
+Monitor the shadow pods’ logs and metrics to validate version 1.1 before a full rollout.
+
+## 6. Recreate Deployment
+
+Recreate is the simplest but most disruptive strategy, terminating all old pods before deploying new ones, causing downtime.
+
+**How it works**: Kubernetes deletes existing pods, then starts the new version.
+
+**When to use it**: Suitable for non-critical applications where downtime is acceptable, such as internal tools.
+
+**Example**:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: app
+  template:
+    metadata:
+      labels:
+        app: app
+    spec:
+      containers:
+      - name: app
+        image: app:1.1
+        ports:
+        - containerPort: 80
+  strategy:
+    type: Recreate
+```
+
+Apply with `kubectl apply -f deployment.yaml`. Users experience downtime until new pods are ready.
+
+## Best Practices
+
+- **Monitor Deployments**: Use tools like Prometheus and Grafana for real-time metrics.
+- **Automate with CI/CD**: Leverage ArgoCD or GitHub Actions for streamlined deployments.
+- **Test in Staging**: Validate strategies in a non-production environment.
+- **Use Readiness Probes**: Ensure pods are healthy before receiving traffic.
+- **Plan Rollbacks**: Maintain clear rollback procedures, especially for Blue-Green, Canary, and A/B Testing.
+
+## Common Challenges
+
+- **Resource Usage**: Blue-Green and Shadow require double resources due to parallel environments.
+- **Traffic Splitting**: Canary and A/B Testing need robust Ingress or service mesh for accurate routing.
+- **Stateful Applications**: These strategies suit stateless apps; use migrations for databases.
+- **Shadow Metrics**: Set up logging and monitoring for shadow deployments to analyze performance.
+
+## Useful Resources
+
+- [Kubernetes Documentation](https://kubernetes.io/docs/)
+- [Kube by Example](https://kubebyexample.com/)
+- [CNCF Blog](https://www.cncf.io/blog/)
+- [Istio Documentation](https://istio.io/latest/docs/)
+- [ArgoCD for GitOps](https://argoproj.github.io/argo-cd/)
+
+Choose the right strategy based on application needs and start deploying with confidence! 
