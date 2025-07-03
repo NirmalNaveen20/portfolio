@@ -1,6 +1,6 @@
 const projects = [
     {
-        slug: 'project-A',
+        slug: 'nutanix-snmp-integration',
         title: 'SNMP Integration for Nutanix Infrastructure',
         image: '/projects/project-A.png',
         description: 'Nutanix monitoring automated via SNMP and Datadog integration',
@@ -9,7 +9,7 @@ const projects = [
         techStack: ['Nutanix', 'Datadog', 'YAML', 'SNMP', 'Python', 'Linux'],
     },
     {
-        slug: 'project-B',
+        slug: 'final-year-research',
         title: 'Final Year Research Project',
         image: '/projects/project-B.png',
         description: 'AI Mock Interview Platform for IT Graduates',
@@ -18,7 +18,7 @@ const projects = [
         techStack: ['Python', 'TensorFlow', 'Flask', 'ReactJS'],
     },
     {
-        slug: 'project-C',
+        slug: 'mealie-k8s-monitoring',
         title: 'Mealie App on K8s with Real-Time Monitoring',
         image: '/projects/project-C.png',
         description: 'Mealie Deployment with Kubernetes and Full Stack Monitoring using Prometheus & Grafana',
