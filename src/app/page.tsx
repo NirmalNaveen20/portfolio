@@ -59,7 +59,7 @@ export default function Home() {
 
                 {/* Quick Facts Section */}
                 <div className="mt-8 text-center">
-                    <h2 className="text-3xl font-bold mb-4">One of favourite tools stack</h2>
+                    <h2 className="text-3xl font-bold mb-4">One of my favourite tools</h2>
 
                     <div className="flex flex-wrap justify-center gap-3 px-4 max-w-4xl mx-auto">
                         {[
