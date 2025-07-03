@@ -1,6 +1,6 @@
 @import "tailwindcss";
+@import "flowbite";
 @import "highlight.js/styles/github-dark.css";
-@plugin "@tailwindcss/typography";
 
 :root {
   --background: #ffffff;
