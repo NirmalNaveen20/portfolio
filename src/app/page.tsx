@@ -189,32 +189,35 @@ export default function Home() {
                 className="mt-16"
             >
                 <h2 className="text-2xl font-bold mb-6 text-center">Knowledge Credentials</h2>
-                <div className="flex flex-wrap justify-center gap-6">
-                    {certifications.map(cert => (
-                        <motion.a
-                            key={cert.slug}
-                            href={cert.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="transition-transform duration-200"
-                        >
-                            <motion.div
-                                whileHover={{ scale: 1.08 }}
-                                whileTap={{ scale: 0.97 }}
-                                className="flex flex-col items-center"
-                            >
-                                <Image
-                                    src={cert.image}
-                                    alt={cert.name}
-                                    width={160}
-                                    height={100}
-                                    className="object-contain w-40 h-24"
-                                    priority
-                                />
-                                <span className="mt-2 text-sm text-gray-700 dark:text-gray-300">{cert.name}</span>
-                            </motion.div>
-                        </motion.a>
-                    ))}
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 justify-center">
+                  {certifications.map(cert => (
+                    <motion.a
+                      key={cert.slug}
+                      href={cert.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="transition-transform duration-200 flex flex-col items-center rounded-xl shadow p-3 hover:shadow-lg bg-white dark:bg-transparent dark:backdrop-blur-md dark:bg-[rgba(30,41,59,0.45)] dark:border dark:border-slate-700"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.97 }}
+                    >
+                      <Image
+                        src={cert.image}
+                        alt={cert.name}
+                        width={90}
+                        height={60}
+                        className="object-contain w-20 h-14 mb-2"
+                        priority
+                      />
+                      <div className="text-center">
+                        <span className="block text-xs font-semibold text-gray-800 dark:text-gray-100 mb-1 leading-tight">
+                          {cert.name}
+                        </span>
+                        {/* <span className="block text-[11px] text-gray-500 break-words leading-tight">
+                          {cert.slug}
+                        </span> */}
+                      </div>
+                    </motion.a>
+                  ))}
                 </div>
             </motion.div>
 
