@@ -69,8 +69,8 @@ export default function Home() {
                   <div className="flex flex-col gap-1">
                     <div className="flex flex-col w-full max-w-[326px] leading-1.5 p-4 border-gray-200 bg-gray-100 rounded-e-xl rounded-es-xl dark:bg-gray-700">
                       <div className="flex items-center space-x-2 rtl:space-x-reverse">
-                        <span className="text-sm font-semibold text-gray-900 dark:text-white">Nirmal Chandrasiri</span>
-                        <span className="text-sm font-normal text-gray-500 dark:text-gray-400">Download</span>
+                        <span className="text-sm font-semibold text-gray-900 dark:text-white">Interested in what I have to offer?</span>
+                        {/* <span className="text-sm font-normal text-gray-500 dark:text-gray-400">Download</span> */}
                       </div>
                       <div className="flex items-start my-2.5 bg-gray-50 dark:bg-gray-600 rounded-xl p-2">
                         <div className="me-2">
@@ -273,4 +273,3 @@ export default function Home() {
         </section>
     )
 }
-
