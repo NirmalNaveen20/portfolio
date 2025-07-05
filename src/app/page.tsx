@@ -196,7 +196,7 @@ export default function Home() {
                       href={cert.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="transition-transform duration-200 flex flex-col items-center bg-white rounded-xl shadow p-3 hover:shadow-lg"
+                      className="transition-transform duration-200 flex flex-col items-center rounded-xl shadow p-3 hover:shadow-lg bg-white dark:bg-transparent dark:backdrop-blur-md dark:bg-[rgba(30,41,59,0.45)] dark:border dark:border-slate-700"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.97 }}
                     >
@@ -209,7 +209,7 @@ export default function Home() {
                         priority
                       />
                       <div className="text-center">
-                        <span className="block text-xs font-semibold text-gray-800 mb-1 leading-tight">
+                        <span className="block text-xs font-semibold text-gray-800 dark:text-gray-100 mb-1 leading-tight">
                           {cert.name}
                         </span>
                         {/* <span className="block text-[11px] text-gray-500 break-words leading-tight">
