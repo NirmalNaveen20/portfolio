@@ -203,9 +203,9 @@ export default function Home() {
                       <Image
                         src={cert.image}
                         alt={cert.name}
-                        width={90}
-                        height={60}
-                        className="object-contain w-20 h-14 mb-2"
+                        width={100}
+                        height={80}
+                        className="object-contain w-22 h-22 mb-2"
                         priority
                       />
                       <div className="text-center">
