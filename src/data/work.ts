@@ -1,7 +1,7 @@
 const work = [
     {
         slug: 'IFS',
-        company: 'IFS',
+        company: 'IFS R&D International',
         title: 'Trainee Site Reliability Engineer',
         start: 'Jul 2024',
         end: 'Jul 2025',
@@ -10,7 +10,7 @@ const work = [
     },
     {
         slug: 'SyscoLABS',
-        company: 'Sysco LABS',
+        company: 'Sysco LABS Technologies',
         title: 'DevOps Engineer Intern',
         start: 'Jan 2024',
         end: 'Jul 2024',

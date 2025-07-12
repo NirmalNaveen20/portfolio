@@ -46,7 +46,13 @@ export const techStackMap: Record<string, string> = {
     'Grafana': 'grafana',
     'Kubernetes': 'kubernetes',
     'Bash': 'bash',
-    'Terraform': 'terraform'
+    'Terraform': 'terraform',
+    'Bitbucket': 'bitbucket', 
+    'Elastic': 'elastic', 
+    'Gitlab': 'gitlab',
+    'Jira': 'jira', 
+    'Linux': 'linux',
+    'Powershell': 'powershell'
 }
 
 /**
