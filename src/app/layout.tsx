@@ -59,7 +59,7 @@ export default function RootLayout({children}: { children: ReactNode }) {
         <html lang="en" className={`${gabarito.className} ${gabarito.variable}`} suppressHydrationWarning>
         <head>
             <script dangerouslySetInnerHTML={{__html: themeInitScript}}/>
-            <title>@DevOps Engineer</title>
+            <title>Nirmal Naveen Chandrasiri</title>
         </head>
         <body
             className={`antialiased flex flex-col min-h-screen transition-colors ${gabarito.className} ${gabarito.variable}`}
