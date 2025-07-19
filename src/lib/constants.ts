@@ -52,7 +52,7 @@ export const techStackMap: Record<string, string> = {
     'Gitlab': 'gitlab',
     'Jira': 'jira', 
     'Linux': 'linux',
-    'Powershell': 'powershell'
+    'Powershell': 'powershell',
 }
 
 /**
