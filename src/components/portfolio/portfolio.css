@@ -147,7 +147,8 @@ html[data-motion=paused] .portfolio-page *,html[data-motion=paused] .portfolio-p
 .portfolio-page .topic-icon{overflow:visible}
 .portfolio-page .topic-icon [class]{animation-play-state:paused!important}
 .portfolio-page .operations-section.in-view .topic-icon [class]{animation-play-state:running!important}
-.portfolio-page .icon-gear{transform-origin:15px 17px;animation:topic-gear 8s linear infinite}
+.portfolio-page .icon-devops-base{opacity:.45}
+.portfolio-page .icon-devops-flow{stroke:#65c5ff;stroke-width:1.8;stroke-dasharray:14 86;animation:topic-trace 3.6s linear infinite}
 .portfolio-page .icon-trace-base{opacity:.28}
 .portfolio-page .icon-trace{stroke:#65c5ff;stroke-dasharray:35 65;animation:topic-trace 2.8s linear infinite}
 .portfolio-page .icon-packet{animation:topic-packet 3.6s ease-in-out infinite}
@@ -160,7 +161,6 @@ html[data-motion=paused] .portfolio-page *,html[data-motion=paused] .portfolio-p
 .portfolio-page .icon-ripple{transform-origin:8px 7px;animation:topic-ripple 3.2s ease-out infinite}
 .portfolio-page .icon-cursor{animation:topic-cursor 3.2s ease-in-out infinite}
 .portfolio-page .icon-needle{transform-origin:12px 13px;animation:topic-needle 4.5s ease-in-out infinite}
-@keyframes topic-gear{to{transform:rotate(360deg)}}
 @keyframes topic-trace{to{stroke-dashoffset:-100}}
 @keyframes topic-packet{0%,10%{transform:translate(0,0);opacity:0}20%{opacity:1}50%{transform:translate(0,4px)}80%{transform:translate(7px,4px);opacity:1}100%{transform:translate(7px,7px);opacity:0}}
 @keyframes topic-status{0%,100%{opacity:.4}40%,65%{opacity:1;stroke:#8ad5ff}}
@@ -173,6 +173,7 @@ html[data-motion=paused] .portfolio-page *,html[data-motion=paused] .portfolio-p
 @keyframes topic-needle{0%,100%{transform:rotate(-40deg)}40%,60%{transform:rotate(18deg)}75%{transform:rotate(8deg)}}
 @media(prefers-reduced-motion:reduce){
  .portfolio-page .topic-icon [class]{animation:none!important}
+ .portfolio-page .icon-devops-base{opacity:1}.portfolio-page .icon-devops-flow{display:none}
  .portfolio-page .icon-trace{stroke-dasharray:none}.portfolio-page .icon-packet{display:none}
  .portfolio-page .icon-ripple{opacity:.55}
 }
