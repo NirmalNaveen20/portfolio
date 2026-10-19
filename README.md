@@ -1,29 +1,60 @@
 # Nirmal Chandrasiri Portfolio
 
-This website is a showcase of my journey as a cloud, DevOps Engineer, highlighting my technical expertise, project experience.
+Personal portfolio built with Next.js and React. The homepage includes a blue interactive hero, career and education history, tools, credentials, blog links, and a contact form. Existing MDX blog, project, and work pages are preserved.
 
-## Overview
+## Local setup
 
-This portfolio is designed to provide a comprehensive view of my:
-- **Work Experience:** Detailed case studies of my roles, responsibilities, and impact at leading organizations.
-- **Projects:** In-depth presentations of real-world projects, including technical stacks, challenges, and outcomes.
-- **Certifications:** Verified credentials and industry certifications, with direct links to validation sources.
-- **Blog:** Articles and technical write-ups sharing my insights on cloud, DevOps, automation, and software engineering best practices.
+Use Node.js 22 LTS. Open this repository folder in VS Code, then run:
 
-## Approach & Highlights
+```sh
+npm ci
+npm run dev
+```
 
-- **Content-Driven:** All content is managed using MDX, allowing for rich formatting and easy updates to work, project, and blog sections.
-- **Modern UI/UX:** The site features a clean, responsive design with dark mode, animated transitions, and a focus on readability.
-- **Dynamic Filtering:** Visitors can filter projects and blog posts by technology or tags, making it easy to explore relevant content.
-- **Optimized Media:** All images and icons are optimized for performance and accessibility.
-- **Scalable Structure:** The codebase is modular, making it easy to extend with new sections, content types, or integrations.
-- **Professional Presentation:** Each section is crafted to highlight not just what I have done, but how I approach problem-solving, collaboration, and continuous learning.
+Open http://localhost:3000. Edit `src/components/portfolio/Portfolio.jsx` to change the homepage; the browser updates automatically.
 
-## Content Management
+If the Windows npm launcher reports a missing `npm-cli.js`, use the installed Node.js npm directly in PowerShell:
 
-- **Work, Projects, Blog, and Certifications** are all managed as MDX files in the `src/data` directory, making updates and additions seamless and version-controlled.
-- **Icons and images** are stored in the `public/icons` and `public/projects` folders for easy reference and optimization.
+```powershell
+node 'C:/Program Files/nodejs/node_modules/npm/bin/npm-cli.js' ci --cache .npm-cache --registry https://registry.npmjs.org
+node 'C:/Program Files/nodejs/node_modules/npm/bin/npm-cli.js' run dev
+```
 
----
+To check a production build locally:
 
-Thank you for visiting my portfolio. If you'd like to connect, collaborate, or learn more, please reach out via the email or linkedin option provided on the site.
+```sh
+npm run build
+npm start
+```
+
+## Where to edit
+
+| Content | Location |
+| --- | --- |
+| Homepage sections | `src/components/portfolio/Portfolio.jsx` |
+| Biography, career, education, tools | `src/components/portfolio/content/portfolio.js` |
+| Credentials, homepage blog links, social profiles | `src/components/portfolio/content/extras.json` |
+| Homepage styling and responsive layouts | `src/components/portfolio/portfolio.css` |
+| Hero and scrolling animations | `src/components/portfolio/HeroWaves.jsx`, `Motion.jsx`, `TopicIcon.jsx` |
+| Contact form and public form identifier | `src/components/portfolio/ContactForm.jsx`, `content/contact.js` |
+| Homepage images, logos, and font | `public/assets/` |
+| Full blog, project, and work content | `src/data/` |
+
+The homepage styles are scoped so existing article and project layouts keep their own styling. Motion respects the visitor's reduced-motion preference.
+
+## Preview before production
+
+The production branch is `main`. Develop on `feature/portfolio-blue-redesign` and open a pull request targeting `main`.
+
+1. Push the feature branch to GitHub.
+2. Check the Vercel deployment linked to that branch or pull request. In Vercel, confirm this repository is connected and the Production Branch is `main`.
+3. Review the preview on desktop, phone, and tablet. Check navigation, article links, images, and the contact form.
+4. Merge the pull request into `main` only after reviewing the preview. With the Git integration configured, that merge triggers the production deployment.
+
+Keep the Vercel framework preset as Next.js, with the repository root as the Root Directory and the framework's default build/output settings. Do not upload the separate standalone HTML or Vite build into this repository.
+
+## Contact form
+
+The homepage uses Web3Forms with a public access key and hCaptcha. No server secret is required in the repository. Enable the corresponding spam protection in the Web3Forms dashboard. CAPTCHA verification and real message delivery must be checked on the hosted preview; local automated checks should mock the service and must not send email.
+
+The existing free-plan account controls submission limits. This repository does not require a paid form subscription.

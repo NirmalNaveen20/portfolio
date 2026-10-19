@@ -1,0 +1,141 @@
+{
+  "source": "https://www.nirmalchandrasiri.com/",
+  "verifiedAt": "2026-10-11",
+  "credentials": [
+    {
+      "title": "AWS Certified Cloud Practitioner",
+      "url": "https://www.credly.com/badges/6be30e51-e36b-43fc-8ebd-7745f1b94029/public_url",
+      "image": "/assets/credentials/awspractitioner.png",
+      "sourceImage": "https://www.nirmalchandrasiri.com/certification-icons/awspractitioner.png"
+    },
+    {
+      "title": "AWS Cloud Quest: Solutions Architect",
+      "url": "https://www.credly.com/badges/2561b57b-9b49-4a24-a477-263560a06dc5/public_url",
+      "image": "/assets/credentials/awscloudquest1.png",
+      "sourceImage": "https://www.nirmalchandrasiri.com/certification-icons/awscloudquest1.png"
+    },
+    {
+      "title": "AWS Cloud Quest: Serverless Developer",
+      "url": "https://www.credly.com/badges/dca601ed-c3d6-4200-90f5-fbdb86888ebd/public_url",
+      "image": "/assets/credentials/awscloudquest2.png",
+      "sourceImage": "https://www.nirmalchandrasiri.com/certification-icons/awscloudquest2.png"
+    },
+    {
+      "title": "AWS Knowledge: Amazon EKS",
+      "url": "https://www.credly.com/badges/5778b5ba-0b41-41ad-9cf1-542395afb692/public_url",
+      "image": "/assets/credentials/awseks.png",
+      "sourceImage": "https://www.nirmalchandrasiri.com/certification-icons/awseks.png"
+    },
+    {
+      "title": "Microsoft Certified: Azure Administrator Associate",
+      "url": "https://learn.microsoft.com/api/credentials/share/en-us/nirmalnaveen/58E2CE5181D5E769?sharingId=studentamb_209465",
+      "image": "/assets/credentials/azure104.png",
+      "sourceImage": "https://www.nirmalchandrasiri.com/certification-icons/azure104.png"
+    },
+    {
+      "title": "Microsoft Certified: Azure AI Fundamentals",
+      "url": "https://learn.microsoft.com/api/credentials/share/en-us/nirmalnaveen/9D61A3B4F201C831?sharingId=studentamb_209465",
+      "image": "/assets/credentials/ai900.png",
+      "sourceImage": "https://www.nirmalchandrasiri.com/certification-icons/ai900.png"
+    },
+    {
+      "title": "Microsoft Certified: Azure Fundamentals",
+      "url": "https://learn.microsoft.com/api/credentials/share/en-us/nirmalnaveen/2833D650CCEC89FF?sharingId=studentamb_209465",
+      "image": "/assets/credentials/az900.png",
+      "sourceImage": "https://www.nirmalchandrasiri.com/certification-icons/az900.png"
+    },
+    {
+      "title": "Log Management Fundamentals",
+      "url": "https://www.credly.com/badges/2386b438-efc3-490c-9f6d-1dac42128ff5/public_url",
+      "image": "/assets/credentials/datadog1.png",
+      "sourceImage": "https://www.nirmalchandrasiri.com/certification-icons/datadog1.png"
+    }
+  ],
+  "socials": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/NirmalNaveen20",
+      "icon": "/assets/social/github.svg"
+    },
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/nirmal-naveen/",
+      "icon": "/assets/social/linkedin.svg"
+    },
+    {
+      "label": "X",
+      "url": "https://x.com/NirmalNaveen20",
+      "icon": "/assets/social/x.svg"
+    },
+    {
+      "label": "Bluesky",
+      "url": "https://bsky.app/profile/nirmalnaveen.com",
+      "icon": "/assets/social/bluesky.svg"
+    },
+    {
+      "label": "Medium",
+      "url": "https://nirmalnaveen.medium.com/",
+      "icon": "/assets/social/medium.svg"
+    }
+  ],
+  "blog": {
+    "title": "Blog",
+    "url": "https://www.nirmalchandrasiri.com/blog",
+    "articles": [
+      {
+        "title": "Getting Started with Datadog",
+        "url": "/blog/datadog-fundamentals",
+        "date": "Nov 2, 2025",
+        "summary": "A beginner-friendly guide to setting up monitoring with Datadog, creating dashboards, alerts, and integrating with your infrastructure.",
+        "tags": [
+          "monitoring",
+          "observability",
+          "devops",
+          "datadog"
+        ]
+      },
+      {
+        "title": "Kubernetes Deployment Types: Blue-Green, Canary...",
+        "url": "/blog/kubernetes-deployment-strategies",
+        "date": "Jun 20, 2025",
+        "summary": "When working with Kubernetes in a production environment, selecting the right deployment strategy is crucial.",
+        "tags": [
+          "kubernetes",
+          "cloud",
+          "devops",
+          "yaml"
+        ]
+      },
+      {
+        "title": "Essential Terraform Commands and Concepts",
+        "url": "/blog/terraform-concepts",
+        "date": "Jun 15, 2025",
+        "summary": "Terraform makes infrastructure as code easy, reusable, and consistent.",
+        "tags": [
+          "aws",
+          "azure",
+          "devops",
+          "terraform",
+          "iac"
+        ]
+      },
+      {
+        "title": "Most Important Linux Commands",
+        "url": "/blog/linux-commands-1",
+        "date": "Jan 3, 2025",
+        "summary": "A practical guide to essential Linux commands every developer, engineer, or system administrator should know.",
+        "tags": [
+          "linux",
+          "devops",
+          "command line",
+          "system administration"
+        ]
+      }
+    ]
+  },
+  "notes": [
+    "All eight credentials and their original verification links/images are copied from the current homepage; no credential validity dates are asserted.",
+    "The original Bluesky and Medium anchors incorrectly use X aria-label; labels here are corrected for accessibility.",
+    "Kubernetes article title ends in an ellipsis on the article page itself; preserved exactly."
+  ]
+}

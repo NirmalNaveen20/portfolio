@@ -19,6 +19,6 @@ export default function robots(): MetadataRoute.Robots {
                 disallow: '/',
             },
         ],
-        sitemap: 'https://nextjs-portofolio-website.vercel.app/sitemap.xml',
+        sitemap: 'https://www.nirmalchandrasiri.com/sitemap.xml',
     }
 }
