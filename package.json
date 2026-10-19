@@ -17,16 +17,16 @@
     "flowbite-react": "^0.12.7",
     "framer-motion": "^12.20.1",
     "geist": "^1.4.1",
+    "lucide-react": "0.468.0",
     "natural": "^8.1.0",
     "next": "15.5.28",
-    "next-mdx-remote": "^5.0.0",
+    "next-mdx-remote": "6.0.0",
     "react": "19.1.10",
     "react-dom": "19.1.10",
     "react-icons": "^5.5.0",
     "rehype-highlight": "^7.0.2",
     "remark-gfm": "^4.0.1",
-    "tech-stack-icons": "^3.3.2",
-    "lucide-react": "0.468.0"
+    "tech-stack-icons": "^3.3.2"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
