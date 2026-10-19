@@ -2,6 +2,11 @@ import React,{useEffect,useRef,useState} from 'react';
 import {ArrowUpRight,Check,LoaderCircle,Send} from 'lucide-react';
 import {profile} from './content/portfolio.js';
 import {contactConfig} from './content/contact.js';
+import {countries} from './content/countries.js';
+
+const projectTypes=['Website Design','Website Redesign','Operations Support','Cloud Infrastructure','Observability & Monitoring','Automation & Agentic AI','Other'];
+const pageCounts=['1 page','2–5 pages','6–10 pages','11+ pages','Not sure yet','Not applicable'];
+const budgets=['$150–$500','$500–$1,000','$1,000–$2,000','$2,000–$3,000'];
 
 const endpoint='https://api.web3forms.com/submit';
 const captchaSiteKey='50b2fe65-b00b-4b9e-ad62-3ba471098be2'; // Web3Forms' documented free-plan site key.
@@ -65,7 +70,7 @@ export default function ContactForm({accessKey=contactConfig.accessKey}){
   locked.current=true;setStatus('sending');setFeedback('Sending your message…');
   const controller=new AbortController();request.current=controller;
   const timeout=setTimeout(()=>controller.abort(),20000);
-  const payload={access_key:accessKey.trim(),name:String(fields.get('name')).trim(),email:String(fields.get('email')).trim(),message:String(fields.get('message')).trim(),subject:String(fields.get('subject')||'').trim()||'New portfolio enquiry',from_name:'Nirmal Chandrasiri · Portfolio','h-captcha-response':token};
+  const payload={access_key:accessKey.trim(),name:String(fields.get('name')).trim(),email:String(fields.get('email')).trim(),country:countries.find(country=>country.code===fields.get('country'))?.name||'',project_type:String(fields.get('project_type')||''),number_of_pages:String(fields.get('number_of_pages')||'Not specified'),budget_range:String(fields.get('budget_range')||'')+' USD',message:String(fields.get('message')).trim(),subject:'New portfolio enquiry',from_name:'Nirmal Chandrasiri · Portfolio','h-captcha-response':token};
   try{
    const response=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(payload),signal:controller.signal});
    const data=await response.json();
@@ -84,11 +89,16 @@ export default function ContactForm({accessKey=contactConfig.accessKey}){
   {!configured&&<p className="contact-notice" role="status">The contact form is being connected. Please <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">use LinkedIn</a> for now.</p>}
   <fieldset disabled={!configured||status==='sending'}><legend className="sr-only">Your contact details and message</legend>
    <div className="contact-field-pair"><div className="contact-field"><label htmlFor="contact-name">Name <span aria-hidden="true">*</span></label><input id="contact-name" name="name" autoComplete="name" placeholder="Your name" required maxLength={100} onInput={e=>e.currentTarget.setCustomValidity('')}/></div><div className="contact-field"><label htmlFor="contact-email">Email <span aria-hidden="true">*</span></label><input id="contact-email" name="email" type="email" autoComplete="email" placeholder="you@example.com" required maxLength={254}/></div></div>
-   <div className="contact-field"><label htmlFor="contact-subject">Subject <span className="optional">Optional</span></label><input id="contact-subject" name="subject" placeholder="What would you like to discuss?" maxLength={150}/></div>
-   <div className="contact-field"><label htmlFor="contact-message">Message <span aria-hidden="true">*</span></label><textarea id="contact-message" name="message" placeholder="Tell me a little about it…" rows={5} required minLength={10} maxLength={5000} onInput={e=>e.currentTarget.setCustomValidity('')}/></div>
+   <div className="contact-field"><label htmlFor="contact-country">Country <span aria-hidden="true">*</span></label><select id="contact-country" name="country" autoComplete="country" required defaultValue=""><option value="" disabled>Select your country</option>{countries.map(country=><option key={country.code} value={country.code}>{country.name}</option>)}</select></div>
+   <div className="contact-field-pair">
+    <div className="contact-field"><label htmlFor="contact-project">Project type <span aria-hidden="true">*</span></label><select id="contact-project" name="project_type" required defaultValue=""><option value="" disabled>Select a project type</option>{projectTypes.map(type=><option key={type}>{type}</option>)}</select></div>
+    <div className="contact-field"><label htmlFor="contact-pages">Number of pages <span className="optional">Optional</span></label><select id="contact-pages" name="number_of_pages" defaultValue=""><option value="">Select if relevant</option>{pageCounts.map(count=><option key={count}>{count}</option>)}</select></div>
+   </div>
+   <fieldset className="contact-budget"><legend>Budget range <span aria-hidden="true">*</span> <span className="budget-currency">USD</span></legend><div className="contact-budget-options">{budgets.map((budget,index)=><label className="contact-budget-option" key={budget}><input type="radio" name="budget_range" value={budget} required={index===0}/><span>{budget}</span></label>)}</div></fieldset>
+   <div className="contact-field"><label htmlFor="contact-message">What do you need help with? <span aria-hidden="true">*</span></label><textarea id="contact-message" name="message" placeholder="Tell me a little about it…" rows={5} required minLength={10} maxLength={5000} onInput={e=>e.currentTarget.setCustomValidity('')}/></div>
    <input className="contact-botcheck" type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" aria-hidden="true"/>
    {configured&&started&&<Verification onToken={setToken} resetCount={resetCount}/>}
-   <button className="button primary contact-submit" type="submit" disabled={!configured||status==='sending'}>{status==='sending'?<><LoaderCircle className="sending-spinner" size={16}/>Sending…</>:<>Send message <Send size={16}/></>}</button>
+   <button className="contact-submit" type="submit" disabled={!configured||status==='sending'}>{status==='sending'?<><LoaderCircle className="sending-spinner" size={16}/>Sending…</>:<>Send message <Send size={16}/></>}</button>
   </fieldset>
   <p ref={statusBox} tabIndex={-1} className={'contact-feedback '+status} role={status==='error'?'alert':'status'}>{status==='success'&&<Check size={16} aria-hidden="true"/>}{feedback}{status==='error'&&<a className="inline-link" href={profile.linkedin} target="_blank" rel="noopener noreferrer">Contact on LinkedIn <ArrowUpRight size={12}/></a>}</p>
  </form>;
