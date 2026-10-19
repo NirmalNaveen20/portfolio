@@ -19,7 +19,7 @@ export function useScrollMotion(paused){
 export {default as HeroLight} from './HeroWaves.jsx';
 
 const topics=[
- {label:'Cloud Operations',icon:'cloud'},
+ {label:'DevOps',icon:'devops'},
  {label:'Observability',icon:'observability'},
  {label:'Cloud Infrastructure',icon:'infrastructure'},
  {label:'SaaS Operations',icon:'saas'},

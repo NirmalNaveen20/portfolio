@@ -3,7 +3,7 @@ import React from 'react';
 // Small decorative line drawings; only their meaningful details move.
 export default function TopicIcon({type}){
  const drawings={
-  cloud:<><path d="M8 17H6a4 4 0 0 1-.8-7.9A6 6 0 0 1 17 7a4.5 4.5 0 0 1 3 7.8"/><g className="icon-gear"><circle cx="15" cy="17" r="4" strokeDasharray="2 2" strokeWidth="2.6"/><circle cx="15" cy="17" r="1.3"/></g></>,
+  devops:<><path className="icon-devops-base" d="M12 12C9 8 7 6 5 7C1 8 1 16 5 17C7 18 9 16 12 12C15 8 17 6 19 7C23 8 23 16 19 17C17 18 15 16 12 12Z"/><path className="icon-devops-flow" pathLength="100" d="M12 12C9 8 7 6 5 7C1 8 1 16 5 17C7 18 9 16 12 12C15 8 17 6 19 7C23 8 23 16 19 17C17 18 15 16 12 12Z"/></>,
   observability:<><path className="icon-trace-base" d="M2 13h4l3-8 5 15 3-9h5"/><path className="icon-trace" pathLength="100" d="M2 13h4l3-8 5 15 3-9h5"/></>,
   infrastructure:<><path d="M12 8v5M5 16v-3h14v3"/><rect x="9" y="2" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="16" y="16" width="6" height="6" rx="1"/><circle className="icon-packet" cx="12" cy="9" r="1.4" fill="currentColor" stroke="none"/></>,
   saas:<><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M2 8h20M8 8v13"/><circle className="icon-status" cx="5" cy="5.5" r=".8" fill="currentColor" stroke="none"/><path className="icon-panel" d="M12 12h6M12 16h4"/></>,
