@@ -1,0 +1,95 @@
+import React,{useEffect,useRef,useState} from 'react';
+import {ArrowUpRight,Check,LoaderCircle,Send} from 'lucide-react';
+import {profile} from './content/portfolio.js';
+import {contactConfig} from './content/contact.js';
+
+const endpoint='https://api.web3forms.com/submit';
+const captchaSiteKey='50b2fe65-b00b-4b9e-ad62-3ba471098be2'; // Web3Forms' documented free-plan site key.
+let captchaLoader;
+function loadCaptcha(){
+ if(captchaLoader)return captchaLoader;
+ captchaLoader=new Promise((resolve,reject)=>{
+  const script=document.createElement('script');
+  const fail=()=>{clearTimeout(timer);script.remove();captchaLoader=undefined;reject(new Error('Verification unavailable'));};
+  const timer=setTimeout(fail,15000);
+  window.portfolioCaptchaReady=()=>{clearTimeout(timer);resolve(window.hcaptcha);};
+  script.src='https://js.hcaptcha.com/1/api.js?onload=portfolioCaptchaReady&render=explicit&recaptchacompat=off';
+  script.async=true;script.defer=true;script.onerror=fail;document.head.appendChild(script);
+ });
+ return captchaLoader;
+}
+
+function Verification({onToken,resetCount}){
+ const box=useRef(null),widget=useRef(null),callback=useRef(onToken);
+ const [state,setState]=useState('loading'),[attempt,setAttempt]=useState(0),[size,setSize]=useState(null);
+ callback.current=onToken;
+ useEffect(()=>{const observer=new ResizeObserver(([entry])=>setSize(entry.contentRect.width<304?'compact':'normal'));observer.observe(box.current);return()=>observer.disconnect();},[]);
+ useEffect(()=>{
+  if(!size)return;
+  let cancelled=false;setState('loading');
+  loadCaptcha().then(api=>{
+   if(cancelled)return;
+   setState('ready');
+   widget.current=api.render(box.current,{sitekey:captchaSiteKey,theme:'dark',size,
+    callback:token=>callback.current(token),
+    'expired-callback':()=>callback.current(''),
+    'chalexpired-callback':()=>callback.current(''),
+    'error-callback':()=>{callback.current('');setState('error');}
+   });
+  }).catch(()=>{if(!cancelled)setState('error');});
+  return()=>{cancelled=true;callback.current('');if(widget.current!==null){window.hcaptcha?.remove?.(widget.current);widget.current=null;}};
+ },[attempt,size]);
+ useEffect(()=>{if(widget.current!==null)window.hcaptcha?.reset(widget.current);},[resetCount]);
+ const localPreview=location.protocol==='file:'||['localhost','127.0.0.1','[::1]'].includes(location.hostname);
+ return <div className="contact-verification">{localPreview&&<p>Message verification requires the hosted website. For this local preview, please use the LinkedIn link.</p>}<div ref={box}/>{state==='loading'&&<p role="status">Loading verification…</p>}{state==='error'&&<p role="alert">Verification couldn’t load. <button type="button" className="inline-link" onClick={()=>setAttempt(n=>n+1)}>Try again</button></p>}</div>;
+}
+
+export default function ContactForm({accessKey=contactConfig.accessKey}){
+ const configured=Boolean(accessKey.trim()),[status,setStatus]=useState('idle'),[feedback,setFeedback]=useState('');
+ const [started,setStarted]=useState(false),[token,setToken]=useState(''),[resetCount,setResetCount]=useState(0);
+ const request=useRef(null),locked=useRef(false),mounted=useRef(true),statusBox=useRef(null);
+ useEffect(()=>{mounted.current=true;return()=>{mounted.current=false;request.current?.abort();};},[]);
+ useEffect(()=>{if(status==='success'||status==='error')statusBox.current?.focus({preventScroll:true});},[status]);
+ async function submit(event){
+  event.preventDefault();
+  if(locked.current||!configured)return;
+  const form=event.currentTarget,fields=new FormData(form);
+  for(const name of ['name','message']){
+   const field=form.elements.namedItem(name);
+   field.setCustomValidity(String(fields.get(name)||'').trim()?'':'Please fill in this field.');
+  }
+  if(!form.reportValidity())return;
+  if(fields.get('botcheck')){setStatus('error');setFeedback('Your message could not be sent. Please reload the page and try again.');return;}
+  setStarted(true);
+  if(!token){setStatus('error');setFeedback('Please complete the verification before sending your message.');return;}
+  locked.current=true;setStatus('sending');setFeedback('Sending your message…');
+  const controller=new AbortController();request.current=controller;
+  const timeout=setTimeout(()=>controller.abort(),20000);
+  const payload={access_key:accessKey.trim(),name:String(fields.get('name')).trim(),email:String(fields.get('email')).trim(),message:String(fields.get('message')).trim(),subject:String(fields.get('subject')||'').trim()||'New portfolio enquiry',from_name:'Nirmal Chandrasiri · Portfolio','h-captcha-response':token};
+  try{
+   const response=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(payload),signal:controller.signal});
+   const data=await response.json();
+   if(!mounted.current)return;
+   if(!response.ok||data.success!==true){
+    setStatus('error');setFeedback(response.status===429?'The form is temporarily unavailable. Please try again later or contact me on LinkedIn.':'Your message could not be sent. Please try again, or contact me on LinkedIn.');
+   }else{form.reset();setStatus('success');setFeedback('Thanks—your message has been sent. I’ll get back to you.');}
+  }catch{
+   if(mounted.current){setStatus('error');setFeedback('We couldn’t confirm that your message was sent. Please try again later or contact me on LinkedIn.');}
+  }finally{
+   clearTimeout(timeout);locked.current=false;request.current=null;
+   if(mounted.current){setToken('');setResetCount(n=>n+1);}
+  }
+ }
+ return <form className="contact-form" onSubmit={submit} aria-label="Send Nirmal a message" aria-busy={status==='sending'} onFocusCapture={()=>{if(configured)setStarted(true);}}>
+  {!configured&&<p className="contact-notice" role="status">The contact form is being connected. Please <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">use LinkedIn</a> for now.</p>}
+  <fieldset disabled={!configured||status==='sending'}><legend className="sr-only">Your contact details and message</legend>
+   <div className="contact-field-pair"><div className="contact-field"><label htmlFor="contact-name">Name <span aria-hidden="true">*</span></label><input id="contact-name" name="name" autoComplete="name" placeholder="Your name" required maxLength={100} onInput={e=>e.currentTarget.setCustomValidity('')}/></div><div className="contact-field"><label htmlFor="contact-email">Email <span aria-hidden="true">*</span></label><input id="contact-email" name="email" type="email" autoComplete="email" placeholder="you@example.com" required maxLength={254}/></div></div>
+   <div className="contact-field"><label htmlFor="contact-subject">Subject <span className="optional">Optional</span></label><input id="contact-subject" name="subject" placeholder="What would you like to discuss?" maxLength={150}/></div>
+   <div className="contact-field"><label htmlFor="contact-message">Message <span aria-hidden="true">*</span></label><textarea id="contact-message" name="message" placeholder="Tell me a little about it…" rows={5} required minLength={10} maxLength={5000} onInput={e=>e.currentTarget.setCustomValidity('')}/></div>
+   <input className="contact-botcheck" type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" aria-hidden="true"/>
+   {configured&&started&&<Verification onToken={setToken} resetCount={resetCount}/>}
+   <button className="button primary contact-submit" type="submit" disabled={!configured||status==='sending'}>{status==='sending'?<><LoaderCircle className="sending-spinner" size={16}/>Sending…</>:<>Send message <Send size={16}/></>}</button>
+  </fieldset>
+  <p ref={statusBox} tabIndex={-1} className={'contact-feedback '+status} role={status==='error'?'alert':'status'}>{status==='success'&&<Check size={16} aria-hidden="true"/>}{feedback}{status==='error'&&<a className="inline-link" href={profile.linkedin} target="_blank" rel="noopener noreferrer">Contact on LinkedIn <ArrowUpRight size={12}/></a>}</p>
+ </form>;
+}
