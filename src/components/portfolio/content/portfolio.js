@@ -5,7 +5,7 @@ export const profile = {
   "company": "Sitecore",
   "linkedin": "https://www.linkedin.com/in/nirmal-naveen/",
   "github": "https://github.com/NirmalNaveen20",
-  "resume": "https://drive.google.com/file/d/1n8K9JGi40BFZPQUcRcUWwM1xS0vpM3LG/view?usp=sharing",
+  "resume": "",
   "portrait": "/assets/nirmal-portrait.jpg",
   "bio": [
     "Passionate about cloud infrastructure, automation, and observability, I enjoy exploring topics in DevOps, Site Reliability Engineering, and Systems Engineering. I focus on building scalable and reliable systems, enhancing service availability, and driving operational excellence. With hands-on experience in Level 2 and Level 3 support, I work closely with cross-functional teams to proactively monitor, troubleshoot, and continuously improve critical infrastructure and applications.",

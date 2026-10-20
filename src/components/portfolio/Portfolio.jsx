@@ -5,9 +5,10 @@ import {profile,career,skills} from './content/portfolio.js';
 import extras from './content/extras.json';
 import {HeroLight,OperationsMotion,useScrollMotion} from './Motion.jsx';
 import ToolCard from './ToolCard.jsx';
+import CredentialCard from './CredentialCard.jsx';
 import ContactForm from './ContactForm.jsx';
 const external={target:'_blank',rel:'noopener noreferrer'};
-function CVLink({className='button'}){return <a className={className} href={profile.resume} {...external}>Download CV <Download size={15}/></a>}
+function CVLink({className='button'}){return profile.resume?<a className={className} href={profile.resume} {...external}>Download CV <Download size={15}/></a>:<button type="button" className={`${className} cv-unavailable`} disabled title="CV link will be added soon">Download CV <Download size={15}/></button>}
 function Tags({items}){return <div className="tags">{items.map(item=><span key={item}>{item}</span>)}</div>}
 
 function Header(){
@@ -44,7 +45,7 @@ function Education(){return <section className="education-section section wrap" 
 
 function Skills(){return <section className="skills section wrap" id="skills"><div className="section-heading" data-reveal><h2>Favorite tools</h2><span className="section-note">Cloud, automation & observability</span></div><div className="tools-grid">{skills.map((skill,i)=><ToolCard skill={skill} index={i} key={skill.name}/>)}</div></section>}
 
-function Credentials(){return <section className="credentials section wrap" id="credentials"><div className="section-heading" data-reveal><div><p className="kicker">KNOWLEDGE CREDENTIALS</p><h2>Certifications</h2></div></div><div className="credential-grid">{extras.credentials.map((credential,i)=><a className="credential-card" key={credential.title} href={credential.url} {...external} data-reveal style={{'--reveal-delay':`${i%4*60}ms`}}><div className="credential-art"><img src={credential.image} alt={`${credential.title} badge`} width="600" height="600" loading="lazy"/></div><div><h3>{credential.title}</h3><span className="credential-verify">View credential <ArrowUpRight size={13}/></span></div></a>)}</div></section>}
+function Credentials(){return <section className="credentials section wrap" id="credentials"><div className="section-heading" data-reveal><div><p className="kicker">KNOWLEDGE CREDENTIALS</p><h2>Certifications</h2></div></div><div className="credential-grid">{extras.credentials.map((credential,i)=><CredentialCard credential={credential} index={i} key={credential.title}/>)}</div></section>}
 
 function Blog(){const logos=['datadog','kubernetes','terraform','linux'];return <section className="blog section wrap" id="blog"><div className="section-heading" data-reveal><h2>Blog</h2></div><div className="blog-grid">{extras.blog.articles.map((article,i)=><a className="blog-card" key={article.url} href={article.url} data-reveal style={{'--reveal-delay':`${i%2*70}ms`}}><div className={'blog-visual blog-visual-'+logos[i]} aria-hidden="true"><div className="blog-grid-pattern"/><img src={skills.find(skill=>skill.name.toLowerCase()===logos[i]).logo} alt="" width="72" height="72" loading="lazy"/><span>{article.tags[0]}</span><ArrowUpRight size={21}/></div><div className="blog-meta"><span>{article.date}</span><span>{article.tags[1]}</span></div><h3>{article.title}</h3><p>{article.summary}</p></a>)}</div></section>}
 
