@@ -4,10 +4,10 @@ import TopicIcon from './TopicIcon.jsx';
 export function useScrollMotion(paused){
  useEffect(()=>{
   const root=document.documentElement;let frame=0;
-  const paint=()=>{frame=0;root.style.setProperty('--page-progress',String(scrollY/Math.max(1,root.scrollHeight-innerHeight)));root.style.setProperty('--hero-drift',paused?'0px':`${Math.min(scrollY,innerHeight)*.12}px`);};
+  const paint=()=>{frame=0;root.style.setProperty('--header-tint',String(.62-.34*Math.min(Math.max(scrollY,0)/160,1)));root.style.setProperty('--page-progress',String(scrollY/Math.max(1,root.scrollHeight-innerHeight)));root.style.setProperty('--hero-drift',paused?'0px':`${Math.min(scrollY,innerHeight)*.12}px`);};
   const schedule=()=>{if(!frame)frame=requestAnimationFrame(paint);};
   paint();addEventListener('scroll',schedule,{passive:true});addEventListener('resize',schedule);
-  return()=>{cancelAnimationFrame(frame);removeEventListener('scroll',schedule);removeEventListener('resize',schedule);};
+  return()=>{cancelAnimationFrame(frame);removeEventListener('scroll',schedule);removeEventListener('resize',schedule);root.style.removeProperty('--header-tint');};
  },[paused]);
  useEffect(()=>{
   const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target);}}),{threshold:.06,rootMargin:'0px 0px -20px 0px'});
