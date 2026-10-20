@@ -204,3 +204,8 @@ html[data-motion=paused] .portfolio-page *,html[data-motion=paused] .portfolio-p
 .portfolio-page .credential-card>.tool-edge{z-index:2}
 
 .portfolio-page .cv-unavailable:disabled{opacity:.5;cursor:not-allowed}
+
+/* Animate the natural content height, including long entries and mobile wrapping. */
+.portfolio-page .career-panel{display:grid;grid-template-rows:0fr;opacity:0;visibility:hidden;transition:grid-template-rows .5s cubic-bezier(.22,1,.36,1),opacity .3s ease,visibility 0s linear .5s}
+.portfolio-page .career-panel-inner{min-height:0;overflow:hidden}
+.portfolio-page .career-row.expanded .career-panel{grid-template-rows:1fr;opacity:1;visibility:visible;transition-delay:0s}
