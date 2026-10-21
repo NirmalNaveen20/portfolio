@@ -2,7 +2,6 @@
 
 import Link from 'next/link'
 import {usePathname} from 'next/navigation'
-import blog from "@/data/blog";
 import projects from "@/data/projects";
 import work from "@/data/work";
 
@@ -17,7 +16,7 @@ export default function Breadcrumbs() {
         .filter(Boolean)
 
     // Only show breadcrumbs for /blog, /projects, /work and their subpaths
-    const allowedRoots = ['blog', 'projects', 'work']
+    const allowedRoots = ['projects', 'work']
     const isAllowed = segments.length > 0 && allowedRoots.includes(segments[0])
 
     // Validate subpath: only show breadcrumbs if the root path exists
@@ -29,7 +28,6 @@ export default function Breadcrumbs() {
         } else if (segments.length === 2) {
             // Dynamically get valid slugs from imported data
             const validSlugs: Record<string, string[]> = {
-                blog: blog.map(item => item.slug),
                 projects: projects.map(item => item.slug),
                 work: work.map(item => item.slug)
             }

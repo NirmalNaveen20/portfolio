@@ -1,10 +1,12 @@
 import type {MetadataRoute} from 'next';
+import {getPosts} from '@/lib/blog';
 
 /**
  * Generates a sitemap.xml file for the website.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
     return [
+        ...getPosts().map(post => ({url: `https://www.nirmalchandrasiri.com/blog/${post.slug}`, lastModified: new Date(post.updated || post.date), changeFrequency: "monthly" as const, priority: 0.7})),
         {
             url: 'https://www.nirmalchandrasiri.com',
             lastModified: new Date(),

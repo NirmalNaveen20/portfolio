@@ -225,5 +225,26 @@ html[data-motion=paused] .portfolio-page *,html[data-motion=paused] .portfolio-p
 }
 
 /* Copyright typography, matching the reference family and size. */
+/* Mobile menu opens from the header with a matching hamburger-to-close transition. */
+.portfolio-page .menu-glyph{position:relative;width:20px;height:20px;display:block}
+.portfolio-page .menu-glyph>span{position:absolute;left:1px;top:9px;width:18px;height:2px;border-radius:2px;background:currentColor;transition:transform .32s cubic-bezier(.22,1,.36,1),opacity .18s ease}
+.portfolio-page .menu-glyph>span:first-child{transform:translateY(-6px)}
+.portfolio-page .menu-glyph>span:last-child{transform:translateY(6px)}
+.portfolio-page .menu-toggle[aria-expanded=true] .menu-glyph>span:first-child{transform:rotate(45deg)}
+.portfolio-page .menu-toggle[aria-expanded=true] .menu-glyph>span:nth-child(2){opacity:0;transform:scaleX(.3)}
+.portfolio-page .menu-toggle[aria-expanded=true] .menu-glyph>span:last-child{transform:rotate(-45deg)}
+@media(max-width:900px){
+ .portfolio-page .site-header nav{display:flex;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-10px) scaleY(.96);transform-origin:top;transition:opacity .24s ease,transform .34s cubic-bezier(.22,1,.36,1),visibility 0s linear .34s}
+ .portfolio-page .site-header nav.open{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0) scaleY(1);transition-delay:0s}
+ .portfolio-page .site-header nav a{opacity:0;transform:translateY(-5px);transition:opacity .18s ease,transform .25s ease,color .2s}
+ .portfolio-page .site-header nav.open a{opacity:1;transform:translateY(0);transition-delay:50ms}
+ .portfolio-page .site-header nav.open a:nth-child(2){transition-delay:80ms}
+ .portfolio-page .site-header nav.open a:nth-child(3){transition-delay:110ms}
+ .portfolio-page .site-header nav.open a:nth-child(4){transition-delay:140ms}
+}
+@media(prefers-reduced-motion:reduce){
+ .portfolio-page .menu-glyph>span,.portfolio-page .site-header nav,.portfolio-page .site-header nav a{transition:none!important}
+}
+
 @font-face{font-family:Inter;src:url("/assets/fonts/inter-bold-latin.woff2") format("woff2");font-style:normal;font-weight:700;font-display:swap}
 .portfolio-page .site-footer p{font-family:Inter,Arial,sans-serif;font-size:10px;font-weight:700;line-height:16px;letter-spacing:normal}
