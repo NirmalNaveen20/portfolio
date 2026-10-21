@@ -223,3 +223,7 @@ html[data-motion=paused] .portfolio-page *,html[data-motion=paused] .portfolio-p
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
  .portfolio-page .site-header{background:rgba(7,12,18,.94)}
 }
+
+/* Copyright typography, matching the reference family and size. */
+@font-face{font-family:Inter;src:url("/assets/fonts/inter-bold-latin.woff2") format("woff2");font-style:normal;font-weight:700;font-display:swap}
+.portfolio-page .site-footer p{font-family:Inter,Arial,sans-serif;font-size:10px;font-weight:700;line-height:16px;letter-spacing:normal}
