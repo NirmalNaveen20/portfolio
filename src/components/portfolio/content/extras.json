@@ -78,61 +78,6 @@
       "icon": "/assets/social/medium.svg"
     }
   ],
-  "blog": {
-    "title": "Blog",
-    "url": "https://www.nirmalchandrasiri.com/blog",
-    "articles": [
-      {
-        "title": "Getting Started with Datadog",
-        "url": "/blog/datadog-fundamentals",
-        "date": "Nov 2, 2025",
-        "summary": "A beginner-friendly guide to setting up monitoring with Datadog, creating dashboards, alerts, and integrating with your infrastructure.",
-        "tags": [
-          "monitoring",
-          "observability",
-          "devops",
-          "datadog"
-        ]
-      },
-      {
-        "title": "Kubernetes Deployment Types: Blue-Green, Canary...",
-        "url": "/blog/kubernetes-deployment-strategies",
-        "date": "Jun 20, 2025",
-        "summary": "When working with Kubernetes in a production environment, selecting the right deployment strategy is crucial.",
-        "tags": [
-          "kubernetes",
-          "cloud",
-          "devops",
-          "yaml"
-        ]
-      },
-      {
-        "title": "Essential Terraform Commands and Concepts",
-        "url": "/blog/terraform-concepts",
-        "date": "Jun 15, 2025",
-        "summary": "Terraform makes infrastructure as code easy, reusable, and consistent.",
-        "tags": [
-          "aws",
-          "azure",
-          "devops",
-          "terraform",
-          "iac"
-        ]
-      },
-      {
-        "title": "Most Important Linux Commands",
-        "url": "/blog/linux-commands-1",
-        "date": "Jan 3, 2025",
-        "summary": "A practical guide to essential Linux commands every developer, engineer, or system administrator should know.",
-        "tags": [
-          "linux",
-          "devops",
-          "command line",
-          "system administration"
-        ]
-      }
-    ]
-  },
   "notes": [
     "All eight credentials and their original verification links/images are copied from the current homepage; no credential validity dates are asserted.",
     "The original Bluesky and Medium anchors incorrectly use X aria-label; labels here are corrected for accessibility.",

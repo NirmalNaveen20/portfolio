@@ -26,7 +26,8 @@
     "react-icons": "^5.5.0",
     "rehype-highlight": "^7.0.2",
     "remark-gfm": "^4.0.1",
-    "tech-stack-icons": "^3.3.2"
+    "tech-stack-icons": "^3.3.2",
+    "yaml": "2.8.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

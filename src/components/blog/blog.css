@@ -1,0 +1,125 @@
+/* Blog and article styles share the portfolio's Geist, blue accent and glass chrome. */
+.portfolio-page.journal-page{min-width:0;min-height:100vh}
+.portfolio-page .journal-wrap{width:min(1180px,calc(100% - 96px));margin-inline:auto;padding-top:146px;padding-bottom:88px}
+.portfolio-page .journal-back{display:inline-flex;align-items:center;gap:10px;font-size:13px;color:var(--muted);min-height:44px}
+.portfolio-page .journal-back:hover{color:var(--accent)}
+.portfolio-page .journal-index-heading{border-bottom:1px solid var(--line);padding-bottom:46px;margin-bottom:32px}
+.portfolio-page .journal-title-row{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;margin-top:38px}
+.portfolio-page .journal-title-row .kicker{margin-bottom:18px}
+.portfolio-page .journal-title-row h1{font-size:clamp(64px,8vw,106px);line-height:1;letter-spacing:-.065em;font-weight:500}
+.portfolio-page .journal-title-row h1>span{color:var(--accent)}
+.portfolio-page .journal-title-row>p{font-size:16px;line-height:1.7;max-width:390px}
+.portfolio-page .journal-toolbar{display:flex;justify-content:space-between;gap:24px;margin-bottom:26px}
+.portfolio-page .journal-search{display:flex;align-items:center;gap:12px;flex:1;max-width:590px;border:1px solid #29323d;background:#070b10;border-radius:10px;padding:0 16px;color:#8d9eaf}
+.portfolio-page .journal-search input{width:100%;min-width:0;background:none;border:0;padding:15px 0;color:var(--text);font:inherit;font-size:14px}
+.portfolio-page .journal-search:focus-within{border-color:var(--accent)}
+.portfolio-page .journal-search input:focus{outline:none}
+.portfolio-page .journal-sort{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--muted)}
+.portfolio-page .journal-sort select{background:#070b10;border:1px solid #29323d;border-radius:10px;color:var(--text);font:inherit;padding:14px 12px;min-height:48px}
+.portfolio-page .journal-filters{border:0;padding:0;margin:0}
+.portfolio-page .journal-filters legend{font-size:12px;color:#9ba9b8;margin-bottom:13px}
+.portfolio-page .journal-filters>div{display:flex;flex-wrap:wrap;gap:8px}
+.portfolio-page .journal-filters button{display:inline-flex;gap:10px;align-items:center;border:1px solid #262c34;border-radius:99px;padding:9px 13px;min-height:40px;font-size:12px;color:#adb6c3;transition:background .2s,border-color .2s}
+.portfolio-page .journal-filters button>span{opacity:.5;font-size:10px}
+.portfolio-page .journal-filters button:hover{border-color:#5b738a;color:#fff}
+.portfolio-page .journal-filters button[aria-pressed=true]{border-color:#168bcc;background:#0099ff17;color:#90d5ff}
+.portfolio-page .journal-results{display:flex;justify-content:space-between;gap:20px;align-items:center;margin:25px 0 20px}
+.portfolio-page .journal-results p,.portfolio-page .journal-results button{font-size:12px}
+.portfolio-page .journal-results button{display:flex;align-items:center;gap:7px;color:#82cfff}
+.portfolio-page .journal-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+.portfolio-page .journal-card{min-width:0;border:1px solid #222a34;border-radius:16px;background:#06090d;overflow:hidden;transition:border-color .25s,transform .25s}
+.portfolio-page .journal-card:hover{border-color:#22618c;transform:translateY(-3px)}
+.portfolio-page .journal-card-link{display:flex;flex-direction:column;height:100%}
+.portfolio-page .journal-card-art{position:relative;display:flex;align-items:center;justify-content:center;height:195px;background:radial-gradient(ellipse at 50% 100%,#0099ff18,transparent 70%),linear-gradient(#15233450 1px,transparent 1px),linear-gradient(90deg,#15233450 1px,transparent 1px),#060a10;background-size:auto,28px 28px,28px 28px,auto;border-bottom:1px solid #1c2734;color:#70c6ff}
+.portfolio-page .journal-card-art img{width:64px;height:64px;filter:brightness(0) invert(1);opacity:.9}
+.portfolio-page .journal-card-category{position:absolute;top:20px;left:24px;font-size:11px;color:#93b3cc}
+.portfolio-page .journal-card-arrow{position:absolute;right:22px;bottom:22px;transition:transform .25s}
+.portfolio-page .journal-card:hover .journal-card-arrow{transform:translate(2px,-2px)}
+.portfolio-page .journal-card-copy{display:flex;flex-direction:column;flex:1;padding:26px}
+.portfolio-page .journal-meta{display:flex;gap:16px;flex-wrap:wrap;color:#8d9ba9;font-size:12px;line-height:1.5}
+.portfolio-page .journal-card h3{font-size:25px;line-height:1.3;margin:17px 0 14px;letter-spacing:-.035em;font-weight:550}
+.portfolio-page .journal-card p{font-size:14px;line-height:1.8;margin-bottom:22px}
+.portfolio-page .journal-tags{display:flex;flex-wrap:wrap;gap:7px}
+.portfolio-page .journal-tags>span,.portfolio-page .journal-tags>a{font-size:10px;line-height:1.5;color:#afc1d2;border:1px solid #26313d;border-radius:5px;padding:5px 8px}
+.portfolio-page .journal-tags>a:hover{border-color:var(--accent);color:#80ceff}
+.portfolio-page .journal-read{display:flex;align-items:center;gap:8px;color:#75caff;font-size:12px;margin-top:auto;padding-top:25px}
+.portfolio-page .journal-empty{padding:65px 20px;text-align:center;border:1px dashed #2a3b4b;border-radius:16px}
+.portfolio-page .journal-empty>svg{margin:0 auto 20px;color:var(--accent)}
+.portfolio-page .journal-empty h2{font-size:28px}.portfolio-page .journal-empty p{margin:15px 0 22px}
+.portfolio-page .journal-pagination{display:flex;justify-content:center;align-items:center;gap:22px;font-size:13px;margin-top:36px}
+.portfolio-page .journal-pagination button{padding:12px 20px;border:1px solid #2a3b4b;border-radius:9px}
+.portfolio-page .journal-pagination button:disabled{opacity:.4;cursor:default}
+.portfolio-page .journal-article-heading{padding:0 0 46px;border-bottom:1px solid var(--line);margin-bottom:44px}
+.portfolio-page .article-topics{margin:30px 0 22px}
+.portfolio-page .article-topics>a{padding:7px 11px;font-size:11px;background:#07101a}
+.portfolio-page .journal-article-heading h1{font-size:clamp(36px,5.2vw,65px);font-weight:500;line-height:1.13;letter-spacing:-.045em;max-width:1000px;text-wrap:balance}
+.portfolio-page .journal-article-heading .journal-deck{font-size:18px;line-height:1.8;max-width:780px;margin-top:24px;color:#a5b1bf}
+.portfolio-page .journal-byline{display:flex;align-items:center;gap:14px 22px;flex-wrap:wrap;margin-top:30px;font-size:12px;color:#9cabbc}
+.portfolio-page .journal-byline>span{display:inline-flex;gap:8px;align-items:center}
+.portfolio-page .journal-byline .journal-avatar{width:38px;height:38px;display:flex;justify-content:center;align-items:center;gap:0;border:1px solid #293847;background:#0b121b;border-radius:50%;color:#fff;font-size:26px;letter-spacing:-.1em}
+.portfolio-page .journal-avatar>span{color:var(--accent)}
+.portfolio-page .journal-reading-layout{display:grid;grid-template-columns:230px minmax(0,1fr);gap:64px;align-items:start}
+.portfolio-page .journal-contents{position:sticky;top:115px;min-width:0;max-height:calc(100svh - 145px);overflow:auto;padding-right:15px}
+.portfolio-page .journal-contents summary{font-size:13px;font-weight:550;color:#e9f0f8;cursor:pointer;min-height:36px}
+.portfolio-page .journal-contents nav{display:flex;flex-direction:column;gap:3px;margin-top:14px;border-left:1px solid #253646}
+.portfolio-page .journal-contents a{font-size:12px;line-height:1.6;padding:7px 0 7px 15px;color:#97a6b7;border-left:1px solid transparent;margin-left:-1px}
+.portfolio-page .journal-contents a:hover,.portfolio-page .journal-contents a:focus{color:#79ceff;border-color:var(--accent)}
+.portfolio-page .journal-contents .subheading{padding-left:26px;font-size:11px}
+.portfolio-page .journal-contents a[aria-current="location"]{color:#8dd7ff;border-left:2px solid var(--accent);background:linear-gradient(90deg,#0099ff20,transparent);font-weight:600}
+.portfolio-page .journal-prose{min-width:0;color:#bac5d1;font-size:16px;line-height:1.9;overflow-wrap:anywhere}
+.portfolio-page .journal-prose p{font-size:16px;line-height:1.9;color:#bac5d1;margin:0 0 22px}
+.portfolio-page .journal-prose h2{font-size:29px;line-height:1.3;letter-spacing:-.025em;margin:48px 0 20px;color:#f4f7fc;scroll-margin-top:0}
+.portfolio-page .journal-prose h2:first-child{margin-top:0}
+.portfolio-page .journal-prose h3{font-size:21px;line-height:1.4;margin:32px 0 16px;color:#f4f7fc;letter-spacing:-.02em;scroll-margin-top:0}
+.portfolio-page .journal-prose h4{font-size:18px;margin:25px 0 14px;color:#f4f7fc;scroll-margin-top:0}
+.portfolio-page .journal-prose strong{color:#e9f2fc;font-weight:600}
+.portfolio-page .journal-prose ul{list-style:disc}.portfolio-page .journal-prose ol{list-style:decimal}
+.portfolio-page .journal-prose ul,.portfolio-page .journal-prose ol{padding-left:24px;margin:18px 0 26px}
+.portfolio-page .journal-prose li{padding-left:4px;margin:9px 0}
+.portfolio-page .journal-prose li::marker{color:#63b8f0}
+.portfolio-page .journal-prose a{color:#70c9ff;text-decoration:underline;text-underline-offset:4px}
+.portfolio-page .journal-prose a:hover{color:#b2e4ff}
+.portfolio-page .journal-prose hr{margin:38px 0;border:0;border-top:1px solid #202d3b}
+.portfolio-page .journal-prose blockquote{border-left:2px solid var(--accent);margin:25px 0;padding:18px 22px;background:#06121d;border-radius:0 10px 10px 0}
+.portfolio-page .journal-prose blockquote p:last-child{margin:0}
+.portfolio-page .journal-prose :not(pre)>code{font-family:Consolas,monospace;font-size:.86em;color:#8fd7ff;background:#0c1b28;border:1px solid #203343;border-radius:5px;padding:2px 6px;overflow-wrap:anywhere}
+.portfolio-page .journal-code{border:1px solid #253243;border-radius:12px;overflow:hidden;margin:24px 0 30px;background:#080e16}
+.portfolio-page .journal-code-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 16px;background:#101925;border-bottom:1px solid #253243;font-family:Consolas,monospace;font-size:11px;color:#96b3cb}
+.portfolio-page .journal-code-bar>span:first-child{text-transform:uppercase;letter-spacing:.06em}
+.portfolio-page .journal-code-bar button{display:flex;align-items:center;gap:7px;min-height:30px;padding:4px 8px;font-size:11px;border-radius:5px;color:#c3d2e0}
+.portfolio-page .journal-code-bar button:hover{background:#20354a}
+.portfolio-page .journal-prose pre{margin:0;padding:22px;overflow-x:auto;white-space:pre;line-height:1.75;font-size:13px;tab-size:2}
+.portfolio-page .journal-prose pre code{background:transparent;font-family:Consolas,monospace;font-size:inherit;padding:0;line-height:inherit;white-space:pre;display:block;color:#ccd8e7}
+.portfolio-page .journal-table{max-width:100%;overflow-x:auto;margin:25px 0 32px;border:1px solid #253243;border-radius:10px}
+.portfolio-page .journal-table table{border-collapse:collapse;width:100%;min-width:570px;font-size:13px;line-height:1.7}
+.portfolio-page .journal-table th{background:#101925;color:#edf5ff;font-weight:550;text-align:left}
+.portfolio-page .journal-table th,.portfolio-page .journal-table td{padding:14px 16px;border-bottom:1px solid #253243}
+.portfolio-page .journal-table tr:last-child td{border-bottom:0}
+.portfolio-page .journal-prose img{max-width:100%;height:auto;border-radius:10px;margin:26px auto}
+.portfolio-page .journal-article-end{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px;border-top:1px solid #263442;margin-top:44px;padding-top:28px}
+.portfolio-page .journal-article-end a{display:flex;gap:8px;align-items:center;font-size:13px;text-decoration:none}
+.portfolio-page .journal-related{margin-top:88px;padding-top:50px;border-top:1px solid #263442}
+.portfolio-page .journal-related h2{font-size:32px}
+.portfolio-page .journal-related .journal-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.portfolio-page .journal-related .journal-card h3{font-size:21px}
+.portfolio-page .journal-related .journal-card-copy{padding:22px}
+.portfolio-page .journal-related .journal-card-art{height:150px}
+@media(min-width:1600px){.portfolio-page .journal-wrap{width:min(1280px,calc(100% - 120px))}.portfolio-page .journal-reading-layout{grid-template-columns:250px minmax(0,790px);justify-content:space-between}}
+@media(max-width:1000px){.portfolio-page .journal-wrap{width:calc(100% - 64px);padding-top:125px}.portfolio-page .journal-reading-layout{grid-template-columns:190px minmax(0,1fr);gap:32px}.portfolio-page .journal-related .journal-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.portfolio-page .journal-title-row>p{font-size:14px}}
+@media(max-width:760px){
+.portfolio-page .journal-wrap{width:calc(100% - 40px);padding-top:105px;padding-bottom:55px}
+.portfolio-page .journal-title-row{display:block;margin-top:25px}.portfolio-page .journal-title-row>p{margin-top:22px}
+.portfolio-page .journal-index-heading{padding-bottom:30px}
+.portfolio-page .journal-toolbar{flex-direction:column;gap:14px}.portfolio-page .journal-search{max-width:none}.portfolio-page .journal-sort{justify-content:space-between}
+.portfolio-page .journal-filters button{font-size:11px;padding:8px 11px}
+.portfolio-page .journal-grid{gap:18px}.portfolio-page .journal-card h3{font-size:22px}.portfolio-page .journal-card-copy{padding:21px}.portfolio-page .journal-card-art{height:160px}
+.portfolio-page .journal-reading-layout{display:flex;flex-direction:column;gap:30px}
+.portfolio-page .journal-contents{position:static;width:100%;max-height:270px;background:#080e16;border:1px solid #233342;border-radius:12px;padding:17px 20px}
+.portfolio-page .journal-contents summary{min-height:24px}.portfolio-page .journal-contents nav{margin-top:10px}
+.portfolio-page .journal-prose{width:100%;font-size:15px}.portfolio-page .journal-prose p{font-size:15px;line-height:1.85}
+.portfolio-page .journal-prose h2{font-size:26px}.portfolio-page .journal-article-heading .journal-deck{font-size:16px}
+.portfolio-page .journal-byline{gap:12px 16px;font-size:11px}.portfolio-page .journal-article-heading{padding-bottom:30px;margin-bottom:28px}
+.portfolio-page .journal-prose pre{padding:17px;font-size:12px}.portfolio-page .journal-related{margin-top:54px;padding-top:35px}
+}
+@media(max-width:540px){.portfolio-page .journal-grid,.portfolio-page .journal-related .journal-grid{grid-template-columns:1fr}.portfolio-page .journal-card-art{height:180px}.portfolio-page .journal-title-row h1{font-size:64px}.portfolio-page .journal-article-heading h1{font-size:35px}.portfolio-page .journal-meta{font-size:11px}.portfolio-page .journal-back{font-size:12px}.portfolio-page .journal-article-end{font-size:12px}.portfolio-page .journal-related .section-heading{align-items:center;gap:14px}.portfolio-page .journal-related h2{font-size:27px}}
+@media(prefers-reduced-motion:reduce){html:has(.journal-page){scroll-behavior:auto}.portfolio-page .journal-card,.portfolio-page .journal-card-arrow{transition:none}.portfolio-page .journal-card:hover{transform:none}}
