@@ -5,5 +5,5 @@ export function tagLabel(tag: string) {
 }
 export function postVisual(tags: string[]) {
   const tool = ['datadog','kubernetes','terraform','linux'].find(tool => tags.includes(tool));
-  return tool ? `/assets/tools/${tool}.svg` : null;
+  return tool ? `/assets/blog/${tool}.webp` : null;
 }
