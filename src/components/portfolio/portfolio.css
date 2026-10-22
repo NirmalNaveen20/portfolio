@@ -248,3 +248,41 @@ html[data-motion=paused] .portfolio-page *,html[data-motion=paused] .portfolio-p
 
 @font-face{font-family:Inter;src:url("/assets/fonts/inter-bold-latin.woff2") format("woff2");font-style:normal;font-weight:700;font-display:swap}
 .portfolio-page .site-footer p{font-family:Inter,Arial,sans-serif;font-size:10px;font-weight:700;line-height:16px;letter-spacing:normal}
+
+/* Touch cards reveal their detail while visible; scrolling never requires a tap. */
+@media (hover:none), (pointer:coarse){
+ .portfolio-page .touch-motion .tool-edge{animation-duration:18s;opacity:.8}
+ .portfolio-page .touch-motion .tool-particles{opacity:.6}
+ .portfolio-page :is(.credential-card,.journal-card,.header-connect,.contact-submit,.career-toggle){transition:scale .2s ease,border-color .3s ease,background .3s ease}
+ .portfolio-page :is(.credential-card,.journal-card,.header-connect,.contact-submit,.career-toggle):active{scale:.98}
+ .portfolio-page .journal-card:hover{transform:none}
+ .portfolio-page .credential-card:hover{transform:none}
+ .portfolio-page .journal-card:active{border-color:#58baff}
+ .portfolio-page .credential-card:active{border-color:#58baff}
+}
+@media(prefers-reduced-motion:reduce){
+ .portfolio-page :is(.credential-card,.journal-card,.header-connect,.contact-submit,.career-toggle):active{scale:1}
+}
+
+/* Certification highlights split, meet at the opposite corner, then repeat. */
+@property --credential-angle{syntax:'<angle>';inherits:false;initial-value:135deg}
+@property --credential-trail{syntax:'<angle>';inherits:false;initial-value:0deg}
+.portfolio-page .credential-card .credential-edge{
+ background:conic-gradient(from calc(var(--credential-angle) - var(--credential-trail)),transparent 0deg,#0099ff calc(var(--credential-trail)/2),#7acaff var(--credential-trail),transparent calc(var(--credential-trail)*2),transparent 360deg);
+ animation-duration:5.6s;animation-timing-function:ease-in-out;animation-iteration-count:infinite;
+}
+.portfolio-page .credential-card .credential-edge-a{animation-name:credential-border-a}
+.portfolio-page .credential-card .credential-edge-b{animation-name:credential-border-b}
+@keyframes credential-border-a{
+ 0%{--credential-angle:135deg;--credential-trail:0deg;opacity:0}
+ 12%{--credential-trail:24deg;opacity:1}
+ 86%{--credential-angle:-45deg;--credential-trail:24deg;opacity:1}
+ 100%{--credential-angle:-45deg;--credential-trail:0deg;opacity:0}
+}
+@keyframes credential-border-b{
+ 0%{--credential-angle:135deg;--credential-trail:0deg;opacity:0}
+ 12%{--credential-trail:24deg;opacity:1}
+ 86%{--credential-angle:315deg;--credential-trail:24deg;opacity:1}
+ 100%{--credential-angle:315deg;--credential-trail:0deg;opacity:0}
+}
+.portfolio-page .credential-card:not(.tool-active) .credential-edge{visibility:hidden}
