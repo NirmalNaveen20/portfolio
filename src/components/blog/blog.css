@@ -33,8 +33,6 @@
 .portfolio-page .journal-card-art{position:relative;display:flex;align-items:center;justify-content:center;height:195px;background:radial-gradient(ellipse at 50% 100%,#0099ff18,transparent 70%),linear-gradient(#15233450 1px,transparent 1px),linear-gradient(90deg,#15233450 1px,transparent 1px),#060a10;background-size:auto,28px 28px,28px 28px,auto;border-bottom:1px solid #1c2734;color:#70c6ff}
 .portfolio-page .journal-card-art img{width:64px;height:64px;filter:brightness(0) invert(1);opacity:.9}
 .portfolio-page .journal-card-category{position:absolute;top:20px;left:24px;font-size:11px;color:#93b3cc}
-.portfolio-page .journal-card-arrow{position:absolute;right:22px;bottom:22px;transition:transform .25s}
-.portfolio-page .journal-card:hover .journal-card-arrow{transform:translate(2px,-2px)}
 .portfolio-page .journal-card-copy{display:flex;flex-direction:column;flex:1;padding:26px}
 .portfolio-page .journal-meta{display:flex;gap:16px;flex-wrap:wrap;color:#8d9ba9;font-size:12px;line-height:1.5}
 .portfolio-page .journal-card h3{font-size:25px;line-height:1.3;margin:17px 0 14px;letter-spacing:-.035em;font-weight:550}
