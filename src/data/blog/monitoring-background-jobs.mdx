@@ -1,0 +1,162 @@
+---
+title: "Monitoring Background Jobs in a SaaS Application"
+summary: "A practical way to monitor queues, workers, retries, and customer outcomes—with a small SaaS report-generation example and a runnable monitoring exercise."
+date: "2026-10-27"
+cover: "/assets/blog/monitoring-background-jobs.webp"
+tags:
+  - SaaS
+  - Observability
+  - Monitoring
+  - Python
+---
+
+An API can return a successful response while the work behind it is going nowhere. A customer clicks “Export report”, sees a confirmation, and waits. The web application stays healthy. The worker process stays running. The report never arrives.
+
+That gap is where I would start when monitoring background jobs. I want to know whether the application finished the work it accepted, not just whether the containers are alive.
+
+This article uses a fictional SaaS reporting service. The numbers, job records, and thresholds are a small lab example, not measurements from a production environment I have operated.
+
+![Graphite illustration of queued report jobs moving through worker machines, with a stopwatch, monitoring graph, retry loop, and failed-job tray](/assets/blog/monitoring-background-jobs.webp)
+
+## Start with the customer's deadline
+
+In this example, the application accepts a report request, records it durably, and hands it to a queue. A worker generates the file and marks the report ready only after the customer can retrieve it. A notification is a separate step.
+
+My starting target would be: **99% of accepted reports should become downloadable within five minutes over a rolling 30-day window.** Five minutes is an illustrative product decision; a password reset, invoice run, and large data export need different deadlines.
+
+The clock starts at acceptance, not when a worker finally picks up the job. Retries must not reset it. Reports that fail permanently or remain unfinished beyond five minutes count as missed deadlines. Reports accepted less than five minutes ago are still pending evaluation. I would evaluate each accepted job once its deadline is reached, rather than calculate success from completed jobs alone.
+
+That last distinction matters. A histogram of successful completions can look excellent while hundreds of jobs never finish.
+
+![Four stages of a SaaS report job: durable acceptance, queue waiting, worker attempts, and a downloadable result; retries retain the original deadline](/assets/blog/background-job-lifecycle.svg)
+
+## Keep three different clocks
+
+I would record these timestamps in the job's durable state:
+
+| Clock | Measurement | What it helps explain |
+| --- | --- | --- |
+| Queue wait | Attempt start minus enqueue time for that attempt | How long work waited for a worker |
+| Processing time | Attempt finish minus attempt start | How long the worker spent on one attempt |
+| End-to-end time | Result ready minus original acceptance | How long the customer actually waited |
+
+A retry creates another attempt; it does not create a new customer request. I would retain an original acceptance timestamp, a stable job ID, and a separate attempt number.
+
+For troubleshooting, structured logs can include the job ID, trace ID, attempt, deployment version, and a bounded error category. Sensitive report contents and access tokens do not belong in those logs. Job IDs belong in logs and traces rather than metric labels: an unbounded label creates a new time series for every job. The [Prometheus instrumentation guidance](https://prometheus.io/docs/practices/instrumentation/) also recommends tracking the flow through each processing stage and avoiding high-cardinality labels.
+
+## The signals I would put on the dashboard
+
+| Signal | Useful question | Easy mistake |
+| --- | --- | --- |
+| Ready queue depth | How much work can workers pick up now? | Counting delayed and in-flight jobs as if they were all ready |
+| Oldest outstanding job age | Is any accepted work being left behind? | Watching only the average |
+| Accepted and completed jobs per minute | Are we keeping up with new demand? | Counting retry attempts as new jobs |
+| Attempt duration and queue wait | Is the bottleneck waiting or execution? | Combining both into one unexplained latency graph |
+| Retry and permanent-failure rates | Are jobs making progress or cycling? | Treating an eventual success as if there were no retry cost |
+| Dead-letter queue depth and age | What needs investigation or recovery? | Assuming isolation means the problem is resolved |
+| Deadline misses | Are customers getting the expected outcome? | Excluding unfinished work from the denominator |
+
+For this lab, imagine 120 reports arriving each minute while only 90 finish. Ignoring failures and assuming constant rates, the backlog grows by 30 jobs per minute. If it already contains 600 jobs, it will not drain at that completion rate. Adding workers might help, but first I would check whether the database or report-storage service is already the constraint.
+
+Broker metrics are useful evidence, but they are not always the same as business-job metrics. For example, [Amazon SQS exposes approximate counts](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-available-cloudwatch-metrics.html) for visible, in-flight, and delayed messages. Its oldest-message metric also has special behavior for repeatedly failing messages and messages moved to a dead-letter queue. I would keep the original acceptance time in application state so that these broker behaviors cannot hide the customer's total wait.
+
+## A small runnable monitoring exercise
+
+The following Python example evaluates six synthetic jobs against the five-minute target. It requires only Python 3. It does not contact a cloud account or submit real work.
+
+The snapshot uses seconds on a shared fictional clock. Jobs whose deadline has arrived form the evaluated cohort. A completed report is good only if it finished by its deadline. The remaining cohort members are misses, including unfinished jobs.
+
+```python
+now = 600
+deadline_seconds = 300
+jobs = [
+    {"id": "r1", "accepted": 0,   "ready": 120, "state": "ready",   "attempts": 1},
+    {"id": "r2", "accepted": 60,  "ready": 420, "state": "ready",   "attempts": 2},
+    {"id": "r3", "accepted": 120, "ready": None, "state": "queued", "attempts": 0},
+    {"id": "r4", "accepted": 200, "ready": None, "state": "running", "attempts": 3},
+    {"id": "r5", "accepted": 250, "ready": None, "state": "dead",   "attempts": 4},
+    {"id": "r6", "accepted": 550, "ready": None, "state": "queued", "attempts": 0},
+]
+
+evaluated = [j for j in jobs if now >= j["accepted"] + deadline_seconds]
+on_time = [j for j in evaluated
+           if j["ready"] is not None
+           and j["ready"] <= j["accepted"] + deadline_seconds]
+missed = len(evaluated) - len(on_time)
+outstanding = [j for j in jobs if j["ready"] is None]
+oldest_age = max((now - j["accepted"] for j in outstanding), default=0)
+retries = sum(max(j["attempts"] - 1, 0) for j in jobs)
+
+print(f"Evaluated: {len(evaluated)}; on time: {len(on_time)}; missed: {missed}")
+if evaluated:
+    print(f"On-time completion: {len(on_time) / len(evaluated):.1%}")
+else:
+    print("On-time completion: no eligible jobs")
+print(f"Oldest outstanding age: {oldest_age}s")
+print(f"Retry attempts: {retries}")
+print(f"Dead-letter jobs: {sum(j['state'] == 'dead' for j in jobs)}")
+```
+
+Expected output:
+
+```text
+Evaluated: 5; on time: 1; missed: 4
+On-time completion: 20.0%
+Oldest outstanding age: 480s
+Retry attempts: 6
+Dead-letter jobs: 1
+```
+
+Report r2 eventually finished, but it took six minutes and missed the target. Report r6 has only been waiting 50 seconds, so it is not evaluated yet. The dead-letter report remains outstanding from the customer's perspective. The six retries are extra attempts, not six additional customer requests.
+
+This deliberately unhealthy snapshot is not a 30-day SLO result. In a real implementation, I would persist each job's deadline outcome exactly once and aggregate those outcomes over the agreed reporting window. The in-memory list is just a way to make the accounting visible.
+
+## Retries need a budget and a safe outcome
+
+A transient dependency timeout may justify another attempt. A malformed report definition probably needs correction. I would separate retryable errors from permanent failures rather than repeatedly send every exception through the queue.
+
+The retry policy should have bounded attempts, bounded elapsed time, and delays that fit the customer's deadline. Exponential backoff with jitter helps spread retry traffic; immediate synchronized retries can increase pressure on an unhealthy dependency. The [AWS Builders' Library discussion of timeouts and retries](https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/) explains that tradeoff well.
+
+I would also inspect the SDK and application retry settings together. Multiple layers can multiply the number of downstream calls. A job dashboard should expose attempt traffic alongside unique completed jobs so that a busy worker does not look productive while it repeats the same failing request.
+
+### Idempotency is part of monitoring the outcome
+
+[SQS standard queues can deliver a message more than once](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/standard-queues-at-least-once-delivery.html). Even without a duplicate delivery, a worker may save a report and crash before acknowledging the message.
+
+For the report example, I would use a stable operation key, durable completion state, and a database uniqueness constraint or equivalent atomic mechanism. A redelivery should discover the existing result rather than create a second customer-visible report. External side effects need their own protection, such as a provider-supported idempotency key; an in-memory set does not survive a restart or coordinate multiple workers.
+
+I would count duplicate deliveries separately from duplicate outcomes prevented. A growing count can reveal timeout or acknowledgement problems even when the customer is protected.
+
+## Give the dead-letter queue an owner
+
+A dead-letter queue is a recovery workload, not a place to forget failed reports. I would give it a dashboard, an owner, and a runbook that answers: what failed, can it be corrected, is it safe to replay, and does the customer still want the result?
+
+[SQS dead-letter queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html) isolate messages after the configured receive threshold. Retention and ordering need review too: for standard queues, time already spent in the source queue affects how long the message survives, and moving FIFO messages to a DLQ can break strict ordering requirements.
+
+Before replaying anything, I would fix the cause, verify idempotency, and try a small bounded batch. Releasing the entire failed backlog into the same broken dependency can turn recovery into another incident. A successful replay also should not erase the original deadline miss.
+
+## Alerts that lead to a useful action
+
+These are starting points for this fictional service, not universal thresholds:
+
+| Condition | Initial response |
+| --- | --- |
+| Oldest active report exceeds four minutes for two minutes | Investigate queue wait, worker progress, and downstream latency before more deadlines are missed |
+| Outstanding work exists but unique completions stop for five minutes | Check stuck workers, credentials, dependency failures, and the last deployment |
+| Deadline misses consume the agreed error budget too quickly | Page the owning team using tested SLO burn-rate rules |
+| Dead-letter backlog appears or grows | Route to the recovery owner; urgency depends on the job's business impact |
+| Expected monitoring data disappears | Investigate the monitoring path; do not interpret missing data as zero failures |
+
+The four-minute warning with a two-minute hold can fire after a five-minute deadline, so I would use it for detecting sustained delay, not promise it always prevents the first miss. If earlier intervention is required, shorten the hold or use a predictive capacity signal and validate the resulting noise in a lab.
+
+A long-running worker with nothing to process should not page someone just because it has not completed a job recently. Conversely, a worker heartbeat alone cannot prove that useful work is happening. For scheduled jobs, I would compare the last successful run against the actual expected schedule, including intentional quiet periods.
+
+Every alert needs queue, environment, owning service, and a runbook link. I would keep individual job and customer identifiers in access-controlled diagnostic views, not page titles or metric labels. This is the same principle behind my [alert-noise experiment](/blog/ai-alert-noise): a signal should help someone decide what to do next.
+
+## Test the monitoring before relying on it
+
+In an isolated lab, I would pause workers, slow a dependency, inject one malformed job, and simulate a crash after saving a result but before acknowledgement. Each test should have a predicted signal and a clear recovery step.
+
+The checks I care about are concrete: does oldest age rise, do deadline misses include unfinished work, do retries stop at the configured limit, does the failed job reach the recovery workflow, and does redelivery avoid a duplicate result? I would also remove the metrics endpoint temporarily to verify that missing telemetry is visible.
+
+For me, the useful dashboard is the one that connects those signals to a customer outcome. Queue depth explains pressure. Worker metrics explain execution. The final question is still whether the report became available when the application said it would.
