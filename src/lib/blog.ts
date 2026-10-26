@@ -3,7 +3,7 @@ import path from 'node:path';
 import {cache} from 'react';
 import {parse} from 'yaml';
 
-export type Post = {slug: string; title: string; summary: string; date: string; updated?: string; tags: string[]; readingTime: number};
+export type Post = {slug: string; title: string; summary: string; date: string; updated?: string; cover?: string; tags: string[]; readingTime: number};
 const directory = path.join(process.cwd(), 'src/data/blog');
 // Compile only trusted, repository-owned MDX, never visitor content.
 export const getBlogEntries = cache(() => fs.readdirSync(directory).filter(file => file.endsWith('.mdx')).map(file => {
@@ -21,9 +21,11 @@ export const getBlogEntries = cache(() => fs.readdirSync(directory).filter(file 
     if (data[field] !== undefined && (!/^\d{4}-\d{2}-\d{2}$/.test(data[field]) || Number.isNaN(Date.parse(data[field])))) throw new Error(`Invalid ${field}: ${file}`);
   }
   if (!Array.isArray(data.tags) || data.tags.some((tag: unknown) => typeof tag !== 'string' || !tag.trim())) throw new Error(`Invalid tags: ${file}`);
+  if (data.cover !== undefined && (typeof data.cover !== 'string' || !/^\/assets\/blog\/[a-z0-9-]+\.(webp|png|jpg)$/.test(data.cover) || !fs.existsSync(path.join(process.cwd(), 'public', data.cover)))) throw new Error(`Invalid cover: ${file}`);
   const content = source.slice(match[0].length);
   const post: Post = {slug, title: data.title, summary: data.summary, date: data.date,
     ...(data.updated ? {updated: data.updated} : {}),
+    ...(data.cover ? {cover: data.cover} : {}),
     tags: Array.from(new Set<string>(data.tags.map((tag: string) => tag.trim().toLowerCase()))),
     readingTime: Math.max(1, Math.ceil(content.trim().split(/\s+/).length / 200))};
   return {post, content};

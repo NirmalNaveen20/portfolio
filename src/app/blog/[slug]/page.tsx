@@ -17,8 +17,8 @@ export async function generateMetadata({params}:Props):Promise<Metadata>{
   if(!entry)return {title:'Article not found | Nirmal Chandrasiri'};
   const {post}=entry;
   return {title:`${post.title} | Nirmal Chandrasiri`,description:post.summary,alternates:{canonical:`/blog/${post.slug}`},
-    openGraph:{type:'article',title:post.title,description:post.summary,url:`/blog/${post.slug}`,publishedTime:post.date,...(post.updated?{modifiedTime:post.updated}:{}),authors:['Nirmal Chandrasiri'],tags:post.tags,images:[{url:'/og-image.png'}]},
-    twitter:{card:'summary_large_image',title:post.title,description:post.summary,images:['/og-image.png']}};
+    openGraph:{type:'article',title:post.title,description:post.summary,url:`/blog/${post.slug}`,publishedTime:post.date,...(post.updated?{modifiedTime:post.updated}:{}),authors:['Nirmal Chandrasiri'],tags:post.tags,images:[{url:post.cover || '/og-image.png'}]},
+    twitter:{card:'summary_large_image',title:post.title,description:post.summary,images:[post.cover || '/og-image.png']}};
 }
 export default async function ArticlePage({params}:Props){
   const entry=getPost((await params).slug);
