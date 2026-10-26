@@ -38,7 +38,7 @@ function Skills(){return <section className="skills section wrap" id="skills"><d
 
 function Credentials(){return <section className="credentials section wrap" id="credentials"><div className="section-heading" data-reveal><div><p className="kicker">KNOWLEDGE CREDENTIALS</p><h2>Certifications</h2></div></div><div className="credential-grid">{extras.credentials.map((credential,i)=><CredentialCard credential={credential} index={i} key={credential.title}/>)}</div></section>}
 
-function Blog({posts}){return <section className="blog section wrap" id="blog"><div className="section-heading"><h2>Blog</h2><a className="text-link" href="/blog">Browse articles <ArrowUpRight size={16}/></a></div><div className="journal-grid">{posts.map(post=><BlogCard key={post.slug} post={post}/>)}</div></section>}
+function Blog({posts}){return <section className="blog section wrap" id="blog"><div className="section-heading"><h2>Blog</h2><a className="browse-articles" href="/blog">Browse articles <ArrowUpRight size={16}/></a></div><div className="journal-grid">{posts.map(post=><BlogCard key={post.slug} post={post}/>)}</div></section>}
 
 function Contact(){return <section className="contact section wrap" id="contact"><div className="contact-inner" data-reveal><div className="contact-intro"><p className="kicker">CONTACT</p><h2>Let’s connect.</h2><p>Have an opportunity, a project, or a question? Send me a message.</p></div><ContactForm/></div></section>}
 

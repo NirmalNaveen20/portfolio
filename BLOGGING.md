@@ -56,3 +56,7 @@ Run the local site and review the blog listing, topic filters, article contents 
 Only compile trusted MDX committed by the site owner. MDX is executable content; never compile visitor submissions or arbitrary remote files.
 
 The redesign preserves the existing article bodies. Published listing dates were retained when the old registry and MDX dates differed; existing topic tags were combined. Technical examples were not re-authored or claimed to be newly fact-checked.
+
+## Article-specific covers
+
+Add `cover: "/assets/blog/your-cover.webp"` to frontmatter to use an individual cover in cards and social previews. Without it, existing posts retain their technology cover. Store an optimized landscape WebP in `public/assets/blog/`. Add a Markdown image in the body if the cover should also appear inside the article. Paths are validated against local assets.

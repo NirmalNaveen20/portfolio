@@ -154,7 +154,7 @@ html[data-motion=paused] .portfolio-page *,html[data-motion=paused] .portfolio-p
 .portfolio-page .contact-budget-option input:disabled+span{opacity:.6;cursor:not-allowed}
 @media(max-width:359px){.portfolio-page .contact-budget-options{grid-template-columns:1fr}}
 
-/* Glass contact pill with a white hover and keyboard-focus state. */
+/* Shared glass pill with a white hover and keyboard-focus state. */
 .portfolio-page .header-actions{align-items:center;flex-shrink:0}
 .portfolio-page :is(.header-connect,.contact-submit){position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 20px;border:1px solid #ffffff40;border-radius:999px;background:#ffffff0c;color:#f5f7fa;font-size:12px;font-weight:500;white-space:nowrap;-webkit-backdrop-filter:blur(16px) saturate(180%);backdrop-filter:blur(16px) saturate(180%);box-shadow:inset 0 1px 0 #ffffff40,inset 0 -1px 0 #8dceff26,0 4px 16px #0003;transition:background-color .25s,color .25s,border-color .25s,box-shadow .25s}
 .portfolio-page :is(.header-connect,.contact-submit)::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(135deg,#ffffff26,transparent 45%,#8dceff12),linear-gradient(180deg,#ffffff0f,transparent 55%);opacity:1;transition:opacity .25s}
@@ -286,3 +286,12 @@ html[data-motion=paused] .portfolio-page *,html[data-motion=paused] .portfolio-p
  100%{--credential-angle:315deg;--credential-trail:0deg;opacity:0}
 }
 .portfolio-page .credential-card:not(.tool-active) .credential-edge{visibility:hidden}
+
+/* Frosted blue glass, with soft refraction inspired by the reference pill. */
+.portfolio-page .browse-articles{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:10px;flex-shrink:0;min-height:46px;padding:0 22px;border:1px solid #c4e8ff55;border-radius:999px;background:linear-gradient(165deg,#cbeaff22,#92cfff08 48%,#d7efff19);color:#eef8ff;font-size:12px;font-weight:500;white-space:nowrap;text-shadow:0 1px 6px #00162699;-webkit-backdrop-filter:blur(18px) saturate(160%);backdrop-filter:blur(18px) saturate(160%);box-shadow:inset 0 1px 2px #e7f6ff66,inset 0 -2px 3px #bbdfff22,0 6px 18px #0005;transition:border-color .35s,box-shadow .35s,transform .35s}
+.portfolio-page .browse-articles::before{content:"";position:absolute;z-index:-1;inset:-14px;pointer-events:none;background:radial-gradient(ellipse at 76% 40%,#38b9ffb3,transparent 34%),radial-gradient(ellipse at 58% 90%,#4064db80,transparent 42%);filter:blur(12px);opacity:.65;transition:opacity .4s,transform .6s}
+.portfolio-page .browse-articles::after{content:"";position:absolute;inset:2px;border-radius:inherit;pointer-events:none;border-top:1px solid #e5f6ff30;border-bottom:1px solid #d3efff20}
+.portfolio-page .browse-articles:hover,.portfolio-page .browse-articles:focus-visible{color:#fff;border-color:#bce7ff88;box-shadow:inset 0 1px 3px #e7f6ff80,inset 0 -2px 4px #bbdfff30,0 6px 24px #168ccc24;transform:translateY(-1px)}
+.portfolio-page .browse-articles:hover::before,.portfolio-page .browse-articles:focus-visible::before{opacity:.9;transform:translateX(-12px)}
+.portfolio-page .browse-articles:active{transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){.portfolio-page .browse-articles,.portfolio-page .browse-articles::before{transition:none}.portfolio-page .browse-articles:hover,.portfolio-page .browse-articles:focus-visible,.portfolio-page .browse-articles:hover::before,.portfolio-page .browse-articles:focus-visible::before{transform:none}}

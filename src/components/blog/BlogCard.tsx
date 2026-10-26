@@ -4,7 +4,7 @@ import {ArrowUpRight, BookOpen} from 'lucide-react';
 import type {Post} from '@/lib/blog';
 import {formatDate, postVisual, tagLabel} from './presentation';
 export default function BlogCard({post}: {post: Post}) {
-  const image = postVisual(post.tags);
+  const image = post.cover || postVisual(post.tags);
   return <article className="journal-card"><Link href={`/blog/${post.slug}`} className="journal-card-link">
     <div className="journal-card-art" aria-hidden="true">
       {image ? <img src={image} width="1280" height="720" alt="" loading="lazy"/> : <BookOpen size={52}/>}
