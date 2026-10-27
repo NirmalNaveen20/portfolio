@@ -5,5 +5,6 @@ import {getPosts} from "@/lib/blog";
 import "@/components/blog/blog.css";
 
 export default function Home() {
-  return <Portfolio posts={getPosts().slice(0,4)} />;
+  const posts = getPosts();
+  return <Portfolio posts={posts} />;
 }

@@ -38,7 +38,13 @@ function Skills(){return <section className="skills section wrap" id="skills"><d
 
 function Credentials(){return <section className="credentials section wrap" id="credentials"><div className="section-heading" data-reveal><div><p className="kicker">KNOWLEDGE CREDENTIALS</p><h2>Certifications</h2></div></div><div className="credential-grid">{extras.credentials.map((credential,i)=><CredentialCard credential={credential} index={i} key={credential.title}/>)}</div></section>}
 
-function Blog({posts}){return <section className="blog section wrap" id="blog"><div className="section-heading"><h2>Blog</h2><a className="browse-articles" href="/blog">Browse articles <ArrowUpRight size={16}/></a></div><div className="journal-grid">{posts.map(post=><BlogCard key={post.slug} post={post}/>)}</div></section>}
+function Blog({posts}){
+ const [page,setPage]=useState(1);
+ const pageSize=4,pageCount=Math.ceil(posts.length/pageSize);
+ const visiblePosts=posts.slice((page-1)*pageSize,page*pageSize);
+ function changePage(next){if(next===page)return;setPage(next);document.getElementById('blog')?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'});}
+ return <section className="blog section wrap" id="blog"><div className="section-heading"><h2>Blog</h2><a className="browse-articles" href="/blog">Browse articles <ArrowUpRight size={16}/></a></div><div className="journal-grid" id="home-blog-posts">{visiblePosts.map(post=><BlogCard key={post.slug} post={post}/>)}</div>{pageCount>1&&<nav className="blog-pagination" aria-label="Blog pages"><p aria-live="polite">Showing <strong>{(page-1)*pageSize+1}–{Math.min(page*pageSize,posts.length)}</strong> of <strong>{posts.length}</strong> articles</p><div className="blog-page-numbers">{Array.from({length:pageCount},(_,i)=>i+1).map(number=><button key={number} type="button" className="blog-page-number" aria-label={`Page ${number}`} aria-current={page===number?'page':undefined} aria-controls="home-blog-posts" onClick={()=>changePage(number)}>{number}</button>)}</div></nav>}</section>
+}
 
 function Contact(){return <section className="contact section wrap" id="contact"><div className="contact-inner" data-reveal><div className="contact-intro"><p className="kicker">CONTACT</p><h2>Let’s connect.</h2><p>Have an opportunity, a project, or a question? Send me a message.</p></div><ContactForm/></div></section>}
 
