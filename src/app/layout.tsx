@@ -1,5 +1,6 @@
 import type {Metadata} from "next";
 import "./globals.css";
+import "./portfolio-theme.css";
 import {Gabarito} from "next/font/google";
 import React, {ReactNode} from "react";
 import SiteShell from "@/components/SiteShell";
@@ -46,10 +47,9 @@ const themeInitScript = `
 (function() {
   try {
     const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+    const theme = savedTheme === 'dark' ? 'dark' : 'light';
     document.documentElement.classList.add(theme);
-    if (theme === 'dark') document.documentElement.classList.add('dark');
+
   } catch(e) {}
 })();`
 
