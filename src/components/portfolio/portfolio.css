@@ -307,3 +307,223 @@ html[data-motion=paused] .portfolio-page *,html[data-motion=paused] .portfolio-p
 .portfolio-page .blog-page-number:hover{background:#138de61c;border-color:#68bdff70;color:#eef8ff}
 .portfolio-page .blog-page-number[aria-current="page"]{background:linear-gradient(145deg,#279ce638,#13457540);border-color:#66c2ff88;color:#bfe7ff;box-shadow:inset 0 1px 0 #ffffff20}
 @media(prefers-reduced-motion:reduce){.portfolio-page .blog-page-number{transition:none}}
+
+/* Editorial surfaces use the same local Geist family as the journal. */
+.portfolio-page .paper,
+.portfolio-page .work-archive {
+  background: #f8f7f3;
+  color: #191b1c;
+  --muted: #585c5f;
+  --text: #191b1c;
+  --line: #d5d5ce;
+  color-scheme: light;
+}
+.portfolio-page .site-header {
+  width: min(750px, calc(100% - 28px));
+  border-radius: 100px;
+  background: rgb(253 252 249 / 94%);
+  color: #171a1c;
+  border: 1px solid #d4d5d0;
+  box-shadow: 0 6px 30px #131b2310;
+}
+.portfolio-page .header-inner.wrap {height: 60px; margin: 0 12px; gap: 14px}
+.portfolio-page .nav-avatar {width: 36px; height: 36px; border-radius: 50%; object-fit: cover; object-position: 50% 32%}
+.portfolio-page .brand {gap: 8px}
+.portfolio-page .site-header nav a {color: #464b50}
+.portfolio-page .site-header nav a:is(:hover,[aria-current]) {color: #124b72}
+.portfolio-page .site-header .header-connect {background: #202528; color: white; min-height: 40px}
+.portfolio-page .site-header .header-connect:hover {background: #384852}
+.portfolio-page .page-progress {display: none}
+.portfolio-page .intro-layout {
+  display: grid; grid-template-columns: 1.4fr 1fr; align-items: center;
+  gap: clamp(32px,6vw,90px); padding-block: clamp(125px,13vw,175px) clamp(64px,8vw,110px);
+}
+.portfolio-page .role-line {font-size: 14px; color: #383f40; display: flex; align-items: center; gap: 10px}
+.role-line::before {content: ''; width: 9px; height: 9px; background: #287298; border-radius: 50%}
+.portfolio-page .intro-type h1 {font-size: clamp(50px,7.4vw,112px); font-weight: 550; line-height: .98; letter-spacing: -.074em; margin: 24px 0}
+.intro-type h1 span {color: #666b67}
+.portfolio-page .intro-summary {
+ max-width: 52ch;
+ text-wrap: pretty;
+ font-family: Geist, Arial, sans-serif;
+ font-size: clamp(1rem, .9rem + .2vw, 1.125rem);
+ font-weight: 400;
+ line-height: 1.7;
+ letter-spacing: normal;
+ color: var(--folio-copy);
+}
+.intro-links {display: flex; align-items: center; flex-wrap: wrap; gap: 24px; margin-top: 32px}
+.intro-links a {display: inline-flex; align-items: center; gap: 9px; min-height: 44px; font-size: 14px}
+.portfolio-page .ink-pill {background: #171c1f; color: #fff; padding: 0 21px; border-radius: 30px}
+.studio-card img {width: 100%; aspect-ratio: 4/4.55; object-fit: cover; object-position: center 32%; border-radius: 24px}
+.portfolio-page .biography {padding: clamp(50px,7vw,96px) 0; border-top: 1px solid #d9dad4}
+.profile-widget figure {position: relative}
+.profile-widget figure>img {width: 100%; aspect-ratio: 1.25; object-fit: cover; object-position: 50% 23%; border-radius: 16px}
+.profile-socials {display: flex; gap: 5px; flex-wrap: wrap}
+.profile-widget .profile-socials {position: absolute; right: 9px; bottom: 9px}
+.profile-socials a {display: grid; place-items: center; width: 34px; height: 34px; background: #fff; border-radius: 50%}
+.profile-socials img {width: 16px; height: 16px; filter: brightness(0)}
+.portfolio-page .profile-widget h3 {margin-top: 14px}
+.stack-widget {margin-top: 28px}
+.stack-widget h4 {margin: 0 0 10px}
+.stack-widget ul {list-style: none; padding: 0; margin: 0}
+.stack-widget li {display: grid; gap: 3px; background: #fff; border: 1px solid #d8d8d3; border-radius: 12px; padding: 15px 18px; margin-bottom: 5px}
+.stack-widget li:only-child {box-shadow: 0 5px 0 -2px #e1e0da,0 10px 0 -5px #cecdc7}
+.stack-widget li span,.stack-widget li small {font-size: 13px; color: #54595b}
+.portfolio-page .stack-widget button {font-size: 13px; min-height: 44px; text-decoration: underline; text-underline-offset: 4px}
+.portfolio-page .work-archive {box-shadow: 0 0 0 100vmax #f8f7f3; clip-path: inset(0 -100vmax); border-top: 1px solid #d5d5ce}
+.work-archive .career-identity {display: flex; flex-direction: column-reverse; align-items: start}
+.portfolio-page .work-archive .career-role {font-size: clamp(16px,2vw,26px); color: #191b1c; font-weight: 600}
+.portfolio-page .work-archive .career-company {font-size: 16px; color: #5b605e}
+.portfolio-page .work-archive :is(.career-period,.career-details ul,.tags span,.career-team,.employer) {color: #48514f}
+.portfolio-page .work-archive .career-toggle {color: #19648e; background: #e6ebeb}
+.portfolio-page .work-archive .current-tag {color: #18506e; background: #e1edf0}
+.closing {background: #101213; color: #f9faf8; padding: clamp(48px,7vw,100px) 0 28px}
+.portfolio-page .closing-title {display: block; font-size: clamp(44px,7.2vw,102px); letter-spacing: -.065em; font-weight: 530; line-height: 1.05}
+.closing-title>span {display: block}
+.closing-title>span:last-child {color: #a2a5a2}
+.closing-links,.closing-bottom {display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; align-items: start}
+.closing-links {padding-block: 40px}
+.portfolio-page .closing-links h3 {font-size: 13px; color: #a4a9aa; margin-bottom: 8px; letter-spacing: normal}
+.closing-links nav {display: flex; gap: 14px; flex-wrap: wrap}
+.closing-bottom {align-items: center; border-top: 1px solid #444849; padding-top: 22px}
+@media(max-width:900px){
+ .portfolio-page .site-header nav {background:#faf9f6;border-color:#d5d5ce}
+ .portfolio-page .site-header .menu-glyph span {background:#222}
+}
+@media(max-width:700px){
+ .portfolio-page .intro-layout {grid-template-columns: 1fr}
+ .portfolio-page .intro-layout {padding-top: 116px; gap: 28px}
+ .studio-card img {aspect-ratio: 1.4; max-height: 440px; object-position: 50% 30%}
+ .profile-widget {max-width: 440px}
+ .portfolio-page .header-inner.wrap {height: 54px}
+ .portfolio-page .brand>span:last-child {display:block}
+ .closing-links {justify-content:flex-start;column-gap:40px}
+}
+
+@font-face {
+  font-family: Switzer;
+  src: url('/assets/fonts/switzer-variable.woff2') format('woff2');
+  font-weight: 100 900; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'General Sans';
+  src: url('/assets/fonts/general-sans-variable.woff2') format('woff2');
+  font-weight: 200 700; font-style: normal; font-display: swap;
+}
+.portfolio-page {font-family: Switzer, Geist, Arial, sans-serif}
+.work-archive h2,.work-archive .career-identity {font-family: 'General Sans', Switzer, Arial, sans-serif}
+
+.portfolio-page .site-header {
+ background:linear-gradient(145deg,#ffffffef,#f8f8f3ed);
+ backdrop-filter:blur(18px) saturate(125%);
+ box-shadow:inset 0 1px 2px white,0 3px 18px #17242a12;
+ transition:width .46s cubic-bezier(.22,1,.36,1),box-shadow .3s;
+}
+.portfolio-page .site-header.compact-header {width:min(304px,calc(100% - 16px))}
+.portfolio-page .compact-header .brand {flex:none}
+.portfolio-page .compact-header .brand>span:last-child {display:block;overflow:visible;text-overflow:clip;font-size:12px}
+.compact-header .brand {white-space:nowrap}
+.portfolio-page .compact-header .header-connect,.portfolio-page .site-header.compact-header nav {display:none}
+.portfolio-page .site-header .compact-toggle {display:grid;color:#252b2e}
+.menu-dots {display:none}
+.compact-header .menu-dots {display:block;font-size:16px;letter-spacing:2px}
+.compact-header .menu-glyph {display:none}
+.work-portrait {width:100%;height:auto;border-radius:18px}
+.work-archive .career-header {position:relative}
+.portfolio-page .work-archive .career-toggle {position:static;background:transparent;color:var(--folio-blue);border:0}
+.work-archive .career-toggle::after {content:'';position:absolute;inset:0;cursor:pointer}
+.work-archive .career-header a {position:relative;z-index:1}
+.work-archive .career-toggle svg {transition:transform .38s cubic-bezier(.22,1,.36,1)}
+.work-archive .expanded .career-toggle svg {transform:rotate(45deg)}
+.work-links {display:grid;justify-items:start;gap:3px;margin-top:32px;font-weight:600}
+.work-links a {position:relative;display:inline-flex;align-items:center;min-height:38px;transition:padding .25s;color:#626762}
+.work-links a:first-child {color:var(--folio-blue)}
+.work-links svg {position:absolute;left:0;opacity:0;transform:translateX(-5px);transition:opacity .25s,transform .25s}
+.work-links a:is(:hover,:focus-visible) {padding-left:23px}
+.work-links a:is(:hover,:focus-visible) svg {opacity:1;transform:none}
+.closing-socials {justify-content:center;padding:40px 0 24px}
+.portfolio-page .closing-bottom {justify-content:center;text-align:center}
+@media(prefers-reduced-motion:reduce){
+ .portfolio-page .site-header,.work-archive .career-toggle svg,.work-links a,.work-links svg,.portfolio-page .career-panel {transition:none}
+}
+.portfolio-page .work-archive .tags span {background:#e9ebe7;color:#38413d;border-color:#d1d5cd}
+
+/* Shared paper, ink and blue surfaces for the portfolio and journal. */
+.portfolio-page {--paper:#f8f7f3;--ink:#101316;--glass-blue:rgb(104 181 235 / 14%);background:var(--ink)}
+.portfolio-page .site-header {
+ background:linear-gradient(143deg,#ffffffec 0%,#faf9f5e8 54%,#dceef9dd 100%);
+ backdrop-filter:blur(24px) saturate(145%);
+ box-shadow:inset 0 1px 1px white,inset 0 -1px 3px #9dc8e353,0 5px 24px #0d273618;
+}
+.compact-header .menu-dots {display:inline-flex;gap:3px;align-items:center}
+.menu-dots i {display:block;width:5px;height:5px;border-radius:50%;background:#214a64;animation:typing-dot 1.95s ease-in-out infinite}
+.menu-dots i:nth-child(2){animation-delay:.21s}
+.menu-dots i:nth-child(3){animation-delay:.42s}
+@keyframes typing-dot {0%,64%,100%{opacity:.4;transform:translateY(0)}32%{opacity:1;transform:translateY(-2px)}}
+.live-intro {position:relative;isolation:isolate;overflow:hidden}
+.live-intro .intro-layout {position:relative;z-index:1}
+.portfolio-page .live-intro .hero-waves {mix-blend-mode:multiply;filter:invert(1) hue-rotate(175deg);opacity:.18}
+.portfolio-page .live-intro h1 span {color:#214b67}
+.portfolio-page .intro-about {display:inline-flex;align-items:center;gap:8px;min-height:44px;margin-top:12px;font-size:13px;color:#41515c}
+.portfolio-page .live-history .career-toggle,
+.portfolio-page .tool-card,
+.portfolio-page .credential-card {border-color:#8ac3ed35;background-color:#11181d}
+.portfolio-page .live-history .career-company {font-family:'General Sans',Switzer,sans-serif}
+.portfolio-page .education-section,.portfolio-page .paper-journal {
+ background:var(--paper);color:var(--ink);--text:var(--ink);--muted:#505a60;--line:#d1d6d6;
+ box-shadow:0 0 0 100vmax var(--paper);clip-path:inset(0 -100vmax);color-scheme:light;
+}
+.portfolio-page .education-section .education-date {color:#475966}
+.portfolio-page .paper-journal .browse-articles,.portfolio-page .paper-journal .blog-page-number {
+ color:#193e58;background-color:#dceaf3;border-color:#a3bcca;text-shadow:none
+}
+.portfolio-page .paper-journal .blog-page-number[aria-current=page] {background:#203f54;color:#fff}
+.portfolio-page .operations-section {background:var(--ink)}
+.portfolio-page .contact-inner {background:linear-gradient(145deg,#152530,#101519 58%);border-color:#98c3dd40}
+.portfolio-page .closing {background:#0a0d0f}
+.portfolio-page .closing-title {font-size:clamp(21px,2.1vw,31px);line-height:1.12;letter-spacing:-.035em;width:fit-content;text-align:left}
+.portfolio-page .closing-title>span:last-child {color:#b1c3cf}
+@media(prefers-reduced-motion:reduce){.menu-dots i{animation:none}}
+.portfolio-page .closing-bottom {
+ position: relative;
+ min-height: 52px;
+ padding-inline: 46px;
+}
+.portfolio-page .footer-top {
+ position: absolute;
+ right: 0;
+ bottom: -10px;
+ display: grid;
+ place-items: center;
+ width: 44px;
+ height: 44px;
+ color: #a7b5c0;
+ border-radius: 50%;
+}
+.portfolio-page .footer-top:is(:hover,:focus-visible) {color: #d4ecff; background: #83c4ff12}
+
+.portfolio-page .biography .bio-layout {
+ display: grid;
+ gap: clamp(20px, 3vw, 36px);
+ font-family: Switzer, Geist, Arial, sans-serif;
+}
+.portfolio-page .biography h2 {
+ font-size: clamp(34px, 4vw, 54px);
+ line-height: 1.06;
+ letter-spacing: -.045em;
+ font-weight: 600;
+}
+.portfolio-page .bio-story {
+ max-width: 65ch;
+ font-family: Geist, Arial, sans-serif;
+ font-size: clamp(1rem, .95rem + .15vw, 1.125rem);
+ font-weight: 400;
+}
+.portfolio-page .bio-story p {
+ font-size: inherit;
+ line-height: 1.8;
+ letter-spacing: normal;
+ color: var(--folio-copy);
+}
+.portfolio-page .bio-story p + p {margin-top: 1.5em}

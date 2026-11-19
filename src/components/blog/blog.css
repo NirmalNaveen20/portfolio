@@ -120,3 +120,24 @@
 }
 @media(max-width:540px){.portfolio-page .journal-grid,.portfolio-page .journal-related .journal-grid{grid-template-columns:1fr}.portfolio-page .journal-title-row h1{font-size:64px}.portfolio-page .journal-article-heading h1{font-size:35px}.portfolio-page .journal-meta{font-size:11px}.portfolio-page .journal-back{font-size:12px}.portfolio-page .journal-article-end{font-size:12px}.portfolio-page .journal-related .section-heading{align-items:center;gap:14px}.portfolio-page .journal-related h2{font-size:27px}}
 @media(prefers-reduced-motion:reduce){html:has(.journal-page){scroll-behavior:auto}.portfolio-page .journal-card,.portfolio-page .journal-card-arrow{transition:none}.portfolio-page .journal-card:hover{transform:none}}
+
+.portfolio-page:has(.editorial-index) main {
+ background: #f8f7f3; color: #1d2022; --text:#1d2022; --muted:#555c5d; --line:#d5d6d1; color-scheme:light;
+}
+.portfolio-page .editorial-index .journal-index-heading {padding-bottom:32px}
+.editorial-index .journal-index-heading h1 {font-size:clamp(44px,6.6vw,96px);line-height:1.02;letter-spacing:-.066em;margin:24px 0 18px}
+.editorial-index h1 span {color:#686d69}
+.portfolio-page .editorial-index .journal-index-heading>p {font-size:clamp(16px,1.6vw,22px);line-height:1.5;max-width:37em}
+.editorial-index .lead-story {margin-bottom:48px}
+.portfolio-page :is(.editorial-index,.paper-journal) .journal-card {background:#fff;border-color:#dadbd6;border-radius:18px}
+.editorial-index .lead-story .journal-card-link {display:grid;grid-template-columns:1.2fr 1fr;align-items:center}
+.editorial-index .lead-story .journal-card-art {height:100%;min-height:220px;aspect-ratio:auto}
+.portfolio-page :is(.editorial-index,.paper-journal) .journal-card h3 {line-height:1.13}
+.portfolio-page .editorial-index .lead-story h3 {font-size:clamp(26px,3.3vw,48px)}
+.portfolio-page :is(.editorial-index,.paper-journal) .journal-read,.portfolio-page .editorial-index .journal-results button {color:#125b7c}
+.portfolio-page :is(.editorial-index,.paper-journal) :is(.journal-meta,.journal-tags span,.journal-filters legend) {color:#536068}
+.portfolio-page .editorial-index :is(.journal-tags span,.journal-search,.journal-sort select,.journal-filters button,.journal-pagination button) {border-color:#c9cecc;background:#fff;color:#353d40}
+.portfolio-page .editorial-index .journal-filters button[aria-pressed=true] {background:#202a2f;color:white}
+.portfolio-page .editorial-index .journal-grid {grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:980px){.portfolio-page .editorial-index .journal-grid {grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:680px){.editorial-index .lead-story .journal-card-link,.portfolio-page .editorial-index .journal-grid{grid-template-columns:1fr}.editorial-index .lead-story .journal-card-art {height:auto;min-height:0;aspect-ratio:16/9}}

@@ -8,21 +8,22 @@ export function useTheme(): [Theme, (theme: Theme) => void] {
     const [theme, setThemeState] = useState<Theme>('light')
 
     useEffect(() => {
-        const savedTheme = localStorage.getItem('theme') as Theme | null
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-
-        const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light')
-        setThemeState(initialTheme)
-        document.documentElement.classList.toggle('dark', initialTheme === 'dark')
+        const sync = () => setThemeState(document.documentElement.classList.contains('dark') ? 'dark' : 'light')
+        sync()
+        const observer = new MutationObserver(sync)
+        observer.observe(document.documentElement, {attributes: true, attributeFilter: ['class']})
+        return () => observer.disconnect()
     }, [])
 
     const setTheme = (newTheme: Theme) => {
+        document.documentElement.classList.toggle('dark', newTheme === 'dark')
+        document.documentElement.classList.toggle('light', newTheme === 'light')
         setThemeState(newTheme)
-        localStorage.setItem('theme', newTheme)
-        document.documentElement.classList.toggle('dark', newTheme === 'dark')
-        document.documentElement.classList.toggle('dark', newTheme === 'dark')
-        document.documentElement.classList.remove(newTheme === 'dark' ? 'light' : 'dark')
-        document.documentElement.classList.add(newTheme)
+        try {
+            localStorage.setItem('theme', newTheme)
+        } catch {
+            // The selection still applies when browser storage is unavailable.
+        }
     }
 
     return [theme, setTheme]
