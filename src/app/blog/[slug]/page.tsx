@@ -10,15 +10,17 @@ import {articleHeadings,blogComponents,type Heading} from '@/lib/blog-mdx';
 import {formatDate,tagLabel} from '@/components/blog/presentation';
 import BlogCard from '@/components/blog/BlogCard';
 import ArticleContents from '@/components/blog/ArticleContents';
+import {siteName, siteOrigin, siteShareImage} from '@/lib/site';
 type Props={params:Promise<{slug:string}>};
 export function generateStaticParams(){return getPosts().map(post=>({slug:post.slug}));}
 export async function generateMetadata({params}:Props):Promise<Metadata>{
   const entry=getPost((await params).slug);
-  if(!entry)return {title:'Article not found | Nirmal Chandrasiri'};
+  if(!entry)return {title:`Article not found | ${siteName}`};
   const {post}=entry;
-  return {title:`${post.title} | Nirmal Chandrasiri`,description:post.summary,alternates:{canonical:`/blog/${post.slug}`},
-    openGraph:{type:'article',title:post.title,description:post.summary,url:`/blog/${post.slug}`,publishedTime:post.date,...(post.updated?{modifiedTime:post.updated}:{}),authors:['Nirmal Chandrasiri'],tags:post.tags,images:[{url:post.cover || '/og-image.png'}]},
-    twitter:{card:'summary_large_image',title:post.title,description:post.summary,images:[post.cover || '/og-image.png']}};
+  const image = post.cover ? {url: post.cover, alt: post.title} : siteShareImage;
+  return {title:`${post.title} | ${siteName}`,description:post.summary,alternates:{canonical:`/blog/${post.slug}`},
+    openGraph:{type:'article',title:post.title,description:post.summary,url:`/blog/${post.slug}`,siteName,publishedTime:post.date,...(post.updated?{modifiedTime:post.updated}:{}),authors:[`${siteOrigin}/`],tags:post.tags,images:[image]},
+    twitter:{card:'summary_large_image',title:post.title,description:post.summary,images:[image]}};
 }
 export default async function ArticlePage({params}:Props){
   const entry=getPost((await params).slug);
@@ -29,7 +31,7 @@ export default async function ArticlePage({params}:Props){
     remarkPlugins:[remarkGfm,articleHeadings(headings,post.title)],rehypePlugins:[[rehypeHighlight,{ignoreMissing:true}]]
   }}});
   const related=relatedPosts(post);
-  const schema={'@context':'https://schema.org','@type':'BlogPosting',headline:post.title,description:post.summary,datePublished:post.date,...(post.updated?{dateModified:post.updated}:{}),author:{'@type':'Person',name:'Nirmal Chandrasiri',url:'https://www.nirmalchandrasiri.com'},mainEntityOfPage:`https://www.nirmalchandrasiri.com/blog/${post.slug}`};
+  const schema={'@context':'https://schema.org','@type':'BlogPosting',headline:post.title,description:post.summary,datePublished:post.date,...(post.updated?{dateModified:post.updated}:{}),image:new URL(post.cover || siteShareImage.url, siteOrigin).href,author:{'@type':'Person','@id':`${siteOrigin}/#nirmal`,name:siteName,url:`${siteOrigin}/`},mainEntityOfPage:`${siteOrigin}/blog/${post.slug}`};
   return <div className="journal-wrap">
     <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(schema).replace(/</g,'\\u003c')}}/>
     <header className="journal-article-heading">

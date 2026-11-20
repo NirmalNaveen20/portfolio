@@ -1,4 +1,5 @@
 import type {MetadataRoute} from 'next'
+import {siteOrigin} from '@/lib/site'
 
 /**
  * Generates a robots.txt file for the website.
@@ -7,7 +8,7 @@ export default function robots(): MetadataRoute.Robots {
     return {
         rules: [
             {
-                userAgent: 'Googlebot',
+                userAgent: ['Googlebot', 'Googlebot-Image'],
                 allow: ['/']
             },
             {
@@ -19,6 +20,6 @@ export default function robots(): MetadataRoute.Robots {
                 disallow: '/',
             },
         ],
-        sitemap: 'https://www.nirmalchandrasiri.com/sitemap.xml',
+        sitemap: `${siteOrigin}/sitemap.xml`,
     }
 }

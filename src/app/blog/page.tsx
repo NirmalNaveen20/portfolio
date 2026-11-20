@@ -5,7 +5,18 @@ import {ArrowLeft} from 'lucide-react';
 import BlogCard from '@/components/blog/BlogCard';
 import BlogIndex from '@/components/blog/BlogIndex';
 import {getPosts} from '@/lib/blog';
-export const metadata:Metadata={title:'Blog | Nirmal Chandrasiri',description:'Practical notes on cloud infrastructure, DevOps, observability, and systems engineering.',alternates:{canonical:'/blog'}};
+import {siteName, siteShareImage} from '@/lib/site';
+
+const title = `Blog | ${siteName}`;
+const description = 'Practical articles on cloud infrastructure, DevOps, observability, and the systems behind reliable SaaS applications.';
+
+export const metadata: Metadata = {
+  title,
+  description,
+  alternates: {canonical: '/blog'},
+  openGraph: {type: 'website', title, description, url: '/blog', siteName, images: [siteShareImage]},
+  twitter: {card: 'summary_large_image', title, description, images: [siteShareImage]},
+};
 export default function BlogPage(){
   const posts=getPosts();
   return <div className="journal-wrap editorial-index"><header className="journal-index-heading">
