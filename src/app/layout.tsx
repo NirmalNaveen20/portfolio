@@ -4,6 +4,7 @@ import "./portfolio-theme.css";
 import {Gabarito} from "next/font/google";
 import React, {ReactNode} from "react";
 import SiteShell from "@/components/SiteShell";
+import {siteDescription, siteOpenGraph, siteOrigin, siteShareImage, siteTitle} from "@/lib/site";
 
 const gabarito = Gabarito({
     variable: "--font-gabarito",
@@ -11,33 +12,19 @@ const gabarito = Gabarito({
 });
 
 export const metadata: Metadata = {
-    title: 'Nirmal Chandrasiri',
-    description: 'Passionate about cloud automation, observability, and systems engineering with a focus on streamlining developer workflows using DevOps methodologies.',
+    title: siteTitle,
+    description: siteDescription,
     icons: {
-        icon: '/favicon.svg',
-        shortcut: '/favicon.svg',
-        apple: '/icons/favicon.ico',
+        icon: {url: '/icons/favicon-96x96.png', type: 'image/png', sizes: '96x96'},
+        apple: {url: '/icons/apple-touch-icon.png', sizes: '180x180', type: 'image/png'},
     },
-    metadataBase: new URL('https://www.nirmalchandrasiri.com'),
-    openGraph: {
-        title: 'Nirmal Chandrasiri',
-        description: 'Passionate about cloud automation, observability, and systems engineering with a focus on streamlining developer workflows using DevOps methodologies.',
-        url: 'https://www.nirmalchandrasiri.com',
-        siteName: 'Nirmal Chandrasiri',
-        images: [
-            {
-                url: '/og-image.png',
-                width: 1200,
-                height: 630,
-                alt: 'Nirmal Chandrasiri'
-            },
-        ],
-    },
+    metadataBase: new URL(siteOrigin),
+    openGraph: siteOpenGraph,
     twitter: {
         card: 'summary_large_image',
-        title: 'Nirmal Chandrasiri',
-        description: 'Passionate about cloud automation, observability, and systems engineering with a focus on streamlining developer workflows using DevOps methodologies.',
-        images: ['/og-image.png']
+        title: siteTitle,
+        description: siteDescription,
+        images: [siteShareImage],
     }
 }
 
