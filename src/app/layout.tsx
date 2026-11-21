@@ -4,7 +4,7 @@ import "./portfolio-theme.css";
 import {Gabarito} from "next/font/google";
 import React, {ReactNode} from "react";
 import SiteShell from "@/components/SiteShell";
-import {siteDescription, siteOpenGraph, siteOrigin, siteShareImage, siteTitle} from "@/lib/site";
+import {siteDescription, siteName, siteOpenGraph, siteOrigin, siteShareImage, siteTitle} from "@/lib/site";
 
 const gabarito = Gabarito({
     variable: "--font-gabarito",
@@ -12,7 +12,7 @@ const gabarito = Gabarito({
 });
 
 export const metadata: Metadata = {
-    title: siteTitle,
+    title: siteName,
     description: siteDescription,
     icons: {
         icon: {url: '/icons/favicon-96x96.png', type: 'image/png', sizes: '96x96'},
