@@ -1,3 +1,5 @@
+import type {Metadata} from 'next'
+import type {ComponentProps} from 'react'
 import {notFound} from 'next/navigation'
 import path from 'path'
 import fs from 'fs'
@@ -16,9 +18,28 @@ import BackToPageButton from "@/components/BackToPageButton";
 import remark_gfm from "remark-gfm";
 import ImageCarouselWrapper from "@/components/ImageCarouselWrapper";
 import Image from 'next/image'
+import {siteName, siteOrigin, siteShareImage} from '@/lib/site'
+
+export async function generateMetadata(props: { params: pageParams }): Promise<Metadata> {
+    const {slug} = await props.params
+    const project = projects.find(p => p.slug === slug)
+    if (!project) return notFound()
+
+    const title = `${project.title} | ${siteName}`
+    const description = project.description
+    const url = `${siteOrigin}/projects/${project.slug}`
+
+    return {
+        title,
+        description,
+        alternates: {canonical: url},
+        openGraph: {type: 'article', title, description, url, siteName, images: [siteShareImage]},
+        twitter: {card: 'summary_large_image', title, description, images: [siteShareImage]},
+    }
+}
 
 /**
- * Generate static parameters for the blog post pages to be pre-rendered.
+ * Generate static parameters for the project case studies to be pre-rendered.
  */
 export async function generateStaticParams() {
     return projects.map((project) => ({
@@ -54,6 +75,9 @@ export default async function ProjectPage(props: { params: pageParams }) {
         role?: string
     }>({
         source: mdxSource,
+        components: {
+            h1: (props: ComponentProps<'h2'>) => <h2 {...props}/>,
+        },
         options: {
             parseFrontmatter: true,
             mdxOptions: {

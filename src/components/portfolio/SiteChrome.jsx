@@ -2,9 +2,17 @@
 import React,{useEffect,useState,useRef} from "react";
 
 import {useTheme} from '@/hooks/useTheme';
+import {usePathname} from 'next/navigation';
 import {Activity, ArrowUp, Bot, Cloud, Layers, Moon, Network, Sun, Workflow} from "lucide-react";
 import extras from "./content/extras.json";
 const external={target:"_blank",rel:"noopener noreferrer"};
+const navigation = [
+ {label:'About', section:'about'},
+ {label:'Services', section:'services'},
+ {label:'Experience', section:'journey', page:'/work'},
+ {label:'Blog', section:'blog', page:'/blog'},
+ {label:'Credentials', section:'credentials'},
+];
 const footerTopics = [
  {label:'Agentic AI', Icon:Bot},
  {label:'SaaS', Icon:Layers},
@@ -14,6 +22,7 @@ const footerTopics = [
  {label:'Automation', Icon:Workflow},
 ];
 export function Header({inner=false}){
+ const pathname=usePathname();
  const [open,setOpen]=useState(false),[active,setActive]=useState(''),[mobile,setMobile]=useState(false);
  const toggle=useRef(null);
  const [theme,setTheme]=useTheme();
@@ -31,7 +40,13 @@ export function Header({inner=false}){
  useEffect(()=>{const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)setActive(e.target.id);});},{rootMargin:'-15% 0px -60% 0px'});document.querySelectorAll('main > section[id]').forEach(el=>observer.observe(el));return()=>observer.disconnect();},[]);
  return <header className={`site-header ${collapsed?"compact-header":""} ${open?"menu-open":""}`}><div className="header-inner wrap">
   <a className="brand" href={inner?"/":"#top"} title="Back to home"><img className="nav-avatar" src="/assets/nirmal-professional-avatar.webp" width="36" height="36" alt=""/><span>Nirmal Chandrasiri</span></a>
-  <nav id="main-navigation" aria-label="Main navigation" className={open?'open':''} inert={collapsed||(mobile&&!open)}>{[['About','about'],['Services','services'],['Experience','journey'],['Blog','blog'],['Credentials','credentials']].map(([label,id])=><a href={inner?(id==='blog'?'/blog':'/#'+id):'#'+id} key={id} aria-current={inner&&id==='blog'?'page':active===id?'location':undefined} onClick={()=>setOpen(false)}>{label}</a>)}</nav>
+  <nav id="main-navigation" aria-label="Main navigation" className={open?'open':''} inert={collapsed||(mobile&&!open)}>
+   {navigation.map(({label, section, page})=>{
+    const href=inner ? (page ?? `/#${section}`) : `#${section}`;
+    const current=inner ? (pathname===href ? 'page' : undefined) : (active===section ? 'location' : undefined);
+    return <a href={href} key={section} aria-current={current} onClick={()=>setOpen(false)}>{label}</a>;
+   })}
+  </nav>
   <div className="header-actions">
    <button type="button" className="theme-switch" aria-label={themeAction} title={themeAction}
     onClick={()=>setTheme(theme==='dark'?'light':'dark')}>
