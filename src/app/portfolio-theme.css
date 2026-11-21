@@ -476,3 +476,70 @@ html.dark .service-art {filter:brightness(.83) saturate(.8)}
  .portrait-code-rail span {animation:none;opacity:.3;filter:none;transform:none}
  .service-widget {transition:none}
 }
+
+/* The experience archive uses the same typography and colors as the homepage. */
+.portfolio-page .profile-index {
+ max-width: 900px;
+ padding-block: clamp(116px, 13vw, 160px) clamp(56px, 7vw, 92px);
+}
+.portfolio-page .profile-index-link {
+ display: inline-flex;
+ align-items: center;
+ min-height: 44px;
+ color: var(--folio-blue);
+ font-weight: 550;
+ font-size: .875rem;
+ line-height: 1.4;
+ text-decoration: underline;
+ text-underline-offset: .27em;
+ text-decoration-color: var(--folio-line);
+}
+.portfolio-page .profile-index-link:hover,
+.portfolio-page .profile-index-link:focus-visible {
+ text-decoration-color: currentColor;
+}
+.bio-project-link {margin-top: 12px}
+.profile-index-heading {margin-block: 18px clamp(26px, 5vw, 54px)}
+.portfolio-page .profile-index-heading h1 {
+ font-size: clamp(2.5rem, 6vw, 4.75rem);
+ line-height: 1.04;
+ letter-spacing: -.055em;
+}
+.portfolio-page .profile-index-heading p {
+ max-width: 58ch;
+ margin-top: 14px;
+ font-size: 1rem;
+ line-height: 1.65;
+}
+.profile-index-list {
+ display: grid;
+ gap: 12px;
+ padding: 0;
+ margin: 0;
+ list-style: none;
+}
+.profile-index-entry {
+ padding: clamp(18px, 3vw, 28px);
+ border: 1px solid var(--folio-line);
+ border-radius: 18px;
+ background: var(--folio-card);
+ display: grid;
+ gap: 12px;
+}
+.portfolio-page .profile-index-entry h2 {
+ font-size: clamp(1.125rem, 2.6vw, 1.5rem);
+ line-height: 1.2;
+}
+.portfolio-page .profile-index-entry p {
+ max-width: 67ch;
+ font-size: 1rem;
+ line-height: 1.6;
+}
+.profile-index-entry .tags {margin: 0}
+.profile-index-entry .profile-index-link {justify-self: start}
+.profile-index-related {
+ display: flex;
+ flex-wrap: wrap;
+ gap: 8px 24px;
+ margin-top: 22px;
+}

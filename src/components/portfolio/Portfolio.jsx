@@ -1,6 +1,7 @@
 "use client";
 import React,{useEffect,useState} from 'react';
 import {ArrowUpRight,Download} from 'lucide-react';
+import Link from 'next/link';
 import {profile,career,skills} from './content/portfolio.js';
 import extras from './content/extras.json';
 import {HeroLight,OperationsMotion,useScrollMotion} from './Motion.jsx';
@@ -40,14 +41,17 @@ function About() {
   <section id="about" className="paper biography">
    <div className="wrap bio-layout">
     <h2>About me</h2>
-    <div className="bio-story">{profile.bio.map(paragraph=><p key={paragraph}>{paragraph}</p>)}</div>
+    <div className="bio-story">
+     {profile.bio.map(paragraph=><p key={paragraph}>{paragraph}</p>)}
+     <Link className="profile-index-link bio-project-link" href="/projects">View engineering projects</Link>
+    </div>
    </div>
   </section>
  );
 }
 
 function Journey(){const [expanded,setExpanded]=useState(null);return <section className="journey section wrap live-history" id="journey">
- <div className="section-heading" data-reveal><h2>Journey</h2><span className="section-note">Experience</span></div>
+ <div className="section-heading" data-reveal><h2>Journey</h2><Link className="profile-index-link" href="/work">View work experience</Link></div>
  <div className="timeline">{career.map((job,i)=><article className={'career-row '+(expanded===i?'expanded':'')} key={job.company} data-reveal style={{'--reveal-delay':`${i*55}ms`}}>
   <div className="journey-summary">
    <a className={'company-logo company-'+job.company.toLowerCase().replaceAll(' ','-')} href={job.url} {...external} aria-label={job.company}>

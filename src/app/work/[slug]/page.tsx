@@ -12,6 +12,8 @@ import {pageParams} from "@/lib/types";
 import BackToPageButton from "@/components/BackToPageButton";
 import remark_gfm from "remark-gfm";
 import Image from 'next/image'
+import type {Metadata} from 'next'
+import {siteName, siteShareImage} from '@/lib/site'
 
 /**
  * Generate static parameters for the work item pages to be pre-rendered.
@@ -20,6 +22,24 @@ export async function generateStaticParams() {
     return work.map((item) => ({
         slug: item.slug,
     }))
+}
+
+export async function generateMetadata({params}: {params: pageParams}): Promise<Metadata> {
+    const {slug} = await params
+    const item = work.find(entry => entry.slug === slug)
+    if (!item) notFound()
+
+    const title = `${item.title} at ${item.company} | ${siteName}`
+    const description = item.description
+    const url = `/work/${item.slug}`
+
+    return {
+        title,
+        description,
+        alternates: {canonical: url},
+        openGraph: {type: 'website', title, description, url, siteName, images: [siteShareImage]},
+        twitter: {card: 'summary_large_image', title, description, images: [siteShareImage]},
+    }
 }
 
 /**
